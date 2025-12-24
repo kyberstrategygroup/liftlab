@@ -1,0 +1,117 @@
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { createPageUrl } from '@/utils';
+import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import CTAButton from '@/components/ui/CTAButton';
+
+const navLinks = [
+  { name: 'Services', page: 'Services' },
+  { name: 'Memberships', page: 'Memberships' },
+  { name: 'Team', page: 'Team' },
+  { name: 'About', page: 'About' },
+  { name: 'Schedule', page: 'Schedule' },
+];
+
+export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <>
+      <header 
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled ? 'bg-black/95 backdrop-blur-sm py-4' : 'bg-transparent py-6'
+        }`}
+      >
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-between">
+            {/* Logo */}
+            <Link to={createPageUrl('Home')} className="flex items-center gap-3 group">
+              <div className="w-10 h-10 border-2 border-blue-500 rotate-45 flex items-center justify-center transition-colors group-hover:bg-blue-500">
+                <div className="w-2 h-2 bg-blue-500 group-hover:bg-white transition-colors" />
+              </div>
+              <span className="text-xl font-black text-white uppercase tracking-tight">
+                Lift<span className="text-blue-500">Lab</span>
+              </span>
+            </Link>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.page}
+                  to={createPageUrl(link.page)}
+                  className="text-sm font-bold uppercase tracking-wider text-zinc-300 hover:text-white transition-colors"
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </nav>
+
+            {/* CTA Button */}
+            <div className="hidden lg:block">
+              <CTAButton to="StartNow" variant="primary" size="small">
+                Schedule Consult
+              </CTAButton>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden text-white p-2"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-40 bg-black pt-24 lg:hidden"
+          >
+            <nav className="container mx-auto px-6">
+              <div className="flex flex-col gap-6">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.page}
+                    to={createPageUrl(link.page)}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-2xl font-bold uppercase tracking-wider text-white hover:text-blue-500 transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+                <div className="pt-6 border-t border-zinc-800">
+                  <CTAButton 
+                    to="StartNow" 
+                    variant="primary" 
+                    size="large"
+                    className="w-full"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Schedule Consult
+                  </CTAButton>
+                </div>
+              </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
