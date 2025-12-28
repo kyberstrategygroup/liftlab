@@ -32,7 +32,7 @@ export default function HeroSection() {
             <img 
               src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/c7e7092e7_LL-40-dark-bckgrnd.png"
               alt="LiftLab Logo"
-              className="h-40 w-auto object-contain mx-auto"
+              className="h-40 w-auto "
             />
           </div>
 
