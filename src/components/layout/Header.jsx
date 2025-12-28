@@ -104,6 +104,9 @@ export default function Header() {
                     variant="primary" 
                     size="large"
                     className="w-full"
+                    onClick={() => {setMobileMenuOpen(false)
+                    window.location.href = "/StartNow#ready"}
+                    }
                   >
                     Schedule Consult
                   </CTAButton>
