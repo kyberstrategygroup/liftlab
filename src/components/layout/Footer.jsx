@@ -130,7 +130,7 @@ export default function Footer() {
                 </a>
 
                 <a
-                  href="https://instagram.com/ygkliftlab"
+                  href="https://www.instagram.com/liftlabkingston"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-zinc-900 hover:bg-blue-600 flex items-center justify-center transition-colors"
