@@ -77,7 +77,7 @@ export default function Footer() {
                   { name: 'Our Members', page: 'Memberships' },
                   { name: 'Meet The Team', page: 'Team' },
                   { name: 'About', page: 'About' },
-                  { name: 'Schedule', page: 'Schedule' }
+                  { name: 'Start The Experiment', page: 'Schedule' }
                 ].map((item) => (
                   <li key={item.page}>
                     <Link 

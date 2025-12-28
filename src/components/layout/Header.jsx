@@ -10,7 +10,7 @@ const navLinks = [
   { name: 'Our Members', page: 'Memberships' },
   { name: 'Meet The Team', page: 'Team' },
   { name: 'About', page: 'About' },
-  { name: 'Schedule', page: 'Schedule' },
+  { name: 'Start The Experiment', page: 'Schedule' },
 ];
 
 export default function Header() {
