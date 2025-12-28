@@ -4,7 +4,6 @@ import VideoEmbed from '@/components/ui/VideoEmbed';
 import LeadForm from '@/components/forms/LeadForm';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { Target, Dumbbell, Flame } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 
 const archetypes = [
@@ -110,7 +109,13 @@ export default function StartNow() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {archetypes.map((archetype, index) => (
-              <Link key={archetype.id} href={archetype.href} className="block">
+              <a
+                key={archetype.id}
+                href={archetype.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
                 <motion.div
                   key={archetype.id}
                   initial={{ opacity: 0, y: 30 }}
@@ -135,7 +140,7 @@ export default function StartNow() {
                     {archetype.description}
                   </p>
                 </motion.div>
-              </Link>
+              </a>
             ))}
           </div>
         </div>
