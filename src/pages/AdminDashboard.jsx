@@ -87,7 +87,11 @@ export default function AdminDashboard() {
         <div className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Shield className="w-6 h-6 text-blue-500" />
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/c7e7092e7_LL-40-dark-bckgrnd.png"
+                alt="LiftLab Logo"
+                className="h-8 w-auto object-contain"
+              />
               <h1 className="text-xl font-black text-white uppercase">Admin Dashboard</h1>
             </div>
             <div className="flex items-center gap-4">
