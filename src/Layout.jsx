@@ -25,6 +25,13 @@ export default function Layout({ children, currentPageName }) {
           background-color: var(--liftlab-blue);
           color: white;
         }
+        
+        /* Hide Base44 edit popup */
+        [data-base44-edit-button],
+        .base44-edit-button,
+        #base44-edit-button {
+          display: none !important;
+        }
       `}</style>
       
       {!isAdminPage && <Header />}
