@@ -36,7 +36,7 @@ export default function WhyLiftLabSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <SectionHeading 
+          <SectionHeading
             subtitle="The LiftLab Difference"
             title="Why Train With Us"
             className="mb-16"
@@ -57,7 +57,7 @@ export default function WhyLiftLabSection() {
                 <div className="w-14 h-14 bg-blue-600 flex items-center justify-center mb-6 group-hover:bg-blue-500 transition-colors">
                   <feature.icon className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-lg font-bold uppercase tracking-wide mb-3">
+                <h3 className="text-lg font-bold uppercase tracking-wide mb-3 text-black">
                   {feature.title}
                 </h3>
                 <p className="text-zinc-600 leading-relaxed">
