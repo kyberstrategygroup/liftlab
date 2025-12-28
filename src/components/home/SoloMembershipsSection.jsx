@@ -84,15 +84,6 @@ export default function SoloMembershipsSection() {
                 title="Semi-Private Training"
               />
             </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-white uppercase tracking-wide mb-2">
-                Semi-Private Training
-              </h3>
-              <p className="text-zinc-400">
-                Personalized coaching in a small group setting. Get the attention you need 
-                with the energy of training alongside others.
-              </p>
-            </div>
           </motion.div>
 
           <motion.div
@@ -106,15 +97,6 @@ export default function SoloMembershipsSection() {
                 url="https://www.youtube.com/watch?v=l5En9KuB2Nw"
                 title="Private Training"
               />
-            </div>
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-white uppercase tracking-wide mb-2">
-                Private Training
-              </h3>
-              <p className="text-zinc-400">
-                One-on-one sessions tailored entirely to your goals. Maximum focus, 
-                maximum results.
-              </p>
             </div>
           </motion.div>
         </div>
