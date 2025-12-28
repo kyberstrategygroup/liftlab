@@ -99,7 +99,7 @@ export default function Header() {
                   </Link>
                 ))}
                 <div className="pt-6 border-t border-zinc-800">
-                  <Link 
+                  <CTAButton 
                     to="StartNow#ready" 
                     variant="primary" 
                     size="large"
@@ -107,7 +107,7 @@ export default function Header() {
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Schedule Consult
-                  </Link>
+                  </CTAButton>
                 </div>
               </div>
             </nav>
