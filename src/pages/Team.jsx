@@ -92,7 +92,7 @@ export default function Team() {
 
                   {/* Info */}
                   <div>
-                    <h3 className="text-xl font-black uppercase tracking-tight group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-xl font-black text-black uppercase tracking-tight group-hover:text-blue-600 transition-colors">
                       {trainer.first_name}
                     </h3>
                     <p className="text-zinc-500 text-sm uppercase tracking-wider mb-4">
