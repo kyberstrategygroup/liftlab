@@ -8,35 +8,27 @@ import { Instagram, Linkedin, ArrowRight } from 'lucide-react';
 
 // Placeholder data - replace with actual trainer data from entity
 const trainers = [
-  {
+    {
     id: 'coach-1',
-    first_name: 'Alex',
-    title: 'Founder',
-    headshot_url: 'https://images.unsplash.com/photo-1594381898411-846e7d193883?w=600&q=80',
+    first_name: 'Stephen',
+    title: 'Senior Coach',
+    headshot_url: 'Stephen.png',
     instagram: 'liftlab',
     linkedin: '#'
   },
   {
     id: 'coach-2',
-    first_name: 'Jordan',
+    first_name: 'Colin',
     title: 'Senior Coach',
-    headshot_url: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80',
+    headshot_url: 'Colin.png',
     instagram: 'liftlab',
     linkedin: '#'
   },
   {
     id: 'coach-3',
-    first_name: 'Taylor',
-    title: 'Senior Coach',
-    headshot_url: 'https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?w=600&q=80',
-    instagram: 'liftlab',
-    linkedin: '#'
-  },
-  {
-    id: 'coach-4',
-    first_name: 'Casey',
+    first_name: 'Ashley',
     title: 'Junior Coach',
-    headshot_url: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80',
+    headshot_url: 'Ashley.png',
     instagram: 'liftlab',
     linkedin: '#'
   }
@@ -69,7 +61,7 @@ export default function Team() {
       {/* Team Grid */}
       <section className="py-24 md:py-32 bg-white">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {trainers.map((trainer, index) => (
               <motion.div
                 key={trainer.id}
@@ -149,7 +141,7 @@ export default function Team() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-4">
+              <h2 className="text-2xl md:text-3xl font-black text-black uppercase tracking-tight mb-4">
                 Want to Coach With Us?
               </h2>
               <p className="text-zinc-600 mb-6">
