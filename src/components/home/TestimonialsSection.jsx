@@ -116,7 +116,7 @@ export default function TestimonialsSection() {
 
         {/* Mobile Swipe Hint */}
         <p className="text-center text-zinc-400 text-sm mt-8 md:hidden">
-          Swipe or use arrows to see more stories
+          Use arrows to see more stories
         </p>
       </div>
     </section>
