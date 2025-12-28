@@ -55,8 +55,30 @@ export default function CTAButton({
     );
   }
 
+  // Handle hash navigation
+  const handleClick = (e) => {
+    if (to.includes('#')) {
+      const [page, hash] = to.split('#');
+      const targetUrl = createPageUrl(page);
+      
+      // If we're already on the target page, just scroll
+      if (window.location.pathname === targetUrl || window.location.pathname === `/${page}`) {
+        e.preventDefault();
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        return;
+      }
+      
+      // Otherwise, navigate and scroll after page loads
+      e.preventDefault();
+      window.location.href = targetUrl + '#' + hash;
+    }
+  };
+
   return (
-    <Link to={createPageUrl(to)} className={combinedStyles}>
+    <Link to={createPageUrl(to)} className={combinedStyles} onClick={handleClick}>
       {content}
     </Link>
   );
