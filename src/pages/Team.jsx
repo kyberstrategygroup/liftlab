@@ -76,7 +76,7 @@ export default function Team() {
                   className="block"
                 >
                   {/* Photo */}
-                  <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-6">
+                  <div className="relative overflow-hidden bg-zinc-100 mb-6 flex justify-center">
                     <img 
                       src={trainer.headshot_url}
                       alt={trainer.first_name}
