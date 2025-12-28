@@ -104,7 +104,6 @@ export default function Header() {
                     variant="primary" 
                     size="large"
                     className="w-full"
-                    onClick={() => setMobileMenuOpen(false)}
                   >
                     Schedule Consult
                   </CTAButton>
