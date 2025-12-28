@@ -40,7 +40,7 @@ export default function Footer() {
             <p className="text-zinc-400 mb-8">
               Book a free consultation and let's talk about your goals.
             </p>
-            <CTAButton to="StartNow" variant="primary" size="large">
+            <CTAButton to="StartNow#ready" variant="primary" size="large">
               Schedule Consult
             </CTAButton>
           </div>
