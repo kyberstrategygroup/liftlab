@@ -29,9 +29,11 @@ export default function HeroSection() {
         >
           {/* Logo Mark */}
           <div className="mb-8">
-            <div className="inline-flex items-center justify-center w-20 h-20 border-4 border-blue-500 rotate-45">
-              <div className="w-3 h-3 bg-blue-500 rotate-45" />
-            </div>
+            <img 
+              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/0d5329e27_LL-40-blackpng.png"
+              alt="LiftLab Logo"
+              className="h-20 w-auto object-contain mx-auto"
+            />
           </div>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tight mb-6">

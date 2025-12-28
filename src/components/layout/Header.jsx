@@ -36,9 +36,11 @@ export default function Header() {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link to={createPageUrl('Home')} className="flex items-center gap-3 group">
-              <div className="w-10 h-10 border-2 border-blue-500 rotate-45 flex items-center justify-center transition-colors group-hover:bg-blue-500">
-                <div className="w-2 h-2 bg-blue-500 group-hover:bg-white transition-colors" />
-              </div>
+              <img 
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/0d5329e27_LL-40-blackpng.png"
+                alt="LiftLab Logo"
+                className="h-10 w-auto object-contain"
+              />
               <span className="text-xl font-black text-white uppercase tracking-tight">
                 Lift<span className="text-blue-500">Lab</span>
               </span>

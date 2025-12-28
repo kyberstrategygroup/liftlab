@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Facebook, Instagram, Mail, MapPin, Phone, Youtube } from 'lucide-react';
+import { Instagram, Mail, MapPin, Phone } from 'lucide-react';
 import CTAButton from '@/components/ui/CTAButton';
 
 export default function Footer() {
@@ -54,9 +54,11 @@ export default function Footer() {
             {/* Brand */}
             <div>
               <Link to={createPageUrl('Home')} className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 border-2 border-blue-500 rotate-45 flex items-center justify-center">
-                  <div className="w-1.5 h-1.5 bg-blue-500" />
-                </div>
+                <img 
+                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/0d5329e27_LL-40-blackpng.png"
+                  alt="LiftLab Logo"
+                  className="h-8 w-auto object-contain"
+                />
                 <span className="text-lg font-black uppercase tracking-tight">
                   Lift<span className="text-blue-500">Lab</span>
                 </span>
@@ -72,7 +74,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {['Services', 'Memberships', 'Team', 'About', 'Schedule'].map((page) => (
                   <li key={page}>
-                    <Link
+                    <Link 
                       to={createPageUrl(page)}
                       className="text-zinc-400 hover:text-white transition-colors text-sm"
                     >
@@ -88,7 +90,7 @@ export default function Footer() {
               <h4 className="font-bold uppercase tracking-wider text-sm mb-4">Contact</h4>
               <ul className="space-y-3">
                 <li>
-                  <a
+                  <a 
                     href="mailto:contact@liftlab.ca"
                     className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors text-sm"
                   >
@@ -97,7 +99,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a
+                  <a 
                     href="tel:+16131234567"
                     className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors text-sm"
                   >
@@ -118,32 +120,14 @@ export default function Footer() {
             <div>
               <h4 className="font-bold uppercase tracking-wider text-sm mb-4">Follow</h4>
               <div className="flex gap-4">
-                <a
-                  href="https://www.facebook.com/ygkliftlab"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-zinc-900 hover:bg-blue-600 flex items-center justify-center transition-colors"
-                >
-                  <Facebook className="w-5 h-5" />
-                </a>
-
-                <a
-                  href="https://instagram.com/ygkliftlab"
+                <a 
+                  href="https://instagram.com/liftlab"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-zinc-900 hover:bg-blue-600 flex items-center justify-center transition-colors"
                 >
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a
-                  href="https://www.youtube.com/@liftlab2021"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 bg-zinc-900 hover:bg-red-600 flex items-center justify-center transition-colors"
-                >
-                  <Youtube className="w-5 h-5" />
-                </a>
-
               </div>
             </div>
           </div>
