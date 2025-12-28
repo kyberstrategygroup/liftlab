@@ -4,7 +4,7 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import VideoEmbed from '@/components/ui/VideoEmbed';
 import CTAButton from '@/components/ui/CTAButton';
 import { Quote } from 'lucide-react';
-import { testimonialVideos } from '@/utils/testimonials';
+import { testimonialVideos } from '@/components/data/testimonials';
 
 const stats = [
   { value: "92%", label: "Member Retention Rate" },

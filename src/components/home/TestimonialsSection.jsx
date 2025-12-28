@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import SectionHeading from '@/components/ui/SectionHeading';
 import VideoEmbed from '@/components/ui/VideoEmbed';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
-import { testimonialVideos } from '@/utils/testimonials';
+import { testimonialVideos } from '@/components/data/testimonials';
 
 export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
