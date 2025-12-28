@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import SectionHeading from '@/components/ui/SectionHeading';
 import CTAButton from '@/components/ui/CTAButton';
-import { Users, User, Globe, Check } from 'lucide-react';
+import { Users, User, Globe, Check, Activity, Key, Clock } from 'lucide-react';
 
 const services = [
   {
@@ -48,6 +48,57 @@ const services = [
       'Full support via messaging'
     ],
     image: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=800&q=80',
+    popular: false
+  },
+  {
+    id: 'mvmt-tuneup',
+    icon: Activity,
+    title: 'MVMT TUNE-UP',
+    description: "A 3-session movement tune-up designed as a pit stop for your training, your sport, or your lifestyle. Focused on identifying and addressing movement limitations before they become training problems.",
+    features: [
+      'Posture',
+      'Mobility',
+      'Joint stability',
+      'Gait',
+      'Breath strategy',
+      'Foot mechanics'
+    ],
+    pricing: '3 Sessions — $199.99',
+    guarantee: 'Better mobility and posture — or your money back.',
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80',
+    popular: false,
+    featured: true
+  },
+  {
+    id: 'premium-solo',
+    icon: Key,
+    title: 'Premium Solo Membership',
+    description: "24/7 fitness access for individuals who want to train at their own pace on their own schedule. Full facility access with no time restrictions. Ideal for experienced or independent gym-goers.",
+    features: [
+      'Full facility access',
+      'No time restrictions',
+      '24/7 access',
+      'Ideal for experienced gym-goers',
+      'Train at your own pace'
+    ],
+    pricing: '$29.99 (biweekly)',
+    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80',
+    popular: false
+  },
+  {
+    id: 'basic-solo',
+    icon: Clock,
+    title: 'Basic Solo Membership',
+    description: "24/7 fitness access at your own pace on your own schedule, with restricted access during peak hours. Cost-effective option for flexible schedules. Ideal for off-peak training.",
+    features: [
+      '24/7 access with peak hour restrictions',
+      'No access weekdays 7:00–10:00 AM',
+      'No access weekdays 4:30–7:30 PM',
+      'Full access all other times',
+      'Train at your own pace'
+    ],
+    pricing: '$21.99 (biweekly)',
+    image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80',
     popular: false
   }
 ];
@@ -109,7 +160,7 @@ export default function Services() {
 
                 {/* Content */}
                 <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                  <div className="w-14 h-14 bg-blue-600 flex items-center justify-center mb-6">
+                  <div className={`w-14 h-14 flex items-center justify-center mb-6 ${service.featured ? 'bg-blue-600 animate-pulse' : 'bg-blue-600'}`}>
                     <service.icon className="w-7 h-7 text-white" />
                   </div>
                   
@@ -130,8 +181,24 @@ export default function Services() {
                     ))}
                   </ul>
 
+                  {service.pricing && (
+                    <div className="mb-6">
+                      <p className="text-2xl font-black text-black uppercase tracking-tight">
+                        {service.pricing}
+                      </p>
+                    </div>
+                  )}
+
+                  {service.guarantee && (
+                    <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-600">
+                      <p className="text-sm font-bold text-blue-900 uppercase tracking-wider">
+                        {service.guarantee}
+                      </p>
+                    </div>
+                  )}
+
                   <CTAButton to="StartNow" variant="primary">
-                    Get Started
+                    {service.pricing ? 'Schedule Consult' : 'Get Started'}
                   </CTAButton>
                 </div>
               </motion.div>
