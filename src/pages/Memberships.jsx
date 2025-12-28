@@ -13,8 +13,8 @@ const testimonialVideos = [
     quote: "The community here is unlike any gym I've been to. Everyone genuinely wants to see you succeed."
   },
   {
-    url: "https://www.youtube.com/watch?v=fHhiKWzoQ5c",
-    name: "Luke",
+    url: "https://youtu.be/VYrtwYFFsUE?si=bqLiilYh9CIXoInE",
+    name: "Evelyne",
     duration: "Member for 3 years",
     quote: "I came for the training, but I stayed for the people. This place became a second family."
   },
@@ -25,8 +25,8 @@ const testimonialVideos = [
     quote: "After years of program-hopping, I finally found something I can stick with long-term."
   },
   {
-    url: "https://www.youtube.com/watch?v=Ym6K5oOZqrw",
-    name: "Brenda",
+    url: "https://youtu.be/i-oP_tw6gB8?si=PncHTgI5_JcLkUrq",
+    name: "Amber",
     duration: "Member for 4 years",
     quote: "The coaches actually know my name, my history, my goals. That makes all the difference."
   }
