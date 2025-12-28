@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
 export default function Layout({ children, currentPageName }) {
   const isAdminPage = currentPageName === 'AdminDashboard' || currentPageName === 'AdminSetup';
+  
+  // Scroll to top whenever page changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPageName]);
   
   return (
     <div className="min-h-screen bg-black text-white">
