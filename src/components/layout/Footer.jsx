@@ -73,7 +73,7 @@ export default function Footer() {
               <h4 className="font-bold uppercase tracking-wider text-sm mb-4">Navigate</h4>
               <ul className="space-y-3">
                 {[
-                  { name: 'Services', page: 'Services' },
+                  { name: 'Our Services', page: 'Services' },
                   { name: 'Our Members', page: 'Memberships' },
                   { name: 'Meet The Team', page: 'Team' },
                   { name: 'About', page: 'About' },
