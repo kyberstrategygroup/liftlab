@@ -3,6 +3,8 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
 export default function Layout({ children, currentPageName }) {
+  const isAdminPage = currentPageName === 'AdminDashboard' || currentPageName === 'AdminSetup';
+  
   return (
     <div className="min-h-screen bg-black text-white">
       <style>{`
@@ -25,13 +27,13 @@ export default function Layout({ children, currentPageName }) {
         }
       `}</style>
       
-      <Header />
+      {!isAdminPage && <Header />}
       
       <main>
         {children}
       </main>
       
-      <Footer />
+      {!isAdminPage && <Footer />}
     </div>
   );
 }
