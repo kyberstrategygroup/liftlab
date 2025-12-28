@@ -17,6 +17,8 @@ const services = [
       'Access to all training archetypes',
       'Progress tracking and regular assessments'
     ],
+    pricing: '2 sessions per week — $160 biweekly',
+    pricingNote: 'Best value option for coached training in a small-group setting',
     image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80',
     popular: true
   },
@@ -32,6 +34,8 @@ const services = [
       'Priority booking access',
       'Direct coach communication'
     ],
+    pricing: '2 sessions per week — $300 biweekly',
+    pricingNote: 'Fully personalized, one-on-one coaching',
     image: 'https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?w=800&q=80',
     popular: false
   },
@@ -47,6 +51,8 @@ const services = [
       'Training app with exercise demos',
       'Full support via messaging'
     ],
+    pricing: '$100 biweekly',
+    pricingNote: 'Professional guidance for independent gym-goers',
     image: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=800&q=80',
     popular: false
   },
@@ -186,6 +192,11 @@ export default function Services() {
                       <p className="text-2xl font-black text-black uppercase tracking-tight">
                         {service.pricing}
                       </p>
+                      {service.pricingNote && (
+                        <p className="text-sm text-zinc-500 mt-2">
+                          {service.pricingNote}
+                        </p>
+                      )}
                     </div>
                   )}
 
