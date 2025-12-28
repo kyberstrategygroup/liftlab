@@ -15,7 +15,8 @@ const archetypes = [
     subtitle: 'Foundation First',
     description: "You're here to build a sustainable practice. Maybe you're recovering from injury, managing stress, or simply want to move better. We start with mobility, stability, and fundamental movement patterns.",
     color: 'bg-emerald-600',
-    borderColor: 'border-emerald-500'
+    borderColor: 'border-emerald-500',
+    href: 'https://www.youtube.com/watch?v=ugvmec8eZ5k'
   },
   {
     id: 'fitness',
@@ -24,7 +25,8 @@ const archetypes = [
     subtitle: 'Balanced Performance',
     description: "You want to look good, feel strong, and have energy for life outside the gym. We balance strength, conditioning, and body composition work to keep you progressing without burning out.",
     color: 'bg-blue-600',
-    borderColor: 'border-blue-500'
+    borderColor: 'border-blue-500',
+    href: 'https://www.youtube.com/watch?v=s5Q-ylXcHgM'
   },
   {
     id: 'train',
@@ -33,7 +35,8 @@ const archetypes = [
     subtitle: 'Performance Driven',
     description: "You're an athlete or want to train like one. Periodized strength programs, sport-specific conditioning, and recovery protocols designed for people who take their training seriously.",
     color: 'bg-orange-600',
-    borderColor: 'border-orange-500'
+    borderColor: 'border-orange-500',
+    href: 'https://www.youtube.com/watch?v=BdPh4ZZQpyE'
   }
 ];
 
@@ -107,30 +110,32 @@ export default function StartNow() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {archetypes.map((archetype, index) => (
-              <motion.div
-                key={archetype.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`group bg-zinc-50 border-2 border-zinc-200 hover:${archetype.borderColor} p-8 transition-all duration-300 hover:shadow-xl`}
-              >
-                <div className={`w-16 h-16 ${archetype.color} flex items-center justify-center mb-6`}>
-                  <archetype.icon className="w-8 h-8 text-white" />
-                </div>
+              <Link key={archetype.id} href={archetype.href} className="block">
+                <motion.div
+                  key={archetype.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className={`group bg-zinc-50 border-2 border-zinc-200 hover:${archetype.borderColor} p-8 transition-all duration-300 hover:shadow-xl`}
+                >
+                  <div className={`w-16 h-16 ${archetype.color} flex items-center justify-center mb-6`}>
+                    <archetype.icon className="w-8 h-8 text-white" />
+                  </div>
 
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 mb-2">
-                  {archetype.subtitle}
-                </p>
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 mb-2">
+                    {archetype.subtitle}
+                  </p>
 
-                <h3 className="text-2xl font-black text-black uppercase tracking-tight mb-4">
-                  {archetype.title}
-                </h3>
+                  <h3 className="text-2xl font-black text-black uppercase tracking-tight mb-4">
+                    {archetype.title}
+                  </h3>
 
-                <p className="text-zinc-600 leading-relaxed">
-                  {archetype.description}
-                </p>
-              </motion.div>
+                  <p className="text-zinc-600 leading-relaxed">
+                    {archetype.description}
+                  </p>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </div>
