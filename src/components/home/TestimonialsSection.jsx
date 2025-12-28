@@ -47,22 +47,6 @@ export default function TestimonialsSection() {
           />
         </motion.div>
 
-          {/* Navigation Buttons */}
-          <button
-            onClick={() => { prevSlide(); handleInteraction(); }}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 w-12 h-12 bg-black border-2 border-black hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center group"
-            aria-label="Previous testimonial"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          
-          <button
-            onClick={() => { nextSlide(); handleInteraction(); }}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 w-12 h-12 bg-black border-2 border-black hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center group"
-            aria-label="Next testimonial"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
         {/* Carousel Container */}
         <div className="relative max-w-4xl mx-auto">
           <AnimatePresence mode="wait">
@@ -96,6 +80,22 @@ export default function TestimonialsSection() {
             </motion.div>
           </AnimatePresence>
 
+          {/* Navigation Buttons */}
+          <button
+            onClick={() => { prevSlide(); handleInteraction(); }}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 w-12 h-12 bg-black border-2 border-black hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center group"
+            aria-label="Previous testimonial"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          
+          <button
+            onClick={() => { nextSlide(); handleInteraction(); }}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 w-12 h-12 bg-black border-2 border-black hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center group"
+            aria-label="Next testimonial"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
 
           {/* Dots Indicator */}
           <div className="flex justify-center gap-2 mt-6">
