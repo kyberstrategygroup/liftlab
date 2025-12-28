@@ -12,11 +12,12 @@ export default function AdminSetup() {
     setStatus('loading');
     try {
       await base44.users.inviteUser('kyberstrategygroup@gmail.com', 'admin');
+      await base44.users.inviteUser('dylanspence8@gmail.com', 'admin');
       setStatus('success');
-      setMessage('Admin user invited successfully! Check kyberstrategygroup@gmail.com for the invitation email with login instructions.');
+      setMessage('Admin users invited successfully! Check kyberstrategygroup@gmail.com and dylanspence8@gmail.com for invitation emails with login instructions.');
     } catch (error) {
       setStatus('error');
-      setMessage(error.message || 'Failed to invite admin user. They may already be invited.');
+      setMessage(error.message || 'Failed to invite admin users. They may already be invited.');
     }
   };
 
@@ -35,8 +36,12 @@ export default function AdminSetup() {
         <CardContent className="space-y-4">
           <div className="bg-zinc-800 border border-zinc-700 p-4 rounded space-y-2">
             <p className="text-sm text-zinc-300">
-              <strong>Admin Email:</strong> kyberstrategygroup@gmail.com
+              <strong>Admin Emails:</strong>
             </p>
+            <ul className="text-sm text-zinc-400 list-disc list-inside">
+              <li>kyberstrategygroup@gmail.com</li>
+              <li>dylanspence8@gmail.com</li>
+            </ul>
             <p className="text-sm text-zinc-300">
               <strong>Role:</strong> Admin
             </p>
