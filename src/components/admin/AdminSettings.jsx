@@ -169,7 +169,7 @@ export default function AdminSettings({ user }) {
             <p>• Your account has admin privileges with allowlist-based access</p>
             <p>• All actions are logged in the Audit Log</p>
             <p>• If you need to change your email, contact Base44 support</p>
-            <p>• For initial login, use temporary password: <code className="bg-zinc-800 px-2 py-1 rounded">liftlab1!</code></p>
+            <p>• Password is managed through Base44's secure invitation system</p>
           </div>
         </CardContent>
       </Card>

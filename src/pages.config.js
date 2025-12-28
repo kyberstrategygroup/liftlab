@@ -7,6 +7,7 @@ import StartNow from './pages/StartNow';
 import Team from './pages/Team';
 import TrainerDetail from './pages/TrainerDetail';
 import AdminDashboard from './pages/AdminDashboard';
+import AdminSetup from './pages/AdminSetup';
 import __Layout from './Layout.jsx';
 
 
@@ -20,6 +21,7 @@ export const PAGES = {
     "Team": Team,
     "TrainerDetail": TrainerDetail,
     "AdminDashboard": AdminDashboard,
+    "AdminSetup": AdminSetup,
 }
 
 export const pagesConfig = {
