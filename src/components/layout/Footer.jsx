@@ -74,7 +74,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {[
                   { name: 'Services', page: 'Services' },
-                  { name: 'Memberships', page: 'Memberships' },
+                  { name: 'Our Members', page: 'Memberships' },
                   { name: 'Meet The Team', page: 'Team' },
                   { name: 'About', page: 'About' },
                   { name: 'Schedule', page: 'Schedule' }
