@@ -83,7 +83,7 @@ export default function TestimonialsSection() {
           {/* Navigation Buttons */}
           <button
             onClick={() => { prevSlide(); handleInteraction(); }}
-            className="absolute left-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 w-12 h-12 bg-black border-2 border-black hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center group"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 w-12 h-12 bg-black border-2 border-black hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center group"
             aria-label="Previous testimonial"
           >
             <ChevronLeft className="w-6 h-6" />
