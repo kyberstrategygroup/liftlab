@@ -92,7 +92,7 @@ export default function AdminDashboard() {
             </div>
             <div className="flex items-center gap-4">
               <span className="text-sm text-zinc-400">{user?.email}</span>
-              <Button onClick={handleLogout} variant="outline" size="sm">
+              <Button onClick={handleLogout} variant="outline" size="sm" className="text-black">
                 <LogOut className="w-4 h-4 mr-2" />
                 Logout
               </Button>
