@@ -100,7 +100,7 @@ export default function Header() {
                 ))}
                 <div className="pt-6 border-t border-zinc-800">
                   <CTAButton 
-                    to="StartNow#ready" 
+                    to="StartNow#Ready" 
                     variant="primary" 
                     size="large"
                     className="w-full"
