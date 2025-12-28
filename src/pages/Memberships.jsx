@@ -151,6 +151,26 @@ export default function Memberships() {
         </div>
       </section>
 
+      {/* CTA */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tight mb-4">
+              Ready to Join?
+            </h2>
+            <p className="text-zinc-600 mb-8 max-w-xl mx-auto">
+              Start with a consultation. We'll make sure we're the right fit for each other.
+            </p>
+            <CTAButton to="StartNow#ready" variant="primary" size="large">
+              Schedule Consult
+            </CTAButton>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }
