@@ -165,7 +165,7 @@ export default function Memberships() {
             <p className="text-zinc-600 mb-8 max-w-xl mx-auto">
               Start with a consultation. We'll make sure we're the right fit for each other.
             </p>
-            <CTAButton to="StartNow" variant="primary" size="large">
+            <CTAButton to="StartNow#ready" variant="primary" size="large">
               Schedule Consult
             </CTAButton>
           </motion.div>
