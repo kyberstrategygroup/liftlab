@@ -39,7 +39,7 @@ export default function Header() {
               <img 
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/c7e7092e7_LL-40-dark-bckgrnd.png"
                 alt="LiftLab Logo"
-                className="h-15 w-auto object-contain"
+                className="h-10 w-auto object-contain"
               />
               <span className="text-xl font-black text-white uppercase tracking-tight">
                 Lift<span className="text-blue-500">Lab</span>
