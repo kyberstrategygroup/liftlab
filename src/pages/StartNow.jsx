@@ -50,7 +50,7 @@ export default function StartNow() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <VideoEmbed 
+              <VideoEmbed
                 url="https://www.youtube.com/watch?v=6EAayVxCe38"
                 title="Welcome to LiftLab"
                 className="shadow-2xl"
@@ -69,13 +69,13 @@ export default function StartNow() {
               <p className="text-lg text-zinc-400 mb-8 max-w-md">
                 Fill out the form below and a coach will reach out within 24 hours to schedule your consultation.
               </p>
-              
+
               <LeadForm sourcePage="start-now" dark={true} />
-              
+
               <p className="mt-6 text-sm text-zinc-500">
                 Questions? Email us at{' '}
-                <a 
-                  href="mailto:contact@liftlab.ca" 
+                <a
+                  href="mailto:contact@liftlab.ca"
                   className="text-blue-400 hover:text-blue-300 transition-colors"
                 >
                   contact@liftlab.ca
@@ -96,7 +96,7 @@ export default function StartNow() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <SectionHeading 
+            <SectionHeading
               subtitle="Find Your Path"
               title="Training Archetypes"
             />
@@ -118,15 +118,15 @@ export default function StartNow() {
                 <div className={`w-16 h-16 ${archetype.color} flex items-center justify-center mb-6`}>
                   <archetype.icon className="w-8 h-8 text-white" />
                 </div>
-                
+
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 mb-2">
                   {archetype.subtitle}
                 </p>
-                
-                <h3 className="text-2xl font-black uppercase tracking-tight mb-4">
+
+                <h3 className="text-2xl font-black text-black uppercase tracking-tight mb-4">
                   {archetype.title}
                 </h3>
-                
+
                 <p className="text-zinc-600 leading-relaxed">
                   {archetype.description}
                 </p>
@@ -150,7 +150,7 @@ export default function StartNow() {
             <p className="text-zinc-400 mb-8 max-w-xl mx-auto">
               That's what the consultation is for. We'll assess where you're at and map out the best approach together.
             </p>
-            <a 
+            <a
               href="#top"
               onClick={(e) => {
                 e.preventDefault();

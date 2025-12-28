@@ -5,16 +5,16 @@ import VideoEmbed from '@/components/ui/VideoEmbed';
 
 const testimonialVideos = [
   {
-    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    name: "Member Story #1"
+    url: "https://www.youtube.com/watch?v=BXa2-qTxyts",
+    name: "Abigail's Story"
   },
   {
-    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    name: "Member Story #2"
+    url: "https://www.youtube.com/watch?v=Br8p-z858Dg",
+    name: "Tyler's Story"
   },
   {
-    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    name: "Member Story #3"
+    url: "https://www.youtube.com/watch?v=HihIYu0gzxg",
+    name: "Zoey's Story"
   }
 ];
 
@@ -28,7 +28,7 @@ export default function TestimonialsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <SectionHeading 
+          <SectionHeading
             subtitle="Real People. Real Results."
             title="Member Stories"
             className="mb-16"
@@ -46,8 +46,8 @@ export default function TestimonialsSection() {
               className="group"
             >
               <div className="bg-zinc-100 overflow-hidden">
-                <VideoEmbed 
-                  url={video.url} 
+                <VideoEmbed
+                  url={video.url}
                   title={video.name}
                   className="transition-transform duration-500 group-hover:scale-105"
                 />
@@ -58,15 +58,6 @@ export default function TestimonialsSection() {
             </motion.div>
           ))}
         </div>
-
-        <motion.p 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center text-zinc-500 mt-12 text-sm"
-        >
-          Replace with actual LiftLab testimonial playlist videos
-        </motion.p>
       </div>
     </section>
   );

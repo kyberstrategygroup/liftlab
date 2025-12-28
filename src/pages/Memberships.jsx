@@ -7,26 +7,26 @@ import { Quote } from 'lucide-react';
 
 const testimonialVideos = [
   {
-    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    name: "Sarah",
+    url: "https://www.youtube.com/watch?v=3LbaxQIiiUQ",
+    name: "Corinne",
     duration: "Member for 2 years",
     quote: "The community here is unlike any gym I've been to. Everyone genuinely wants to see you succeed."
   },
   {
-    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    name: "Mike",
+    url: "https://www.youtube.com/watch?v=fHhiKWzoQ5c",
+    name: "Luke",
     duration: "Member for 3 years",
     quote: "I came for the training, but I stayed for the people. This place became a second family."
   },
   {
-    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    name: "Jennifer",
+    url: "https://www.youtube.com/watch?v=87t10f4G8jY",
+    name: "Rachel",
     duration: "Member for 1 year",
     quote: "After years of program-hopping, I finally found something I can stick with long-term."
   },
   {
-    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    name: "David",
+    url: "https://www.youtube.com/watch?v=Ym6K5oOZqrw",
+    name: "Brenda",
     duration: "Member for 4 years",
     quote: "The coaches actually know my name, my history, my goals. That makes all the difference."
   }
@@ -97,7 +97,7 @@ export default function Memberships() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <SectionHeading 
+            <SectionHeading
               subtitle="Real Stories"
               title="Member Testimonials"
               className="mb-16"
@@ -114,7 +114,7 @@ export default function Memberships() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-zinc-50 overflow-hidden"
               >
-                <VideoEmbed 
+                <VideoEmbed
                   url={testimonial.url}
                   title={`${testimonial.name}'s Story`}
                 />
@@ -131,15 +131,6 @@ export default function Memberships() {
               </motion.div>
             ))}
           </div>
-
-          <motion.p 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center text-zinc-500 mt-12 text-sm"
-          >
-            Replace with actual LiftLab membership testimonial videos
-          </motion.p>
         </div>
       </section>
 
@@ -152,13 +143,13 @@ export default function Memberships() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <SectionHeading 
+              <SectionHeading
                 subtitle="What We Value"
                 title="The LiftLab Way"
                 dark={true}
                 className="mb-12"
               />
-              
+
               <div className="space-y-8 text-left">
                 <div className="border-l-4 border-blue-500 pl-6">
                   <h3 className="text-xl font-bold text-white mb-2">Consistency Over Intensity</h3>
@@ -166,14 +157,14 @@ export default function Memberships() {
                     We're not here for 6-week transformations. We're building habits that last years, not weeks.
                   </p>
                 </div>
-                
+
                 <div className="border-l-4 border-blue-500 pl-6">
                   <h3 className="text-xl font-bold text-white mb-2">Community Accountability</h3>
                   <p className="text-zinc-400">
                     Your training partners notice when you're not there. That social fabric is part of the program.
                   </p>
                 </div>
-                
+
                 <div className="border-l-4 border-blue-500 pl-6">
                   <h3 className="text-xl font-bold text-white mb-2">Process Over Outcome</h3>
                   <p className="text-zinc-400">

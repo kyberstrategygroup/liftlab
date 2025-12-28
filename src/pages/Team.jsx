@@ -10,33 +10,25 @@ import { Instagram, Linkedin, ArrowRight } from 'lucide-react';
 const trainers = [
   {
     id: 'coach-1',
-    first_name: 'Alex',
-    title: 'Founder',
-    headshot_url: 'https://images.unsplash.com/photo-1594381898411-846e7d193883?w=600&q=80',
+    first_name: 'Stephen',
+    title: 'Senior Coach',
+    headshot_url: 'Stephen.png',
     instagram: 'liftlab',
     linkedin: '#'
   },
   {
     id: 'coach-2',
-    first_name: 'Jordan',
+    first_name: 'Colin',
     title: 'Senior Coach',
-    headshot_url: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80',
+    headshot_url: 'Colin.png',
     instagram: 'liftlab',
     linkedin: '#'
   },
   {
     id: 'coach-3',
-    first_name: 'Taylor',
-    title: 'Senior Coach',
-    headshot_url: 'https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?w=600&q=80',
-    instagram: 'liftlab',
-    linkedin: '#'
-  },
-  {
-    id: 'coach-4',
-    first_name: 'Casey',
+    first_name: 'Ashley',
     title: 'Junior Coach',
-    headshot_url: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80',
+    headshot_url: 'Ashley.png',
     instagram: 'liftlab',
     linkedin: '#'
   }
@@ -69,73 +61,76 @@ export default function Team() {
       {/* Team Grid */}
       <section className="py-24 md:py-32 bg-white">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {trainers.map((trainer, index) => (
-              <motion.div
-                key={trainer.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group"
-              >
-                <Link 
-                  to={createPageUrl(`TrainerDetail?id=${trainer.id}`)}
-                  className="block"
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {trainers.map((trainer, index) => {
+              const imgSrc = trainer.headshot_url?.startsWith('http') ? trainer.headshot_url : new URL(`../assets/images/trainers/${trainer.headshot_url}`, import.meta.url).href; return (
+                <motion.div
+                  key={trainer.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="group"
                 >
-                  {/* Photo */}
-                  <div className="relative aspect-[3/4] overflow-hidden bg-zinc-100 mb-6">
-                    <img 
-                      src={trainer.headshot_url}
-                      alt={trainer.first_name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="text-white font-bold text-sm flex items-center gap-2">
-                        View Profile <ArrowRight className="w-4 h-4" />
-                      </span>
+                  <Link
+                    to={createPageUrl(`TrainerDetail?id=${trainer.id}`)}
+                    className="block"
+                  >
+                    {/* Photo */}
+                    <div className="relative overflow-hidden bg-zinc-100 mb-6 flex justify-center">
+                      <img
+                        src={imgSrc}
+                        alt={trainer.first_name}
+                        loading="lazy"
+                        className="max-w-full h-auto transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span className="text-white font-bold text-sm flex items-center gap-2">
+                          View Profile <ArrowRight className="w-4 h-4" />
+                        </span>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Info */}
-                  <div>
-                    <h3 className="text-xl font-black uppercase tracking-tight group-hover:text-blue-600 transition-colors">
-                      {trainer.first_name}
-                    </h3>
-                    <p className="text-zinc-500 text-sm uppercase tracking-wider mb-4">
-                      {trainer.title}
-                    </p>
-                  </div>
-                </Link>
+                    {/* Info */}
+                    <div>
+                      <h3 className="text-xl font-black uppercase tracking-tight text-black group-hover:text-blue-600 transition-colors">
+                        {trainer.first_name}
+                      </h3>
+                      <p className="text-zinc-500 text-sm uppercase tracking-wider mb-4">
+                        {trainer.title}
+                      </p>
+                    </div>
+                  </Link>
 
-                {/* Social Links */}
-                <div className="flex gap-3">
-                  {trainer.instagram && (
-                    <a 
-                      href={`https://instagram.com/${trainer.instagram}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-9 h-9 bg-zinc-100 hover:bg-blue-600 hover:text-white flex items-center justify-center transition-all"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Instagram className="w-4 h-4" />
-                    </a>
-                  )}
-                  {trainer.linkedin && (
-                    <a 
-                      href={trainer.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-9 h-9 bg-zinc-100 hover:bg-blue-600 hover:text-white flex items-center justify-center transition-all"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Linkedin className="w-4 h-4" />
-                    </a>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+                  {/* Social Links */}
+                  <div className="flex gap-3">
+                    {trainer.instagram && (
+                      <a
+                        href={`https://instagram.com/${trainer.instagram}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-9 h-9 bg-zinc-100 hover:bg-blue-600 hover:text-white flex items-center justify-center transition-all"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Instagram className="w-4 h-4" />
+                      </a>
+                    )}
+                    {trainer.linkedin && (
+                      <a
+                        href={trainer.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-9 h-9 bg-zinc-100 hover:bg-blue-600 hover:text-white flex items-center justify-center transition-all"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Linkedin className="w-4 h-4" />
+                      </a>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -149,13 +144,13 @@ export default function Team() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-4">
+              <h2 className="text-2xl md:text-3xl font-black text-black uppercase tracking-tight mb-4">
                 Want to Coach With Us?
               </h2>
               <p className="text-zinc-600 mb-6">
                 We're always looking for passionate coaches who share our values. Reach out to learn about opportunities.
               </p>
-              <a 
+              <a
                 href="mailto:contact@liftlab.ca?subject=Coaching Opportunity"
                 className="text-blue-600 hover:text-blue-500 font-bold uppercase tracking-wider text-sm"
               >

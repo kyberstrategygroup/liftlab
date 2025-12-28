@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
-import { Instagram, Mail, MapPin, Phone } from 'lucide-react';
+import { Facebook, Instagram, Mail, MapPin, Phone, Youtube } from 'lucide-react';
 import CTAButton from '@/components/ui/CTAButton';
 
 export default function Footer() {
@@ -72,7 +72,7 @@ export default function Footer() {
               <ul className="space-y-3">
                 {['Services', 'Memberships', 'Team', 'About', 'Schedule'].map((page) => (
                   <li key={page}>
-                    <Link 
+                    <Link
                       to={createPageUrl(page)}
                       className="text-zinc-400 hover:text-white transition-colors text-sm"
                     >
@@ -88,7 +88,7 @@ export default function Footer() {
               <h4 className="font-bold uppercase tracking-wider text-sm mb-4">Contact</h4>
               <ul className="space-y-3">
                 <li>
-                  <a 
+                  <a
                     href="mailto:contact@liftlab.ca"
                     className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors text-sm"
                   >
@@ -97,7 +97,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a 
+                  <a
                     href="tel:+16131234567"
                     className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors text-sm"
                   >
@@ -118,14 +118,32 @@ export default function Footer() {
             <div>
               <h4 className="font-bold uppercase tracking-wider text-sm mb-4">Follow</h4>
               <div className="flex gap-4">
-                <a 
-                  href="https://instagram.com/liftlab"
+                <a
+                  href="https://www.facebook.com/ygkliftlab"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-zinc-900 hover:bg-blue-600 flex items-center justify-center transition-colors"
+                >
+                  <Facebook className="w-5 h-5" />
+                </a>
+
+                <a
+                  href="https://instagram.com/ygkliftlab"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-zinc-900 hover:bg-blue-600 flex items-center justify-center transition-colors"
                 >
                   <Instagram className="w-5 h-5" />
                 </a>
+                <a
+                  href="https://www.youtube.com/@liftlab2021"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-zinc-900 hover:bg-red-600 flex items-center justify-center transition-colors"
+                >
+                  <Youtube className="w-5 h-5" />
+                </a>
+
               </div>
             </div>
           </div>

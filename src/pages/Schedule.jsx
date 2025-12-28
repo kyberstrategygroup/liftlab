@@ -39,11 +39,11 @@ export default function Schedule() {
             <div className="w-24 h-24 bg-zinc-100 rounded-full flex items-center justify-center mx-auto mb-8">
               <Calendar className="w-12 h-12 text-zinc-400" />
             </div>
-            
-            <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight mb-6">
+
+            <h2 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tight mb-6">
               Schedule Coming Soon
             </h2>
-            
+
             <p className="text-lg text-zinc-600 mb-8">
               We're finalizing our class schedule. In the meantime, book a consultation and we'll work around your availability.
             </p>
@@ -51,7 +51,7 @@ export default function Schedule() {
             <div className="bg-zinc-50 border border-zinc-200 p-8 mb-8">
               <div className="flex items-center justify-center gap-3 mb-4">
                 <Clock className="w-5 h-5 text-blue-600" />
-                <h3 className="font-bold uppercase tracking-wider">General Hours</h3>
+                <h3 className="font-bold text-black uppercase tracking-wider">General Hours</h3>
               </div>
               <div className="space-y-2 text-zinc-600">
                 <p>Monday – Friday: 6:00 AM – 8:00 PM</p>

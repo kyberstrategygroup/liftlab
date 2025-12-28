@@ -10,65 +10,50 @@ import { ArrowLeft, Instagram, Linkedin, Award } from 'lucide-react';
 // Placeholder trainer data - in production, fetch from entity based on URL param
 const trainersData = {
   'coach-1': {
-    first_name: 'Alex',
-    title: 'Founder',
+    first_name: 'Stephen Radecki',
+    title: 'Senior Coach',
     headshot_url: 'https://images.unsplash.com/photo-1594381898411-846e7d193883?w=800&q=80',
-    bio: "Alex founded LiftLab after 10+ years of coaching athletes and everyday people who want to get stronger. With a background in competitive powerlifting and a degree in exercise science, Alex built LiftLab to be the gym he wished existed—no nonsense, quality coaching, and a community that holds each other accountable.\n\nBefore LiftLab, Alex worked with Division I athletes and corporate clients alike. The common thread? Everyone responds to consistent, progressive training when they have the right support system.",
+    bio: "Stephen is a seasoned strength and conditioning coach with over a decade of experience helping athletes and fitness enthusiasts reach their full potential. His coaching philosophy centers around individualized programming, ensuring that each member's unique goals and needs are met.\n\nStephen's expertise spans powerlifting, Olympic lifting, and general strength training. He is passionate about educating members on proper technique and programming to foster long-term progress and injury prevention.",
     credentials: [
       'CSCS - Certified Strength & Conditioning Specialist',
       'BS Exercise Science',
       'Precision Nutrition Level 2',
       'Former Competitive Powerlifter'
     ],
-    why_story_video_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    mission_video_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    why_story_video_url: 'https://www.youtube.com/watch?v=6dVPks3ZBEQ',
+    mission_video_url: 'https://www.youtube.com/watch?v=C6FtECaAIuk',
     instagram: 'liftlab',
     linkedin: '#'
   },
   'coach-2': {
-    first_name: 'Jordan',
+    first_name: 'Colin Roberts',
     title: 'Senior Coach',
     headshot_url: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80',
-    bio: "Jordan brings 8 years of coaching experience with a specialty in movement quality and injury prevention. Known for an eye for detail and the patience to work through movement limitations, Jordan helps members build strength on a foundation of proper mechanics.\n\nWhether you're recovering from an injury or just want to move better, Jordan's approach ensures you're building capacity that lasts.",
+    bio: "Colin brings a wealth of knowledge in functional movement and corrective exercise to his coaching. With a background in physical therapy, he excels at identifying and addressing movement dysfunctions that may hinder performance or lead to injury.\n\nColin's coaching style is hands-on and detail-oriented. He prioritizes teaching proper movement patterns and emphasizes the importance of mobility and stability work alongside strength training. Members appreciate his ability to break down complex concepts into understandable terms.",
     credentials: [
       'CSCS - Certified Strength & Conditioning Specialist',
       'FMS Level 2',
       'SFMA Certified',
       'BS Kinesiology'
     ],
-    why_story_video_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    mission_video_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    why_story_video_url: 'https://www.youtube.com/watch?v=v96gi3kadls',
+    mission_video_url: 'https://www.youtube.com/watch?v=5Uz3GoS9zl4',
     instagram: 'liftlab',
     linkedin: '#'
   },
   'coach-3': {
-    first_name: 'Taylor',
-    title: 'Senior Coach',
+    first_name: 'Ashley MacDonald',
+    title: 'Junior Coach',
     headshot_url: 'https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?w=800&q=80',
-    bio: "Taylor's background as a competitive athlete translates directly into coaching that understands what it takes to perform. With experience training everyone from weekend warriors to regional competitors, Taylor knows how to push people to their potential without burning them out.\n\nExpect honest feedback, smart programming, and someone who genuinely invests in your progress.",
+    bio: "Ashley is passionate about empowering individuals to achieve their fitness goals through strength training. As a former collegiate athlete, she understands the dedication and discipline required to excel in training.\n\nAshley's coaching approach is supportive and motivational. She focuses on building confidence in the gym, especially for those new to strength training. Her enthusiasm and positive energy make her a favorite among members looking to improve their strength and overall fitness.",
     credentials: [
       'CSCS - Certified Strength & Conditioning Specialist',
       'USAW Level 1',
       'CrossFit Level 2',
       'Former Collegiate Athlete'
     ],
-    why_story_video_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    mission_video_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    instagram: 'liftlab',
-    linkedin: '#'
-  },
-  'coach-4': {
-    first_name: 'Casey',
-    title: 'Junior Coach',
-    headshot_url: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80',
-    bio: "Casey came up through the LiftLab system as a member before transitioning to coaching. That experience means Casey understands exactly what new members are going through—the learning curve, the doubts, the breakthroughs.\n\nWith a focus on beginners and those returning to training after a break, Casey creates a welcoming environment where questions are encouraged.",
-    credentials: [
-      'NASM-CPT',
-      'Currently pursuing CSCS',
-      'First Aid & CPR Certified'
-    ],
-    why_story_video_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    mission_video_url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    why_story_video_url: 'https://www.youtube.com/watch?v=rumoervg8Ec',
+    mission_video_url: 'https://www.youtube.com/watch?v=V419iRu5IJo',
     instagram: 'liftlab',
     linkedin: '#'
   }
@@ -91,7 +76,7 @@ export default function TrainerDetail() {
             transition={{ duration: 0.4 }}
             className="mb-8"
           >
-            <Link 
+            <Link
               to={createPageUrl('Team')}
               className="inline-flex items-center gap-2 text-zinc-400 hover:text-white transition-colors text-sm uppercase tracking-wider"
             >
@@ -108,7 +93,7 @@ export default function TrainerDetail() {
               transition={{ duration: 0.6 }}
             >
               <div className="aspect-[3/4] overflow-hidden bg-zinc-900">
-                <img 
+                <img
                   src={trainer.headshot_url}
                   alt={trainer.first_name}
                   className="w-full h-full object-cover"
@@ -155,7 +140,7 @@ export default function TrainerDetail() {
               {/* Social */}
               <div className="flex gap-3">
                 {trainer.instagram && (
-                  <a 
+                  <a
                     href={`https://instagram.com/${trainer.instagram}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -165,7 +150,7 @@ export default function TrainerDetail() {
                   </a>
                 )}
                 {trainer.linkedin && (
-                  <a 
+                  <a
                     href={trainer.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -193,17 +178,14 @@ export default function TrainerDetail() {
               <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
                 My Story
               </h3>
-              <h2 className="text-2xl font-black uppercase tracking-tight mb-6">
+              <h2 className="text-2xl font-black text-black uppercase tracking-tight mb-6">
                 Why I Coach
               </h2>
-              <VideoEmbed 
+              <VideoEmbed
                 url={trainer.why_story_video_url}
                 title={`${trainer.first_name} - Why I Coach`}
                 className="shadow-xl"
               />
-              <p className="text-zinc-500 text-sm mt-4 italic">
-                Replace with actual Why Story video
-              </p>
             </motion.div>
 
             {/* Mission */}
@@ -216,17 +198,14 @@ export default function TrainerDetail() {
               <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
                 My Approach
               </h3>
-              <h2 className="text-2xl font-black uppercase tracking-tight mb-6">
+              <h2 className="text-2xl font-black text-black uppercase tracking-tight mb-6">
                 Mission Statement
               </h2>
-              <VideoEmbed 
+              <VideoEmbed
                 url={trainer.mission_video_url}
                 title={`${trainer.first_name} - Mission Statement`}
                 className="shadow-xl"
               />
-              <p className="text-zinc-500 text-sm mt-4 italic">
-                Replace with actual Mission Statement video
-              </p>
             </motion.div>
           </div>
         </div>
