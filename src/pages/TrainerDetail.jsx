@@ -12,7 +12,7 @@ const trainersData = {
   'coach-1': {
     first_name: 'Stephen Radecki',
     title: 'Senior Coach',
-    headshot_url: 'https://images.unsplash.com/photo-1594381898411-846e7d193883?w=800&q=80',
+    headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/255370ca0_profileStephenIG2.png',
     bio: "Stephen is a seasoned strength and conditioning coach with over a decade of experience helping athletes and fitness enthusiasts reach their full potential. His coaching philosophy centers around individualized programming, ensuring that each member's unique goals and needs are met.\n\nStephen's expertise spans powerlifting, Olympic lifting, and general strength training. He is passionate about educating members on proper technique and programming to foster long-term progress and injury prevention.",
     credentials: [
       'CSCS - Certified Strength & Conditioning Specialist',
@@ -28,7 +28,7 @@ const trainersData = {
   'coach-2': {
     first_name: 'Colin Roberts',
     title: 'Senior Coach',
-    headshot_url: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80',
+    headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/c0dfd19a0_profileColinIG.png',
     bio: "Colin brings a wealth of knowledge in functional movement and corrective exercise to his coaching. With a background in physical therapy, he excels at identifying and addressing movement dysfunctions that may hinder performance or lead to injury.\n\nColin's coaching style is hands-on and detail-oriented. He prioritizes teaching proper movement patterns and emphasizes the importance of mobility and stability work alongside strength training. Members appreciate his ability to break down complex concepts into understandable terms.",
     credentials: [
       'CSCS - Certified Strength & Conditioning Specialist',
@@ -44,7 +44,7 @@ const trainersData = {
   'coach-3': {
     first_name: 'Ashley MacDonald',
     title: 'Junior Coach',
-    headshot_url: 'https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?w=800&q=80',
+    headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/681641156_profileAshleyIG.png',
     bio: "Ashley is passionate about empowering individuals to achieve their fitness goals through strength training. As a former collegiate athlete, she understands the dedication and discipline required to excel in training.\n\nAshley's coaching approach is supportive and motivational. She focuses on building confidence in the gym, especially for those new to strength training. Her enthusiasm and positive energy make her a favorite among members looking to improve their strength and overall fitness.",
     credentials: [
       'CSCS - Certified Strength & Conditioning Specialist',
