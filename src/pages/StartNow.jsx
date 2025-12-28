@@ -107,32 +107,30 @@ export default function StartNow() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {archetypes.map((archetype, index) => (
-              <Link key={archetype.id} href={"https://google.com"} className="block">
-                <motion.div
-                  key={archetype.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`group bg-zinc-50 border-2 border-zinc-200 hover:${archetype.borderColor} p-8 transition-all duration-300 hover:shadow-xl`}
-                >
-                  <div className={`w-16 h-16 ${archetype.color} flex items-center justify-center mb-6`}>
-                    <archetype.icon className="w-8 h-8 text-white" />
-                  </div>
+              <motion.div
+                key={archetype.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`group bg-zinc-50 border-2 border-zinc-200 hover:${archetype.borderColor} p-8 transition-all duration-300 hover:shadow-xl`}
+              >
+                <div className={`w-16 h-16 ${archetype.color} flex items-center justify-center mb-6`}>
+                  <archetype.icon className="w-8 h-8 text-white" />
+                </div>
 
-                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 mb-2">
-                    {archetype.subtitle}
-                  </p>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-zinc-500 mb-2">
+                  {archetype.subtitle}
+                </p>
 
-                  <h3 className="text-2xl font-black text-black uppercase tracking-tight mb-4">
-                    {archetype.title}
-                  </h3>
+                <h3 className="text-2xl font-black text-black uppercase tracking-tight mb-4">
+                  {archetype.title}
+                </h3>
 
-                  <p className="text-zinc-600 leading-relaxed">
-                    {archetype.description}
-                  </p>
-                </motion.div>
-              </Link>
+                <p className="text-zinc-600 leading-relaxed">
+                  {archetype.description}
+                </p>
+              </motion.div>
             ))}
           </div>
         </div>
