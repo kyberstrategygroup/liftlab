@@ -6,6 +6,7 @@ import Services from './pages/Services';
 import StartNow from './pages/StartNow';
 import Team from './pages/Team';
 import TrainerDetail from './pages/TrainerDetail';
+import AdminDashboard from './pages/AdminDashboard';
 import __Layout from './Layout.jsx';
 
 
@@ -18,6 +19,7 @@ export const PAGES = {
     "StartNow": StartNow,
     "Team": Team,
     "TrainerDetail": TrainerDetail,
+    "AdminDashboard": AdminDashboard,
 }
 
 export const pagesConfig = {
