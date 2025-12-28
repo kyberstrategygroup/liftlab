@@ -218,6 +218,26 @@ export default function Services() {
         </div>
       </section>
 
+      {/* Bottom CTA */}
+      <section className="py-20 md:py-28 bg-zinc-950">
+        <div className="container mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mb-4">
+              Not Sure Which Is Right For You?
+            </h2>
+            <p className="text-zinc-400 mb-8 max-w-xl mx-auto">
+              Book a free consultation. We'll discuss your goals and recommend the best fit.
+            </p>
+            <CTAButton to="StartNow#ready" variant="primary" size="large">
+              Schedule Consult
+            </CTAButton>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }
