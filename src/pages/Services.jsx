@@ -6,21 +6,23 @@ import { Users, User, Globe, Check, Activity, Key, Clock } from 'lucide-react';
 
 const services = [
   {
-    id: 'semi-private',
-    icon: Users,
-    title: 'Semi-Private Training',
-    description: "Small group sessions (max 4 people) with individualized programming. You get personal attention while training alongside others who push you to be better.",
+    id: 'mvmt-tuneup',
+    icon: Activity,
+    title: 'MVMT TUNE-UP',
+    description: "A 3-session movement tune-up designed as a pit stop for your training, your sport, or your lifestyle. Focused on identifying and addressing movement limitations before they become training problems.",
     features: [
-      'Personalized program within group setting',
-      'Coach-to-athlete ratio never exceeds 1:4',
-      'Flexible scheduling with multiple time slots',
-      'Access to all training archetypes',
-      'Progress tracking and regular assessments'
+      'Posture',
+      'Mobility',
+      'Joint stability',
+      'Gait',
+      'Breath strategy',
+      'Foot mechanics'
     ],
-    pricing: '2 sessions per week — $160 biweekly',
-    pricingNote: 'Best value option for coached training in a small-group setting',
-    image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80',
-    popular: true
+    pricing: '3 Sessions — $199.99',
+    guarantee: 'Better mobility and posture — or your money back.',
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80',
+    popular: false,
+    featured: true
   },
   {
     id: 'private',
@@ -40,6 +42,23 @@ const services = [
     popular: false
   },
   {
+    id: 'semi-private',
+    icon: Users,
+    title: 'Semi-Private Training',
+    description: "Small group sessions (max 4 people) with individualized programming. You get personal attention while training alongside others who push you to be better.",
+    features: [
+      'Personalized program within group setting',
+      'Coach-to-athlete ratio never exceeds 1:4',
+      'Flexible scheduling with multiple time slots',
+      'Access to all training archetypes',
+      'Progress tracking and regular assessments'
+    ],
+    pricing: '2 sessions per week — $160 biweekly',
+    pricingNote: 'Best value option for coached training in a small-group setting',
+    image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80',
+    popular: true
+  },
+  {
     id: 'remote',
     icon: Globe,
     title: 'Remote Training',
@@ -55,25 +74,6 @@ const services = [
     pricingNote: 'Professional guidance for independent gym-goers',
     image: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=800&q=80',
     popular: false
-  },
-  {
-    id: 'mvmt-tuneup',
-    icon: Activity,
-    title: 'MVMT TUNE-UP',
-    description: "A 3-session movement tune-up designed as a pit stop for your training, your sport, or your lifestyle. Focused on identifying and addressing movement limitations before they become training problems.",
-    features: [
-      'Posture',
-      'Mobility',
-      'Joint stability',
-      'Gait',
-      'Breath strategy',
-      'Foot mechanics'
-    ],
-    pricing: '3 Sessions — $199.99',
-    guarantee: 'Better mobility and posture — or your money back.',
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80',
-    popular: false,
-    featured: true
   },
   {
     id: 'premium-solo',
