@@ -59,7 +59,7 @@ export default function Schedule() {
               </div>
             </div>
 
-            <CTAButton to="StartNow" variant="primary" size="large">
+            <CTAButton to="StartNow#ready" variant="primary" size="large">
               Schedule Consult
             </CTAButton>
           </motion.div>
