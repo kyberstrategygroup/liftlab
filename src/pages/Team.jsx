@@ -166,26 +166,6 @@ export default function Team() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-zinc-950">
-        <div className="container mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mb-4">
-              Ready to Train With Us?
-            </h2>
-            <p className="text-zinc-400 mb-8 max-w-xl mx-auto">
-              Book a consultation and meet the coaches in person.
-            </p>
-            <CTAButton to="StartNow" variant="primary" size="large">
-              Schedule Consult
-            </CTAButton>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 }
