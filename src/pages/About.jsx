@@ -200,7 +200,7 @@ export default function About() {
                   <div>
                     <h3 className="font-bold text-black uppercase tracking-wider mb-2">Hours</h3>
                     <div className="text-zinc-600 space-y-1">
-                      <p>Ope 24/7</p>
+                      <p>Open 24/7</p>
                       <p>Monday - Sunday: 24 Hours</p>
                     </div>
                   </div>
