@@ -26,11 +26,20 @@ export default function Layout({ children, currentPageName }) {
           color: white;
         }
         
-        /* Hide Base44 edit popup */
+        /* Hide Base44 edit popup - all possible selectors */
         [data-base44-edit-button],
         .base44-edit-button,
-        #base44-edit-button {
+        #base44-edit-button,
+        [class*="base44"],
+        [id*="base44"],
+        iframe[src*="base44"],
+        div[style*="position: fixed"][style*="bottom"],
+        button[aria-label*="Edit"],
+        button[aria-label*="base44"] {
           display: none !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+          pointer-events: none !important;
         }
       `}</style>
       
