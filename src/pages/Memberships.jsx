@@ -28,7 +28,7 @@ export default function Memberships() {
               Our Community
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-6">
-              Memberships
+              The Lab Rats
             </h1>
             <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
               More than a gym. A community built on consistency, accountability, and showing up for each other.
