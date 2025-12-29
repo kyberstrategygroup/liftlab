@@ -14,7 +14,8 @@ export default function LeadForm({
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: ''
+    phone: '',
+    commitment: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -85,6 +86,13 @@ export default function LeadForm({
               placeholder="Phone Number"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              className={inputClasses}
+            />
+            <Input
+              type="text"
+              placeholder="I'm committed to achieving... (optional)"
+              value={formData.commitment}
+              onChange={(e) => setFormData({ ...formData, commitment: e.target.value })}
               className={inputClasses}
             />
             <Button
