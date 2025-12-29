@@ -1,5 +1,29 @@
 export const testimonialVideos = [
   {
+    url: "https://www.youtube.com/watch?v=87t10f4G8jY",
+    name: "Rachel",
+    duration: "Member for 3 years",
+    quote: "I've trained at a lot of gyms, but nothing compares to the community at LiftLab."
+  },
+  {
+    url: "https://www.youtube.com/watch?v=Br8p-z858Dg",
+    name: "Tyler",
+    duration: "Member for 2+ years",
+    quote: "Every coach here actually cares about how you move and progress."
+  },
+  {
+    url: "https://www.youtube.com/watch?v=HihIYu0gzxg",
+    name: "Zoey",
+    duration: "Member for 1+ year",
+    quote: "LiftLab helped me rebuild consistency and confidence in my fitness."
+  },
+  {
+    url: "https://www.youtube.com/watch?v=3LbaxQIiiUQ",
+    name: "Corinne",
+    duration: "Member for 2 years",
+    quote: "The community here is unlike any gym I've been to. Everyone genuinely wants to see you succeed."
+  },
+  {
     url: "https://www.youtube.com/watch?v=9Fhp7tXeXV8",
     name: "Yiota",
     duration: "Member for 1+ year",
@@ -18,34 +42,10 @@ export const testimonialVideos = [
     quote: "The coaching here is unmatched. Every session has purpose."
   },
   {
-    url: "https://www.youtube.com/watch?v=87t10f4G8jY",
-    name: "Rachel",
-    duration: "Member for 3 years",
-    quote: "I've trained at a lot of gyms, but nothing compares to the community at LiftLab."
-  },
-  {
     url: "https://www.youtube.com/watch?v=bhKmwlETFc8",
     name: "Norman",
     duration: "Member for 6 months",
     quote: "I finally feel confident in my training and movement."
-  },
-  {
-    url: "https://www.youtube.com/watch?v=3LbaxQIiiUQ",
-    name: "Corinne",
-    duration: "Member for 2 years",
-    quote: "The community here is unlike any gym I've been to. Everyone genuinely wants to see you succeed."
-  },
-  {
-    url: "https://www.youtube.com/watch?v=HihIYu0gzxg",
-    name: "Zoey",
-    duration: "Member for 1+ year",
-    quote: "LiftLab helped me rebuild consistency and confidence in my fitness."
-  },
-  {
-    url: "https://www.youtube.com/watch?v=Br8p-z858Dg",
-    name: "Tyler",
-    duration: "Member for 2+ years",
-    quote: "Every coach here actually cares about how you move and progress."
   },
   {
     url: "https://www.youtube.com/watch?v=BXa2-qTxyts",
