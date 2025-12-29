@@ -18,7 +18,7 @@ export default function Schedule() {
               Class Times
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-6">
-              Schedule
+              Book Training Now
             </h1>
             <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
               Find a time that works for you.
