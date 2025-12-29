@@ -8,7 +8,7 @@ import CTAButton from '@/components/ui/CTAButton';
 const navLinks = [
   { name: 'Start Now', page: 'StartNow' },
   { name: 'Our Services', page: 'Services' },
-  { name: 'Our Members', page: 'Memberships' },
+  { name: 'The Lab Rats', page: 'Memberships' },
   { name: 'Meet The Team', page: 'Team' },
   { name: 'Training Schedule', page: 'Schedule' },
   { name: 'About', page: 'About' },
