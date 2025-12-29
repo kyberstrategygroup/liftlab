@@ -22,7 +22,7 @@ const archetypes = [
     icon: Dumbbell,
     title: 'Fitness',
     subtitle: 'Balanced Performance',
-    description: "You want to look good, feel strong, and have energy for life outside the gym. We balance strength, conditioning, and body composition work to keep you progressing without burning out.",
+    description: "Your training is more than just maintenance. You have goals that require programming and process.\n\nIf you're looking to change your body shape and composition, become resilient to life's challenges, or to prepare for your next adventure - we've got you covered.\n\nIf this is you, we recommend working with: Ashley, Colin, Stephen",
     color: 'bg-blue-600',
     borderColor: 'border-blue-500',
     href: 'https://www.youtube.com/watch?v=s5Q-ylXcHgM'
