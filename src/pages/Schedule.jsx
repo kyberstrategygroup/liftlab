@@ -45,9 +45,8 @@ export default function Schedule() {
                     General Hours
                   </h3>
                 </div>
-                <div className="space-y-1 text-sm text-zinc-600">
-                  <p>Monday - Friday: 9:00 AM - 8:00 PM EST</p>
-                  <p>Saturday - Sunday: 10:00 AM - 6:00 PM EST</p>
+                <div className="text-sm text-zinc-600">
+                  <p>Monday to Sunday: Open 24 Hours</p>
                 </div>
               </div>
             </div>
