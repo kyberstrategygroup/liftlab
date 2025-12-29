@@ -30,6 +30,34 @@ export default function LeadForm({
       status: 'new'
     });
 
+    // Send email notification
+    const submissionDate = new Date().toLocaleString('en-US', { 
+      dateStyle: 'full', 
+      timeStyle: 'short' 
+    });
+
+    const emailBody = `
+New LiftLab Lead Submission
+
+Full Name: ${formData.name}
+Email Address: ${formData.email}
+Phone Number: ${formData.phone || 'Not provided'}
+Commitment: ${formData.commitment || 'Not provided'}
+
+Submitted From: ${sourcePage}
+Submission Date: ${submissionDate}
+
+---
+This lead was submitted through the LiftLab website.
+    `.trim();
+
+    await base44.integrations.Core.SendEmail({
+      to: 'contact@liftlab.ca, kyberstrategygroup@gmail.com',
+      subject: 'New LiftLab Lead – Schedule Consult',
+      body: emailBody,
+      from_name: 'LiftLab Website'
+    });
+
     setIsSubmitting(false);
     setIsSubmitted(true);
     
