@@ -12,7 +12,7 @@ const archetypes = [
     icon: Target,
     title: 'Health',
     subtitle: 'Foundation First',
-    description: "You're here to build a sustainable practice. Maybe you're recovering from injury, managing stress, or simply want to move better. We start with mobility, stability, and fundamental movement patterns.",
+    description: "You want to look good, feel good and support your lifestyle through movement.\n\nYou're not after extreme transformations or performance. You're after longevity, balance & benefits.\n\nYour training is a fun, inclusive, energizing and challenging reprieve from the stresses of life.\n\nIf this is you, we recommend working with Ashley or Stephen",
     color: 'bg-emerald-600',
     borderColor: 'border-emerald-500',
     href: 'https://www.youtube.com/watch?v=ugvmec8eZ5k'
