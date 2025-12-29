@@ -69,7 +69,7 @@ export default function Header() {
             {/* Mobile nav CTA */}
             <button
               onClick={() => window.location.href = "/StartNow#ready"}
-              className="lg:hidden text-white p-2 bg-blue-600 font-bold uppercase w-20"
+              className="lg:hidden text-white p-2 bg-blue-600 font-bold uppercase w-21"
             >
               Schedule
               Consult
