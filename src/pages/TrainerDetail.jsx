@@ -31,10 +31,7 @@ const trainersData = {
     headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/2aefb96a0_colinopt.jpg',
     bio: "Colin brings a wealth of knowledge in functional movement and corrective exercise to his coaching. With a background in physical therapy, he excels at identifying and addressing movement dysfunctions that may hinder performance or lead to injury.\n\nColin's coaching style is hands-on and detail-oriented. He prioritizes teaching proper movement patterns and emphasizes the importance of mobility and stability work alongside strength training. Members appreciate his ability to break down complex concepts into understandable terms.",
     credentials: [
-      'CSCS - Certified Strength & Conditioning Specialist',
-      'FMS Level 2',
-      'SFMA Certified',
-      'BS Kinesiology'
+      'Diploma, Fitness and Health Promotion - St. Lawrence College'
     ],
     why_story_video_url: 'https://www.youtube.com/watch?v=v96gi3kadls',
     mission_video_url: 'https://www.youtube.com/watch?v=5Uz3GoS9zl4',
