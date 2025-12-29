@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import CTAButton from '@/components/ui/CTAButton';
-import { Clock, Calendar } from 'lucide-react';
+import BookingCalendar from '@/components/booking/BookingCalendar';
+import { Clock } from 'lucide-react';
 
 export default function Schedule() {
   return (
@@ -27,41 +27,30 @@ export default function Schedule() {
         </div>
       </section>
 
-      {/* Coming Soon */}
-      <section className="py-32 md:py-48 bg-white">
+      {/* Booking Calendar */}
+      <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-2xl mx-auto text-center"
           >
-            <div className="w-24 h-24 bg-zinc-100 rounded-full flex items-center justify-center mx-auto mb-8">
-              <Calendar className="w-12 h-12 text-zinc-400" />
-            </div>
+            <BookingCalendar />
 
-            <h2 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tight mb-6">
-              Schedule Coming Soon
-            </h2>
-
-            <p className="text-lg text-zinc-600 mb-8">
-              We're finalizing our class schedule. In the meantime, book a consultation and we'll work around your availability.
-            </p>
-
-            <div className="bg-zinc-50 border border-zinc-200 p-8 mb-8">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <Clock className="w-5 h-5 text-blue-600" />
-                <h3 className="font-bold text-black uppercase tracking-wider">General Hours</h3>
-              </div>
-              <div className="space-y-2 text-zinc-600">
-                <p>Open 24/7</p>
-                <p>Monday - Sunday: 24 Hours</p>
+            <div className="mt-12 max-w-2xl mx-auto">
+              <div className="bg-zinc-50 border border-zinc-200 p-6 text-center">
+                <div className="flex items-center justify-center gap-3 mb-3">
+                  <Clock className="w-5 h-5 text-blue-600" />
+                  <h3 className="font-bold text-black uppercase tracking-wider text-sm">
+                    General Hours
+                  </h3>
+                </div>
+                <div className="space-y-1 text-sm text-zinc-600">
+                  <p>Monday - Friday: 9:00 AM - 8:00 PM EST</p>
+                  <p>Saturday - Sunday: 10:00 AM - 6:00 PM EST</p>
+                </div>
               </div>
             </div>
-
-            <CTAButton to="StartNow#ready" variant="primary" size="large">
-              Schedule Consult
-            </CTAButton>
           </motion.div>
         </div>
       </section>
