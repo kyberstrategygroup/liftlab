@@ -32,7 +32,7 @@ const archetypes = [
     icon: Flame,
     title: 'Train',
     subtitle: 'Performance Driven',
-    description: "You're an athlete or want to train like one. Periodized strength programs, sport-specific conditioning, and recovery protocols designed for people who take their training seriously.",
+    description: "Training is central to who you are. Your lifestyle is organized around planning, eating and recovering with intention - making sacrifices in order to take your performance to the next level.\n\nYou're not in it for fun. Every single workout is executed with a purpose.\n\nYou expect results and you entrust an experienced coach to take you there.\n\nIf this is you, we recommend working with: Colin, Stephen",
     color: 'bg-orange-600',
     borderColor: 'border-orange-500',
     href: 'https://www.youtube.com/watch?v=BdPh4ZZQpyE'
