@@ -96,7 +96,7 @@ export default function TrainerDetail() {
                 <img 
                   src={trainer.headshot_url}
                   alt={trainer.first_name}
-                  className="w-full"
+                  className="w-3/4"
                 />
               </div>
             </motion.div>
