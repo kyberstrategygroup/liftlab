@@ -5,9 +5,10 @@ import Home from './pages/Home';
 import Memberships from './pages/Memberships';
 import Schedule from './pages/Schedule';
 import Services from './pages/Services';
+import StartNow from './pages/StartNow';
 import Team from './pages/Team';
 import TrainerDetail from './pages/TrainerDetail';
-import StartNow from './pages/StartNow';
+import ChallengeApplication from './pages/ChallengeApplication';
 import __Layout from './Layout.jsx';
 
 
@@ -19,9 +20,10 @@ export const PAGES = {
     "Memberships": Memberships,
     "Schedule": Schedule,
     "Services": Services,
+    "StartNow": StartNow,
     "Team": Team,
     "TrainerDetail": TrainerDetail,
-    "StartNow": StartNow,
+    "ChallengeApplication": ChallengeApplication,
 }
 
 export const pagesConfig = {
