@@ -15,10 +15,10 @@ const trainersData = {
     headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/730038021_stephen2opt.jpg',
     bio: "Stephen is a seasoned strength and conditioning coach with over a decade of experience helping athletes and fitness enthusiasts reach their full potential. His coaching philosophy centers around individualized programming, ensuring that each member's unique goals and needs are met.\n\nStephen's expertise spans powerlifting, Olympic lifting, and general strength training. He is passionate about educating members on proper technique and programming to foster long-term progress and injury prevention.",
     credentials: [
-      'CSCS - Certified Strength & Conditioning Specialist',
-      'BS Exercise Science',
-      'Precision Nutrition Level 2',
-      'Former Competitive Powerlifter'
+      { name: 'Diploma, Fitness and Health Promotion', location: 'St. Lawrence College' },
+      { name: 'Certified Personal Trainer', location: 'American College of Sports Medicine' },
+      { name: 'Certified Fitness Leader SILVER (Group Fitness)', location: 'Ontario Fitness Council' },
+      { name: 'Certified Glute Specialist', location: 'International Sports Sciences Association' }
     ],
     why_story_video_url: 'https://www.youtube.com/watch?v=6dVPks3ZBEQ',
     mission_video_url: 'https://www.youtube.com/watch?v=C6FtECaAIuk',
