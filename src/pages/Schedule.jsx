@@ -45,8 +45,9 @@ export default function Schedule() {
                     General Hours
                   </h3>
                 </div>
-                <div className="text-sm text-zinc-600">
-                  <p>Monday to Sunday: Open 24 Hours</p>
+                <div className="text-sm text-zinc-600 space-y-1">
+                  <p><strong className="text-black">Gym Hours:</strong> Monday to Sunday (Open 24 Hours)</p>
+                  <p><strong className="text-black">Training Session Hours:</strong> To be determined</p>
                 </div>
               </div>
             </div>
