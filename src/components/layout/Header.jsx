@@ -6,11 +6,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import CTAButton from '@/components/ui/CTAButton';
 
 const navLinks = [
-  { name: 'Start Now', page: 'StartNow' },
   { name: 'Our Services', page: 'Services' },
-  { name: 'The Lab Rats', page: 'Memberships' },
+  { name: 'Our Members', page: 'Memberships' },
   { name: 'Meet The Team', page: 'Team' },
-  { name: 'Training Schedule', page: 'Schedule' },
+  { name: 'Start The Experiment', page: 'Schedule' },
   { name: 'About', page: 'About' },
 ];
 
@@ -36,7 +35,7 @@ export default function Header() {
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link to={createPageUrl('Home')} className="flex items-center gap-3 group" onClick={() => setMobileMenuOpen(false)}>
+            <Link to={createPageUrl('Home')} className="flex items-center gap-3 group">
               <img 
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/c7e7092e7_LL-40-dark-bckgrnd.png"
                 alt="LiftLab Logo"
@@ -61,7 +60,7 @@ export default function Header() {
             </nav>
 
             {/* CTA Button */}
-            <div className="hidden lg:block">
+            <div className="">
               <CTAButton to="StartNow#ready" variant="primary" size="small">
                 Schedule Consult
               </CTAButton>
