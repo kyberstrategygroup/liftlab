@@ -60,7 +60,7 @@ export default function Header() {
             </nav>
 
             {/* CTA Button */}
-            <div className="">
+            <div className="w-2">
               <CTAButton to="StartNow#ready" variant="primary" size="small">
                 Schedule Consult
               </CTAButton>
