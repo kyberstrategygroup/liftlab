@@ -66,6 +66,14 @@ export default function Header() {
               </CTAButton>
             </div>
 
+            // Mobile nav CTA
+            <button
+              onClick={() => window.location.href = "/StartNow#ready"}
+              className="lg:hidden text-white p-2"
+            >
+              Test
+            </button>
+
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
