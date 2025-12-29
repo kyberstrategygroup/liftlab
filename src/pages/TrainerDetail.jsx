@@ -92,7 +92,7 @@ export default function TrainerDetail() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className={`relative overflow-hidden mb-6 flex justify-center ${trainerId === 'coach-1' ? 'bg-zinc-950' : 'bg-zinc-100'}`}>
+              <div className={`relative overflow-hidden mb-6 flex justify-center ${trainerId === 'coach-1' || trainerId === 'coach-3' ? 'bg-zinc-950' : 'bg-zinc-100'}`}>
                 <img 
                   src={trainer.headshot_url}
                   alt={trainer.first_name}
