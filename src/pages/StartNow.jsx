@@ -150,7 +150,7 @@ export default function StartNow() {
                     {archetype.title}
                   </h3>
 
-                  <p className="text-zinc-600 leading-relaxed">
+                  <p className="text-zinc-600 leading-relaxed min-h-[120px]">
                     {archetype.description}
                   </p>
                 </motion.div>
