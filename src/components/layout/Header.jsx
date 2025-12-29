@@ -36,7 +36,7 @@ export default function Header() {
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link to={createPageUrl('Home')} className="flex items-center gap-3 group">
+            <Link to={createPageUrl('Home')} className="flex items-center gap-3 group" onClick={() => setMobileMenuOpen(false)}>
               <img 
                 src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/c7e7092e7_LL-40-dark-bckgrnd.png"
                 alt="LiftLab Logo"
