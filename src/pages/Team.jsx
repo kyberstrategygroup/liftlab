@@ -13,7 +13,7 @@ const trainers = [
     first_name: 'Stephen',
     title: 'Senior Coach',
     headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/255370ca0_profileStephenIG2.png',
-    instagram: 'liftlab',
+    instagram: 'https://www.instagram.com/coach.stephen.wrt/',
     linkedin: '#'
   },
   {
@@ -21,7 +21,7 @@ const trainers = [
     first_name: 'Colin',
     title: 'Senior Coach',
     headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/c0dfd19a0_profileColinIG.png',
-    instagram: 'liftlab',
+    instagram: 'https://www.instagram.com/colin.roberts.7/',
     linkedin: '#'
   },
   {
@@ -29,7 +29,7 @@ const trainers = [
     first_name: 'Ashley',
     title: 'Junior Coach',
     headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/681641156_profileAshleyIG.png',
-    instagram: 'liftlab',
+    instagram: 'https://www.instagram.com/a_macs_lifestyle/',
     linkedin: '#'
   }
 ];
