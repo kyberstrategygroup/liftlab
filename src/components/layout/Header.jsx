@@ -71,7 +71,7 @@ export default function Header() {
               onClick={() => window.location.href = "/StartNow#ready"}
               className="lg:hidden text-white p-2 bg-blue-600"
             >
-              Schedule Consult
+              Schedule\\n Consult
             </button>
 
             {/* Mobile Menu Button */}
