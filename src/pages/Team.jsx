@@ -114,17 +114,6 @@ export default function Team() {
                       <Instagram className="w-4 h-4" />
                     </a>
                   )}
-                  {trainer.linkedin && (
-                    <a 
-                      href={trainer.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-9 h-9 bg-zinc-100 hover:bg-blue-600 hover:text-white flex items-center justify-center transition-all"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <Linkedin className="w-4 h-4" />
-                    </a>
-                  )}
                 </div>
               </motion.div>
             ))}
