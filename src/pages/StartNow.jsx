@@ -121,14 +121,14 @@ export default function StartNow() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 items-stretch">
             {archetypes.map((archetype, index) => (
               <a
                 key={archetype.id}
                 href={archetype.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block"
+                className="block h-full"
               >
                 <motion.div
                   key={archetype.id}
@@ -136,7 +136,7 @@ export default function StartNow() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`group bg-zinc-50 border-2 border-zinc-200 hover:${archetype.borderColor} p-8 transition-all duration-300 hover:shadow-xl`}
+                  className={`group bg-zinc-50 border-2 border-zinc-200 hover:${archetype.borderColor} p-8 transition-all duration-300 hover:shadow-xl h-full`}
                 >
                   <div className={`w-16 h-16 ${archetype.color} flex items-center justify-center mb-6`}>
                     <archetype.icon className="w-8 h-8 text-white" />
