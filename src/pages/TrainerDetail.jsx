@@ -47,10 +47,10 @@ const trainersData = {
     headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/07bac34a1_ashoptimized.jpg',
     bio: "Ashley is passionate about empowering individuals to achieve their fitness goals through strength training. As a former collegiate athlete, she understands the dedication and discipline required to excel in training.\n\nAshley's coaching approach is supportive and motivational. She focuses on building confidence in the gym, especially for those new to strength training. Her enthusiasm and positive energy make her a favorite among members looking to improve their strength and overall fitness.",
     credentials: [
-      'Diploma, Fitness and Health Promotion - St. Lawrence College',
-      'Certified Fitness Leader: Gold (Personal Training / Spin / Group Fitness) - Ontario Fitness Council',
-      'Certificate in General Arts and Sciences, Psychology - St. Lawrence College',
-      'Mental Health Accessibility - Enabling Minds'
+      { name: 'Diploma, Fitness and Health Promotion', location: 'St. Lawrence College' },
+      { name: 'Certified Fitness Leader: Gold (Personal Training / Spin / Group Fitness)', location: 'Ontario Fitness Council' },
+      { name: 'Certificate in General Arts and Sciences, Psychology', location: 'St. Lawrence College' },
+      { name: 'Mental Health Accessibility', location: 'Enabling Minds' }
     ],
     why_story_video_url: 'https://www.youtube.com/watch?v=rumoervg8Ec',
     mission_video_url: 'https://www.youtube.com/watch?v=V419iRu5IJo',
@@ -128,10 +128,17 @@ export default function TrainerDetail() {
                   <Award className="w-4 h-4 text-blue-400" />
                   Credentials
                 </h3>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {trainer.credentials.map((credential, index) => (
                     <li key={index} className="text-zinc-400 text-sm">
-                      {credential}
+                      {typeof credential === 'string' ? (
+                        credential
+                      ) : (
+                        <>
+                          <div>{credential.name}</div>
+                          <div className="text-zinc-500">{credential.location}</div>
+                        </>
+                      )}
                     </li>
                   ))}
                 </ul>
