@@ -28,7 +28,7 @@ const trainersData = {
   'coach-2': {
     first_name: 'Colin Roberts',
     title: 'Senior Coach',
-    headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/c0dfd19a0_profileColinIG.png',
+    headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/2aefb96a0_colinopt.jpg',
     bio: "Colin brings a wealth of knowledge in functional movement and corrective exercise to his coaching. With a background in physical therapy, he excels at identifying and addressing movement dysfunctions that may hinder performance or lead to injury.\n\nColin's coaching style is hands-on and detail-oriented. He prioritizes teaching proper movement patterns and emphasizes the importance of mobility and stability work alongside strength training. Members appreciate his ability to break down complex concepts into understandable terms.",
     credentials: [
       'CSCS - Certified Strength & Conditioning Specialist',
