@@ -185,10 +185,10 @@ export default function About() {
                   <div>
                     <h3 className="font-bold text-black uppercase tracking-wider mb-2">Phone</h3>
                     <a
-                      href="tel:+16131234567"
+                      href="tel:+16136273054"
                       className="text-blue-600 hover:text-blue-500 transition-colors"
                     >
-                      (613) 123-4567
+                      (613) 627-3054
                     </a>
                   </div>
                 </div>
