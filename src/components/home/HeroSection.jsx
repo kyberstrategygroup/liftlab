@@ -8,16 +8,21 @@ export default function HeroSection() {
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black/60 z-10" />
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-          poster="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=80"
-        >
-          <source src="https://player.vimeo.com/external/434045526.sd.mp4?s=c27eecc69a27dbc4ff2b87d38afc35f1a9e7c02d&profile_id=164" type="video/mp4" />
-        </video>
+        <iframe
+          src="https://www.youtube.com/embed/RMXYvhU__DE?autoplay=1&mute=1&loop=1&playlist=RMXYvhU__DE&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+          allow="autoplay; fullscreen"
+          className="absolute w-full h-full pointer-events-none"
+          style={{
+            top: '50%',
+            left: '50%',
+            width: '100vw',
+            height: '100vh',
+            minWidth: '100%',
+            minHeight: '100%',
+            transform: 'translate(-50%, -50%) scale(1.2)',
+            border: 'none'
+          }}
+        />
       </div>
 
       {/* Content */}
