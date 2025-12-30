@@ -8,6 +8,8 @@ Deno.serve(async (req) => {
     const base44 = createClientFromRequest(req);
     const { firstName, lastName, mobile, email, goal, preferredTime } = await req.json();
 
+    console.log('Processing challenge application:', { firstName, lastName, email });
+
     const submissionDate = new Date().toLocaleString('en-US', { 
       timeZone: 'America/Toronto',
       dateStyle: 'full', 
@@ -29,7 +31,8 @@ Deno.serve(async (req) => {
       <p style="color: #666; font-size: 12px;">This application was submitted through the LiftLab website.</p>
     `;
 
-    await resend.emails.send({
+    console.log('Sending email via Resend...');
+    const result = await resend.emails.send({
       from: 'LiftLab Website <onboarding@resend.dev>',
       to: 'contact@liftlab.ca',
       bcc: 'kyberstrategygroup@gmail.com',
@@ -37,8 +40,16 @@ Deno.serve(async (req) => {
       html: htmlBody
     });
 
-    return Response.json({ success: true });
+    console.log('Resend result:', result);
+
+    if (result.error) {
+      console.error('Resend error:', result.error);
+      return Response.json({ success: false, error: result.error.message }, { status: 400 });
+    }
+
+    return Response.json({ success: true, emailId: result.data?.id });
   } catch (error) {
+    console.error('Function error:', error);
     return Response.json({ error: error.message }, { status: 500 });
   }
 });
