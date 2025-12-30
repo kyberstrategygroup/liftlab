@@ -80,7 +80,7 @@ export default function ChallengeApplication() {
                     8-Week LiftLab Strength & Energy Challenge
                   </h1>
                   <p className="text-xl font-bold italic text-blue-400 mb-4">
-                    (Hit Your Goal Or Win Your Money Back)
+                    (Hit Your Goal And Win Your Money Back)
                   </p>
                   <p className="text-zinc-300 mb-6">
                     For busy Kingston professionals who want coaching in a quieter space
