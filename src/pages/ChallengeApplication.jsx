@@ -26,10 +26,13 @@ export default function ChallengeApplication() {
     setError('');
 
     try {
-      await base44.functions.invoke('sendChallengeEmail', formData);
+      console.log('Submitting form data:', formData);
+      const response = await base44.functions.invoke('sendChallengeEmail', formData);
+      console.log('Response:', response);
       setIsSubmitted(true);
     } catch (err) {
-      setError('Failed to submit application. Please try again.');
+      console.error('Submission error:', err);
+      setError(err.message || 'Failed to submit application. Please try again.');
       setIsSubmitting(false);
     }
   };
