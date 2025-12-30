@@ -61,7 +61,7 @@ export default function Header() {
 
             {/* CTA Button */}
             <div className="hidden lg:block">
-              <CTAButton to="StartNow#ready" variant="primary" size="small">
+              <CTAButton to="StartNow#ready" variant="primary" size="default">
                 Schedule Consult
               </CTAButton>
             </div>
