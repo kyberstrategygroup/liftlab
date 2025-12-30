@@ -33,18 +33,18 @@ Deno.serve(async (req) => {
 
     console.log('Sending email via Resend...');
     const result = await resend.emails.send({
-      from: 'LiftLab Website <onboarding@resend.dev>',
+      from: 'LiftLab <onboarding@resend.dev>',
       to: 'contact@liftlab.ca',
       bcc: 'kyberstrategygroup@gmail.com',
       subject: 'New 8-Week Challenge Application',
       html: htmlBody
     });
 
-    console.log('Resend result:', result);
+    console.log('Resend result:', JSON.stringify(result, null, 2));
 
     if (result.error) {
       console.error('Resend error:', result.error);
-      return Response.json({ success: false, error: result.error.message }, { status: 400 });
+      return Response.json({ success: false, error: result.error.message }, { status: 500 });
     }
 
     return Response.json({ success: true, emailId: result.data?.id });
