@@ -66,22 +66,24 @@ export default function Header() {
               </CTAButton>
             </div>
 
-            {/* Mobile nav CTA */}
-            <button
-              onClick={() => window.location.href = "/StartNow#ready"}
-              className="lg:hidden text-white px-2 bg-blue-600 font-bold uppercase w-24"
-            >
-              Schedule
-              Consult
-            </button>
+            <div>
+              {/* Mobile nav CTA */}
+              <button
+                onClick={() => window.location.href = "/StartNow#ready"}
+                className="lg:hidden text-white px-2 bg-blue-600 font-bold uppercase w-24"
+              >
+                Schedule
+                Consult
+              </button>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden text-white p-2"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="lg:hidden text-white p-2"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
         </div>
       </header>
