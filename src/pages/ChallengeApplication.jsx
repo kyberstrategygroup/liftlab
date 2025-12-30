@@ -179,7 +179,7 @@ export default function ChallengeApplication() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full h-14 bg-blue-600 hover:bg-blue-500 text-white font-bold uppercase tracking-wider lg:text-base transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/25 sm:text-xs"
+                    className="w-full h-14 bg-blue-600 hover:bg-blue-500 text-white font-bold uppercase tracking-wider lg:text-base transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/25 sm:text-sm"
                   >
                     {isSubmitting ? (
                       <Loader2 className="w-5 h-5 animate-spin" />
