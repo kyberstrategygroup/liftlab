@@ -13,7 +13,8 @@ import AuditLog from '@/components/admin/AuditLog';
 // Allowlist of admin emails
 const ADMIN_ALLOWLIST = [
   'kyberstrategygroup@gmail.com',
-  'dylanspence8@gmail.com'
+  'dylanspence8@gmail.com',
+  'mattyberes@gmail.com'
 ];
 
 export default function AdminDashboard() {
