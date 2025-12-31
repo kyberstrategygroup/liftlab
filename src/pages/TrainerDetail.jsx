@@ -22,8 +22,7 @@ const trainersData = {
     ],
     why_story_video_url: 'https://www.youtube.com/watch?v=6dVPks3ZBEQ',
     mission_video_url: 'https://www.youtube.com/watch?v=C6FtECaAIuk',
-    instagram: 'liftlab',
-    linkedin: '#'
+    instagram: 'coach.stephen.wrt',
   },
   'coach-2': {
     first_name: 'Colin Roberts',
@@ -35,8 +34,7 @@ const trainersData = {
     ],
     why_story_video_url: 'https://www.youtube.com/watch?v=v96gi3kadls',
     mission_video_url: 'https://www.youtube.com/watch?v=5Uz3GoS9zl4',
-    instagram: 'liftlab',
-    linkedin: '#'
+    instagram: 'colin.roberts.7',
   },
   'coach-3': {
     first_name: 'Ashley MacDonald',
@@ -51,8 +49,7 @@ const trainersData = {
     ],
     why_story_video_url: 'https://www.youtube.com/watch?v=rumoervg8Ec',
     mission_video_url: 'https://www.youtube.com/watch?v=V419iRu5IJo',
-    instagram: 'liftlab',
-    linkedin: '#'
+    instagram: 'a_macs_lifestyle',
   }
 };
 
@@ -151,16 +148,6 @@ export default function TrainerDetail() {
                     className="w-10 h-10 bg-zinc-800 hover:bg-blue-600 flex items-center justify-center transition-colors"
                   >
                     <Instagram className="w-5 h-5 text-white" />
-                  </a>
-                )}
-                {trainer.linkedin && (
-                  <a 
-                    href={trainer.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-zinc-800 hover:bg-blue-600 flex items-center justify-center transition-colors"
-                  >
-                    <Linkedin className="w-5 h-5 text-white" />
                   </a>
                 )}
               </div>
