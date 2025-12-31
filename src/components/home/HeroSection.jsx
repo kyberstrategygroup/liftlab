@@ -69,7 +69,7 @@ export default function HeroSection({ onOpenChallenge }) {
               onClick={onOpenChallenge}
               className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-500 text-white font-bold uppercase tracking-wider text-sm transition-all duration-300 hover:shadow-lg hover:shadow-green-600/25"
             >
-              🔥 Apply for 8-Week Challenge
+              🔥 Win your money back offer
             </button>
           </div>
         </motion.div>
