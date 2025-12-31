@@ -127,6 +127,42 @@ export const CONTENT_REGISTRY = {
     { key: 'form-email-to', type: 'text', label: 'Form - Email TO Address', default: 'contact@liftlab.ca' },
     { key: 'form-email-bcc', type: 'text', label: 'Form - Email BCC Address', default: 'kyberstrategygroup@gmail.com' },
   ],
+
+  // TRAINER DETAIL - STEPHEN RADECKI
+  'TrainerDetail-Stephen': [
+    { key: 'name', type: 'text', label: 'Trainer Name', default: 'Stephen Radecki' },
+    { key: 'title', type: 'text', label: 'Trainer Title', default: 'Owner/Senior Coach' },
+    { key: 'headshot', type: 'image', label: 'Trainer Headshot', default: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/15ac87b27_coach-stephen-headshot.jpg' },
+    { key: 'bio', type: 'text', label: 'Trainer Bio', default: 'Stephen founded LiftLab with a mission to provide accessible, high-quality strength coaching. With over 15 years of experience, he specializes in helping people build sustainable training habits.' },
+    { key: 'credentials', type: 'text', label: 'Credentials (comma-separated)', default: 'CSCS, FMS Level 2, Precision Nutrition Level 1' },
+    { key: 'why-video', type: 'video', label: 'Why Story Video', default: 'https://www.youtube.com/watch?v=6dVPks3ZBEQ' },
+    { key: 'mission-video', type: 'video', label: 'Mission Video', default: 'https://www.youtube.com/watch?v=C6FtECaAIuk' },
+    { key: 'instagram', type: 'text', label: 'Instagram Handle', default: 'coach.stephen.wrt' },
+  ],
+
+  // TRAINER DETAIL - COLIN ROBERTS
+  'TrainerDetail-Colin': [
+    { key: 'name', type: 'text', label: 'Trainer Name', default: 'Colin Roberts' },
+    { key: 'title', type: 'text', label: 'Trainer Title', default: 'Senior Coach' },
+    { key: 'headshot', type: 'image', label: 'Trainer Headshot', default: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/e8c10efa7_Colin-Headshot---square.JPG' },
+    { key: 'bio', type: 'text', label: 'Trainer Bio', default: 'Colin brings a background in sports performance and rehabilitation. He works with athletes returning from injury and those looking to improve movement quality.' },
+    { key: 'credentials', type: 'text', label: 'Credentials (comma-separated)', default: 'CSCS, SFMA, Precision Nutrition Level 1' },
+    { key: 'why-video', type: 'video', label: 'Why Story Video', default: 'https://www.youtube.com/watch?v=v96gi3kadls' },
+    { key: 'mission-video', type: 'video', label: 'Mission Video', default: 'https://www.youtube.com/watch?v=5Uz3GoS9zl4' },
+    { key: 'instagram', type: 'text', label: 'Instagram Handle', default: 'colin.roberts.7' },
+  ],
+
+  // TRAINER DETAIL - ASHLEY MACDONALD
+  'TrainerDetail-Ashley': [
+    { key: 'name', type: 'text', label: 'Trainer Name', default: 'Ashley MacDonald' },
+    { key: 'title', type: 'text', label: 'Trainer Title', default: 'Junior Coach' },
+    { key: 'headshot', type: 'image', label: 'Trainer Headshot', default: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/4fdf7ae30_Ashley-Headshot---square.JPG' },
+    { key: 'bio', type: 'text', label: 'Trainer Bio', default: 'Ashley specializes in helping beginners build confidence in the gym. Her approach focuses on sustainable progress and building a positive relationship with training.' },
+    { key: 'credentials', type: 'text', label: 'Credentials (comma-separated)', default: 'NSCA-CPT, TRX Certified, Pre/Postnatal Coaching Certified' },
+    { key: 'why-video', type: 'video', label: 'Why Story Video', default: 'https://www.youtube.com/watch?v=rumoervg8Ec' },
+    { key: 'mission-video', type: 'video', label: 'Mission Video', default: 'https://www.youtube.com/watch?v=V419iRu5IJo' },
+    { key: 'instagram', type: 'text', label: 'Instagram Handle', default: 'a_macs_lifestyle' },
+  ],
 };
 
 /**
