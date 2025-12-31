@@ -73,12 +73,12 @@ export default function Footer() {
               <h4 className="font-bold uppercase tracking-wider text-sm mb-4">Navigate</h4>
               <ul className="space-y-3">
                 {[
+                  { name: 'Start Now', page: 'StartNow' },
                   { name: 'Our Services', page: 'Services' },
                   { name: 'Our Members', page: 'Memberships' },
                   { name: 'Meet The Team', page: 'Team' },
-                  { name: 'Start The Experiment', page: 'Schedule' },
-                  { name: 'About', page: 'About' },
-                  { name: '8-Week Challenge', page: 'ChallengeApplication' }
+                  { name: 'Book a Session', page: 'Schedule' },
+                  { name: 'About', page: 'About' }
                 ].map((item) => (
                   <li key={item.page}>
                     <Link 
