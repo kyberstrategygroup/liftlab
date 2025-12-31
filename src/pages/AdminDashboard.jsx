@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { base44 } from '@/api/base44Client';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { Shield, FileText, Image, Video, Settings, LogOut, Clock } from 'lucide-react';
+import { Shield, FileText, Settings, LogOut, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import TextEditor from '@/components/admin/TextEditor';
-import ImageManager from '@/components/admin/ImageManager';
-import VideoManager from '@/components/admin/VideoManager';
+import UnifiedContentEditor from '@/components/admin/UnifiedContentEditor';
 import AdminSettings from '@/components/admin/AdminSettings';
 import AuditLog from '@/components/admin/AuditLog';
 
@@ -108,19 +106,11 @@ export default function AdminDashboard() {
 
       {/* Main Content */}
       <div className="container mx-auto px-6 py-8">
-        <Tabs defaultValue="text" className="space-y-6">
+        <Tabs defaultValue="content" className="space-y-6">
           <TabsList className="bg-zinc-900 border border-zinc-800">
-            <TabsTrigger value="text" className="data-[state=active]:bg-blue-600">
+            <TabsTrigger value="content" className="data-[state=active]:bg-blue-600">
               <FileText className="w-4 h-4 mr-2" />
-              Text Editor
-            </TabsTrigger>
-            <TabsTrigger value="images" className="data-[state=active]:bg-blue-600">
-              <Image className="w-4 h-4 mr-2" />
-              Images
-            </TabsTrigger>
-            <TabsTrigger value="videos" className="data-[state=active]:bg-blue-600">
-              <Video className="w-4 h-4 mr-2" />
-              Videos
+              Edit Site Content
             </TabsTrigger>
             <TabsTrigger value="settings" className="data-[state=active]:bg-blue-600">
               <Settings className="w-4 h-4 mr-2" />
@@ -132,16 +122,8 @@ export default function AdminDashboard() {
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="text">
-            <TextEditor userEmail={user?.email} />
-          </TabsContent>
-
-          <TabsContent value="images">
-            <ImageManager userEmail={user?.email} />
-          </TabsContent>
-
-          <TabsContent value="videos">
-            <VideoManager userEmail={user?.email} />
+          <TabsContent value="content">
+            <UnifiedContentEditor userEmail={user?.email} />
           </TabsContent>
 
           <TabsContent value="settings">
