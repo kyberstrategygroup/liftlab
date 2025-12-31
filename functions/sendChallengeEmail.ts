@@ -33,7 +33,7 @@ Deno.serve(async (req) => {
 
     console.log('Sending email via Resend...');
     const result = await resend.emails.send({
-      from: 'LiftLab <onboarding@resend.dev>',
+      from: 'LiftLab Website <contact@liftlab.ca>',
       to: 'contact@liftlab.ca',
       bcc: 'kyberstrategygroup@gmail.com',
       subject: 'New 8-Week Challenge Application',
