@@ -27,7 +27,7 @@ Deno.serve(async (req) => {
     `;
 
     await resend.emails.send({
-      from: 'LiftLab Website <onboarding@resend.dev>',
+      from: 'LiftLab Website <contact@liftlab.ca>',
       to: 'contact@liftlab.ca',
       bcc: 'kyberstrategygroup@gmail.com',
       subject: 'New LiftLab Lead – Schedule Consult',
