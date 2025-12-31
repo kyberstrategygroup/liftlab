@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import CTAButton from '@/components/ui/CTAButton';
 
-export default function HeroSection() {
+export default function HeroSection({ onOpenChallenge }) {
   return (
     <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
       {/* Background Video */}
@@ -61,6 +61,16 @@ export default function HeroSection() {
             <CTAButton to="Team" variant="outline" size="large">
               Meet The Coaches
             </CTAButton>
+          </div>
+
+          {/* 8-Week Challenge Button */}
+          <div className="mt-8">
+            <button
+              onClick={onOpenChallenge}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-500 text-white font-bold uppercase tracking-wider text-sm transition-all duration-300 hover:shadow-lg hover:shadow-green-600/25"
+            >
+              🔥 Apply for 8-Week Challenge
+            </button>
           </div>
         </motion.div>
       </div>
