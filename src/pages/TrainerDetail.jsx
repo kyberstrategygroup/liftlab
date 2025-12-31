@@ -11,7 +11,7 @@ import { ArrowLeft, Instagram, Linkedin, Award } from 'lucide-react';
 const trainersData = {
   'coach-1': {
     first_name: 'Stephen Radecki',
-    title: 'Senior Coach',
+    title: 'Owner/Senior Coach',
     headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/730038021_stephen2opt.jpg',
     bio: "Stephen is a seasoned strength and conditioning coach with over a decade of experience helping athletes and fitness enthusiasts reach their full potential. His coaching philosophy centers around individualized programming, ensuring that each member's unique goals and needs are met.\n\nStephen's expertise spans powerlifting, Olympic lifting, and general strength training. He is passionate about educating members on proper technique and programming to foster long-term progress and injury prevention.",
     credentials: [
