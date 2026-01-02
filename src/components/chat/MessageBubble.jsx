@@ -108,13 +108,13 @@ export default function MessageBubble({ message }) {
         {message.content && (
           <div className={cn(
             "rounded-2xl px-4 py-2.5",
-            isUser ? "bg-blue-600 text-white" : "bg-white border border-zinc-200 text-zinc-800"
+            isUser ? "bg-blue-600 text-white" : "bg-white border border-zinc-200 text-black"
           )}>
             {isUser ? (
               <p className="text-sm leading-relaxed whitespace-pre-wrap">{message.content}</p>
             ) : (
               <ReactMarkdown 
-                className="text-sm prose prose-sm prose-zinc max-w-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0"
+                className="text-sm prose prose-sm max-w-none [&>*:first-child]:mt-0 [&>*:last-child]:mb-0 text-black"
                 components={{
                   code: ({ inline, className, children, ...props }) => {
                     const match = /language-(\w+)/.exec(className || '');
