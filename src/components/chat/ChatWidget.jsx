@@ -49,13 +49,11 @@ export default function ChatWidget() {
       });
       setConversationId(conversation.id);
       
-      // Send initial greeting
-      setTimeout(() => {
-        base44.agents.addMessage(conversation, {
-          role: 'assistant',
-          content: "Hi! I'm Lifty, your LiftLab assistant. 💪\n\nI can help you learn about our training programs, coaches, and answer any fitness questions you have.\n\nWhat brings you to LiftLab today?"
-        });
-      }, 500);
+      // Show a welcome message locally without sending to API
+      setMessages([{
+        role: 'assistant',
+        content: "Hi! I'm Lifty, your LiftLab assistant. 💪\n\nI can help you learn about our training programs, coaches, and answer any fitness questions you have.\n\nWhat brings you to LiftLab today?"
+      }]);
     } catch (error) {
       console.error('Failed to create conversation:', error);
       toast.error('Failed to start chat');
