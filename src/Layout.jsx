@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import ChatWidget from '@/components/chat/ChatWidget';
 
 export default function Layout({ children, currentPageName }) {
   const isAdminPage = currentPageName === 'AdminDashboard' || currentPageName === 'AdminSetup';
@@ -55,6 +56,7 @@ export default function Layout({ children, currentPageName }) {
       </main>
       
       {!isAdminPage && <Footer />}
+      {!isAdminPage && <ChatWidget />}
     </div>
   );
 }
