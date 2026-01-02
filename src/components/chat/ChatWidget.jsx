@@ -159,7 +159,7 @@ export default function ChatWidget() {
                   onKeyPress={handleKeyPress}
                   placeholder="Ask Lifty anything..."
                   disabled={isSending}
-                  className="flex-1"
+                  className="flex-1 text-black placeholder:text-zinc-600"
                 />
                 <Button
                   onClick={handleSend}
