@@ -19,7 +19,7 @@ export default function HeroSection({ onOpenChallenge }) {
             height: '56.25vw',
             minWidth: '100vw',
             minHeight: '100vh',
-            transform: 'translate(-50%, -45%) scale(1.06)',
+            transform: 'translate(-50%, -55%) scale(1.06)',
             border: 'none'
           }}
         />
