@@ -42,7 +42,7 @@ export default function Header() {
                 alt="LiftLab Logo"
                 className="h-10 w-auto object-contain"
               />
-              <span className="text-xl font-black text-white uppercase tracking-tight klavika-logo">
+              <span className="text-xl font-black text-white uppercase tracking-tight">
                 Lift<span className="text-blue-500">Lab</span>
               </span>
             </Link>
@@ -66,6 +66,13 @@ export default function Header() {
                 Schedule Consult
               </CTAButton>
             </div>
+
+            {/* CTA Button */}
+            <div className="hidden lg:block">
+              <a to="https://kinectmp.ca/clients/YGK-LiftLab-1/login" variant="primary" size="small">
+                Member Login →
+              </a>
+            </div> 
 
             <div>
               {/* Mobile nav CTA */}
