@@ -205,9 +205,7 @@ export default function BookingCalendar() {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Consultation">Consultation</SelectItem>
-                    <SelectItem value="Training Session">Training Session</SelectItem>
-                    <SelectItem value="Assessment">Assessment</SelectItem>
+                    <SelectItem value="Consultation (15 minute call)">Consultation</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
