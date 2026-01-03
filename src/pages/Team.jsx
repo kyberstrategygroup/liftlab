@@ -48,7 +48,7 @@ export default function Team() {
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-400 mb-4">
               The Coaches
             </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-6 klavika-header">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-6">
               Meet The Team
             </h1>
             <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
@@ -108,7 +108,7 @@ export default function Team() {
                       href={`https://instagram.com/${trainer.instagram}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-9 h-9 bg-zinc-100 hover:bg-blue-600 hover:text-white flex items-center justify-center transition-all"
+                      className="w-9 h-9 bg-blue-600 hover:bg-zinc-100 hover:text-white flex items-center justify-center transition-all"
                       onClick={(e) => e.stopPropagation()}
                     >
                       <Instagram className="w-4 h-4" />
