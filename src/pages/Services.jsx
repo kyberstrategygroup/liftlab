@@ -20,7 +20,7 @@ const services = [
     ],
     pricing: '3 Sessions — $199.99',
     guarantee: 'Better mobility and posture — or your money back.',
-    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/fb2be8da2_poster.png',
     popular: false,
     featured: true
   },
