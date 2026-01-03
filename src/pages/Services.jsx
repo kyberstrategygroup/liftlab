@@ -8,7 +8,7 @@ const services = [
   {
     id: 'mvmt-tuneup',
     icon: Activity,
-    title: 'MVMT TUNE-UP',
+    title: 'MVMNT TUNE-UP',
     description: "A 3-session movement tune-up designed as a pit stop for your training, your sport, or your lifestyle. Focused on identifying and addressing movement limitations before they become training problems.",
     features: [
       'Posture',
@@ -20,7 +20,7 @@ const services = [
     ],
     pricing: '3 Sessions — $199.99',
     guarantee: 'Better mobility and posture — or your money back.',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/af9fdc846_poster.png',
+    image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80',
     popular: false,
     featured: true
   },
