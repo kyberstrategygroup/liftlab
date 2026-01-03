@@ -20,7 +20,8 @@ export default function HeroSection({ onOpenChallenge }) {
             minWidth: '100%',
             minHeight: '100%',
             transform: 'translate(-50%, -50%) scale(1.2)',
-            border: 'none'
+            border: 'none',
+            objectFit: 'cover'
           }}
         />
       </div>
