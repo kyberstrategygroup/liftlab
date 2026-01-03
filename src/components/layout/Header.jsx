@@ -42,7 +42,7 @@ export default function Header() {
                 alt="LiftLab Logo"
                 className="h-10 w-auto object-contain"
               />
-              <span className="text-xl font-black text-white uppercase tracking-tight">
+              <span className="text-xl font-black text-white uppercase tracking-tight klavika-logo">
                 Lift<span className="text-blue-500">Lab</span>
               </span>
             </Link>
