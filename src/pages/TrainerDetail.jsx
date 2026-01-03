@@ -104,7 +104,7 @@ export default function TrainerDetail() {
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-400 mb-2">
                 {trainer.title}
               </p>
-              <h1 className="text-5xl md:text-6xl font-black text-white uppercase tracking-tight mb-6">
+              <h1 className="text-5xl md:text-6xl font-black text-white uppercase tracking-tight mb-6 klavika-header">
                 {trainer.first_name}
               </h1>
 

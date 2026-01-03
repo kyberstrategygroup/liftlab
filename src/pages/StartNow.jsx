@@ -79,7 +79,7 @@ export default function StartNow() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight mb-6">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tight mb-6 klavika-header">
                 Ready<span className="text-blue-500">.</span>
               </h1>
               <p className="text-lg text-zinc-400 mb-8 max-w-md">

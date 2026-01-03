@@ -18,7 +18,7 @@ export default function About() {
             <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-400 mb-4">
               Our Story
             </p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-6 klavika-header">
               About LiftLab
             </h1>
             <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
