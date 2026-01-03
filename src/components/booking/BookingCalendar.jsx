@@ -5,13 +5,14 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Calendar as CalendarUI } from '@/components/ui/calendar';
 import { Textarea } from '@/components/ui/textarea';
 import { Calendar, Clock, CheckCircle2, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function BookingCalendar() {
   const [step, setStep] = useState(1);
-  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState('');
   const [availableSlots, setAvailableSlots] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -24,16 +25,10 @@ export default function BookingCalendar() {
   });
   const [confirmation, setConfirmation] = useState(null);
 
-  // Generate next 14 days
-  const availableDates = Array.from({ length: 14 }, (_, i) => {
-    const date = new Date();
-    date.setDate(date.getDate() + i + 1);
-    return date.toISOString().split('T')[0];
-  });
-
   useEffect(() => {
     if (selectedDate) {
-      loadAvailableSlots(selectedDate);
+      const dateStr = selectedDate.toISOString().split('T')[0];
+      loadAvailableSlots(dateStr);
     }
   }, [selectedDate]);
 
@@ -190,30 +185,26 @@ export default function BookingCalendar() {
         </CardHeader>
         <CardContent>
           {step === 1 && (
-            <div>
+            <div className="space-y-6">
               <div>
-                <Label className="text-sm font-bold uppercase tracking-wider mb-2">
+                <Label className="text-sm font-bold uppercase tracking-wider mb-4 block">
                   Select Date
                 </Label>
-                <Select value={selectedDate} onValueChange={setSelectedDate}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Choose a date" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {availableDates.map((date) => {
-                      const d = new Date(date);
-                      return (
-                        <SelectItem key={date} value={date}>
-                          {d.toLocaleDateString('en-US', {
-                            weekday: 'long',
-                            month: 'long',
-                            day: 'numeric'
-                          })}
-                        </SelectItem>
-                      );
-                    })}
-                  </SelectContent>
-                </Select>
+                <div className="flex justify-center">
+                  <CalendarUI
+                    mode="single"
+                    selected={selectedDate}
+                    onSelect={setSelectedDate}
+                    disabled={(date) => {
+                      const today = new Date();
+                      today.setHours(0, 0, 0, 0);
+                      const maxDate = new Date();
+                      maxDate.setDate(maxDate.getDate() + 14);
+                      return date < today || date > maxDate;
+                    }}
+                    className="border rounded-md"
+                  />
+                </div>
               </div>
 
               <Button
