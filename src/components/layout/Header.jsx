@@ -42,9 +42,9 @@ export default function Header() {
                 alt="LiftLab Logo"
                 className="h-10 w-auto object-contain"
               />
-              <span className="text-lg font-black uppercase tracking-tight">
-                  Lift<span className="text-blue-500">Lab</span>
-                </span>
+              <span className="text-xl font-black text-white uppercase tracking-tight">
+                Lift<span className="text-blue-500">Lab</span>
+              </span>
             </Link>
 
             {/* Desktop Navigation */}
