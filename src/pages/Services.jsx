@@ -150,7 +150,7 @@ export default function Services() {
               >
                 {/* Image */}
                 <div className={`relative ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                  <div className="aspect-[4/3] overflow-hidden bg-zinc-100">
+                  <div className="bg-zinc-100">
                     <img 
                       src={service.image} 
                       alt={service.title}
