@@ -11,17 +11,16 @@ export default function HeroSection({ onOpenChallenge }) {
         <iframe
           src="https://www.youtube.com/embed/RMXYvhU__DE?autoplay=1&mute=1&loop=1&playlist=RMXYvhU__DE&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
           allow="autoplay; fullscreen"
-          className="absolute w-full h-full pointer-events-none"
+          className="absolute pointer-events-none"
           style={{
             top: '50%',
             left: '50%',
-            width: '100vw',
-            height: '100vh',
-            minWidth: '100%',
-            minHeight: '100%',
-            transform: 'translate(-50%, -50%) scale(1.2)',
-            border: 'none',
-            objectFit: 'cover'
+            width: '177.77vh',
+            height: '56.25vw',
+            minWidth: '100vw',
+            minHeight: '100vh',
+            transform: 'translate(-50%, -50%)',
+            border: 'none'
           }}
         />
       </div>
