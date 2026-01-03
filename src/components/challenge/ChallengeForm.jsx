@@ -59,7 +59,7 @@ export default function ChallengeForm({ onSuccess }) {
         >
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mb-2">
+            <h1 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mb-2 klavika-header">
               8-Week LiftLab Strength & Energy Challenge
             </h1>
             <p className="text-xl font-bold italic text-blue-400 mb-4">

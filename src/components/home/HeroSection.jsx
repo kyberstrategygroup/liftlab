@@ -41,7 +41,7 @@ export default function HeroSection({ onOpenChallenge }) {
             />
           </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tight mb-6">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tight mb-6 klavika-logo">
             Lift<span className="text-blue-500">Lab</span>
           </h1>
           

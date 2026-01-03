@@ -59,7 +59,7 @@ export default function Footer() {
                   alt="LiftLab Logo"
                   className="h-8 w-auto object-contain"
                 />
-                <span className="text-lg font-black uppercase tracking-tight">
+                <span className="text-lg font-black uppercase tracking-tight klavika-logo">
                   Lift<span className="text-blue-500">Lab</span>
                 </span>
               </Link>
