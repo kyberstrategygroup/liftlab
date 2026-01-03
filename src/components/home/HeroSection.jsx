@@ -13,13 +13,13 @@ export default function HeroSection({ onOpenChallenge }) {
           allow="autoplay; fullscreen"
           className="absolute pointer-events-none"
           style={{
-            top: '45%',
+            top: '50%',
             left: '50%',
             width: '177.77vh',
             height: '56.25vw',
             minWidth: '100vw',
             minHeight: '100vh',
-            transform: 'translate(-45%, -50%)',
+            transform: 'translate(-50%, -50%)',
             border: 'none'
           }}
         />
