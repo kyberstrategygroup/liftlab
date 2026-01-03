@@ -42,7 +42,7 @@ export default function Header() {
                 alt="LiftLab Logo"
                 className="h-10 w-auto object-contain"
               />
-              <span className="text-xl font-black text-white uppercase tracking-tight klavika-logo">
+              <span className="text-xl font-black text-white uppercase tracking-tight">
                 Lift<span className="text-blue-500">Lab</span>
               </span>
             </Link>
@@ -79,7 +79,7 @@ export default function Header() {
                   </span>
 
                   {/* Tablet/Desktop: one line */}
-                  <span className="hidden sm:block">
+                  <span className="hidden sm:block sm:-translate-y-[5px]">
                     Schedule Consult
                   </span>
               </button>
