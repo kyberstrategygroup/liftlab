@@ -53,7 +53,7 @@ export default function Header() {
                 <Link
                   key={link.page}
                   to={createPageUrl(link.page)}
-                  className="text-sm font-bold uppercase tracking-wider text-zinc-300 hover:text-white transition-colors"
+                  className="text-sm font-bold uppercase tracking-wider text-zinc-300 hover:text-white transition-colors md:text-xs"
                 >
                   {link.name}
                 </Link>
@@ -69,7 +69,7 @@ export default function Header() {
                 href="https://kinectmp.ca/clients/YGK-LiftLab-1/login"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider transition-all duration-300 px-5 py-2.5 text-xs border-2 border-white text-white hover:bg-white hover:text-black w-fit"
+                className="inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider transition-all duration-300 px-5 py-2.5 text-xs border-2 border-white text-white hover:bg-white hover:text-black"
               >
                 Member Login
               </a>
