@@ -42,7 +42,7 @@ export default function Header() {
                 alt="LiftLab Logo"
                 className="h-10 w-auto object-contain"
               />
-              <span className="text-xl font-black text-white uppercase tracking-tight">
+              <span className="text-xl font-black text-white uppercase tracking-tight klavika-logo">
                 Lift<span className="text-blue-500">Lab</span>
               </span>
             </Link>
@@ -60,17 +60,18 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* CTA Button */}
-            <div className="hidden lg:block">
+            {/* CTA Buttons */}
+            <div className="hidden lg:flex items-center gap-3">
               <CTAButton to="StartNow#ready" variant="primary" size="small">
                 Schedule Consult
               </CTAButton>
-            </div>
-
-            {/* CTA Button */}
-            <div className="hidden lg:block">
-              <a to="https://kinectmp.ca/clients/YGK-LiftLab-1/login" variant="primary" size="small">
-                Member Login →
+              <a 
+                href="https://kinectmp.ca/clients/YGK-LiftLab-1/login"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider transition-all duration-300 px-5 py-2.5 text-xs border-2 border-white text-white hover:bg-white hover:text-black"
+              >
+                Member Login
               </a>
             </div> 
 
@@ -124,7 +125,7 @@ export default function Header() {
                     {link.name}
                   </Link>
                 ))}
-                <div className="pt-6 border-t border-zinc-800">
+                <div className="pt-6 border-t border-zinc-800 space-y-4">
                   <CTAButton 
                     to="StartNow#ready" 
                     variant="primary" 
@@ -136,6 +137,14 @@ export default function Header() {
                   >
                     Schedule Consult
                   </CTAButton>
+                  <a
+                    href="https://kinectmp.ca/clients/YGK-LiftLab-1/login"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-center px-10 py-5 text-base border-2 border-white text-white hover:bg-white hover:text-black font-bold uppercase tracking-wider transition-all duration-300"
+                  >
+                    Member Login
+                  </a>
                 </div>
               </div>
             </nav>
