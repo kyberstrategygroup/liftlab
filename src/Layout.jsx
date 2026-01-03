@@ -5,6 +5,23 @@ import Footer from '@/components/layout/Footer';
 export default function Layout({ children, currentPageName }) {
   const isAdminPage = currentPageName === 'AdminDashboard' || currentPageName === 'AdminSetup';
   
+  // Google Analytics
+  useEffect(() => {
+    const script1 = document.createElement('script');
+    script1.src = 'https://www.googletagmanager.com/gtag/js?id=G-12ZENR1T8V';
+    script1.async = true;
+    document.head.appendChild(script1);
+
+    const script2 = document.createElement('script');
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-12ZENR1T8V');
+    `;
+    document.head.appendChild(script2);
+  }, []);
+  
   // Scroll to top whenever page changes
   useEffect(() => {
     window.scrollTo(0, 0);
