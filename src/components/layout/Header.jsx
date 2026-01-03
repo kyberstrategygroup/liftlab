@@ -80,7 +80,7 @@ export default function Header() {
 
                   {/* Tablet/Desktop: one line */}
                   <span className="hidden sm:block">
-                    Schedule Consult
+                    Schedule Consult →
                   </span>
               </button>
 
