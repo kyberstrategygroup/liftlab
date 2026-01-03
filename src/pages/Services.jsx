@@ -154,7 +154,7 @@ export default function Services() {
                     <img 
                       src={service.image} 
                       alt={service.title}
-                      className="w-full h-full object-cover"
+                      className="w-full"
                     />
                   </div>
                   {service.popular && (
