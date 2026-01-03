@@ -13,7 +13,7 @@ export default function HeroSection({ onOpenChallenge }) {
           allow="autoplay; fullscreen"
           className="absolute pointer-events-none"
           style={{
-            top: '60%',
+            top: '45%',
             left: '50%',
             width: '177.77vh',
             height: '56.25vw',
