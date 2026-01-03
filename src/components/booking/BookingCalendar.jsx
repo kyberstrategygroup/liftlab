@@ -175,7 +175,7 @@ export default function BookingCalendar() {
       <Card className="bg-white">
         <CardHeader>
           <CardTitle className="text-2xl font-black uppercase tracking-tight">
-            Book Your Appointment
+            Book Your Consultation
           </CardTitle>
           <div className="flex gap-2 mt-4">
             {[1, 2, 3].map((s) => (
@@ -190,26 +190,7 @@ export default function BookingCalendar() {
         </CardHeader>
         <CardContent>
           {step === 1 && (
-            <div className="space-y-6">
-              <div>
-                <Label className="text-sm font-bold uppercase tracking-wider mb-2">
-                  Select Service
-                </Label>
-                <Select
-                  value={formData.serviceType}
-                  onValueChange={(value) =>
-                    setFormData({ ...formData, serviceType: value })
-                  }
-                >
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Consultation (15 minute call)">Consultation</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
+            <div>
               <div>
                 <Label className="text-sm font-bold uppercase tracking-wider mb-2">
                   Select Date
