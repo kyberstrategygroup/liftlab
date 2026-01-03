@@ -13,17 +13,45 @@ export default function Layout({ children, currentPageName }) {
   return (
     <div className="min-h-screen bg-black text-white">
       <style>{`
+        @font-face {
+          font-family: 'Klavika';
+          src: url('https://use.typekit.net/af/4c3cd2/00000000000000007735e609/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3') format('woff2'),
+               url('https://use.typekit.net/af/4c3cd2/00000000000000007735e609/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3') format('woff');
+          font-weight: bold;
+          font-style: normal;
+        }
+
+        @font-face {
+          font-family: 'Klavika';
+          src: url('https://use.typekit.net/af/4c6a25/00000000000000007735e60d/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3') format('woff2'),
+               url('https://use.typekit.net/af/4c6a25/00000000000000007735e60d/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3') format('woff');
+          font-weight: bold;
+          font-style: italic;
+        }
+
         :root {
           --liftlab-blue: #2563eb;
           --liftlab-blue-light: #3b82f6;
         }
-        
+
         html {
           scroll-behavior: smooth;
         }
-        
+
         body {
           font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .klavika-logo {
+          font-family: 'Klavika', sans-serif;
+          font-weight: bold;
+          font-style: italic;
+        }
+
+        .klavika-header {
+          font-family: 'Klavika', sans-serif;
+          font-weight: bold;
+          font-style: italic;
         }
         
         ::selection {
