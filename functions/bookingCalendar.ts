@@ -130,28 +130,28 @@ async function createBooking(base44, { serviceType, clientName, clientEmail, cli
     await base44.asServiceRole.integrations.Core.SendEmail({
         from_name: 'LiftLab',
         to: clientEmail,
-        subject: `Booking Confirmed: ${serviceType} on ${startTime.toLocaleDateString()}`,
+        subject: `Phone Consultation Confirmed: ${serviceType} on ${startTime.toLocaleDateString()}`,
         body: `
 Hi ${clientName},
 
-Your ${serviceType} at LiftLab has been confirmed!
+Your phone consultation with LiftLab has been confirmed!
 
 📅 Date: ${startTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
 ⏰ Time: ${startTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/Toronto' })} EST
-📍 Location: ${location}
+📞 Format: Phone Call
 ⏱️ Duration: 30 minutes
 
 What to expect:
-• Arrive 5 minutes early
-• Wear comfortable athletic clothing
-• Bring a water bottle
-• Be ready to discuss your fitness goals
+• We'll call you at ${clientPhone} at the scheduled time
+• Have your schedule ready if you want to book training sessions
+• Be ready to discuss your fitness goals and training history
+• Feel free to ask any questions about our programs
 
 Add this appointment to your calendar using the .ics file attachment or by clicking the link below.
 
-Questions? Reply to this email or call us at (123) 456-7890.
+Questions? Reply to this email or call us at (613) 627-3054.
 
-See you soon!
+Talk to you soon!
 The LiftLab Team
         `
     });
