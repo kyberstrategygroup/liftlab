@@ -115,7 +115,7 @@ export default function About() {
                 <div className="w-12 h-12 bg-blue-600 flex items-center justify-center mb-6">
                   <span className="text-2xl font-black text-white">{index + 1}</span>
                 </div>
-                <h3 className="text-xl font-bold text-black uppercase tracking-tight mb-3">
+                <h3 className="text-xl font-bold text-black uppercase tracking-tight mb-3 klavika-header">
                   {value.title}
                 </h3>
                 <p className="text-zinc-600">
