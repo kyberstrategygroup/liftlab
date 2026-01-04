@@ -216,7 +216,7 @@ The LiftLab Team`
         },
         body: JSON.stringify({
             from: 'LiftLab Bookings <contact@liftlab.ca>',
-            to: 'contact@liftlabs.ca',
+            to: 'contact@liftlab.ca',
             subject: `New Booking: ${serviceType} - ${clientName}`,
             text: `New booking received:
 
