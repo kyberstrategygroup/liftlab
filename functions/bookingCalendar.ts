@@ -1,7 +1,7 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.6';
 import ICAL from 'npm:ical.js@2.1.0';
 
-const ICAL_URL = 'https://calendar.google.com/calendar/ical/contact%40liftlab.ca/public/basic.ics';
+const ICAL_URL = 'https://calendar.google.com/calendar/ical/9a1a1c7fc5a02f07c4b1d037f59bce3affddf48b41afb8ca7b3cfc887977b3e3%40group.calendar.google.com/public/basic.ics';
 
 Deno.serve(async (req) => {
     try {
