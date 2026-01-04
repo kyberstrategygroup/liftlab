@@ -93,52 +93,13 @@ function generateTimeSlots(date, bookedSlots) {
 }
 
 async function createBooking(base44, { serviceType, clientName, clientEmail, clientPhone, appointmentDate, notes }) {
-    const accessToken = await base44.asServiceRole.connectors.getAccessToken("googlecalendar");
-    
     const startTime = new Date(appointmentDate);
     const endTime = new Date(startTime);
     endTime.setMinutes(endTime.getMinutes() + 30);
 
-    // Create Google Calendar event
-    const event = {
-        summary: `LiftLab ${serviceType} – ${clientName}`,
-        description: `Client: ${clientName}\nEmail: ${clientEmail}\nPhone: ${clientPhone}\nService: ${serviceType}${notes ? `\n\nNotes: ${notes}` : ''}`,
-        start: {
-            dateTime: startTime.toISOString(),
-            timeZone: 'America/Toronto'
-        },
-        end: {
-            dateTime: endTime.toISOString(),
-            timeZone: 'America/Toronto'
-        },
-        location: 'LiftLab, 123 Main St, Toronto, ON',
-        reminders: {
-            useDefault: false,
-            overrides: [
-                { method: 'email', minutes: 24 * 60 },
-                { method: 'popup', minutes: 60 }
-            ]
-        }
-    };
-
-    const calendarResponse = await fetch(
-        'https://www.googleapis.com/calendar/v3/calendars/primary/events',
-        {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${accessToken}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(event)
-        }
-    );
-
-    if (!calendarResponse.ok) {
-        const errorText = await calendarResponse.text();
-        throw new Error(`Failed to create calendar event: ${errorText}`);
-    }
-
-    const calendarEvent = await calendarResponse.json();
+    const eventSummary = `LiftLab ${serviceType} – ${clientName}`;
+    const eventDescription = `Client: ${clientName}\nEmail: ${clientEmail}\nPhone: ${clientPhone}\nService: ${serviceType}${notes ? `\n\nNotes: ${notes}` : ''}`;
+    const location = 'LiftLab, 123 Main St, Toronto, ON';
 
     // Save booking to database
     const booking = await base44.asServiceRole.entities.Booking.create({
@@ -148,20 +109,22 @@ async function createBooking(base44, { serviceType, clientName, clientEmail, cli
         client_phone: clientPhone,
         appointment_date: appointmentDate,
         duration_minutes: 30,
-        google_calendar_event_id: calendarEvent.id,
         status: 'confirmed',
         notes: notes || ''
     });
 
     // Generate iCal file content
     const icsContent = generateICS({
-        summary: event.summary,
-        description: event.description,
-        location: event.location,
+        summary: eventSummary,
+        description: eventDescription,
+        location: location,
         start: startTime,
         end: endTime,
         organizer: 'LiftLab'
     });
+
+    // Create Google Calendar link for client
+    const googleCalendarLink = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventSummary)}&dates=${startTime.toISOString().replace(/[-:]/g, '').split('.')[0]}Z/${endTime.toISOString().replace(/[-:]/g, '').split('.')[0]}Z&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(location)}`;
 
     // Send confirmation email
     await base44.asServiceRole.integrations.Core.SendEmail({
@@ -175,7 +138,7 @@ Your ${serviceType} at LiftLab has been confirmed!
 
 📅 Date: ${startTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
 ⏰ Time: ${startTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/Toronto' })} EST
-📍 Location: LiftLab, 123 Main St, Toronto, ON
+📍 Location: ${location}
 ⏱️ Duration: 30 minutes
 
 What to expect:
@@ -184,10 +147,7 @@ What to expect:
 • Bring a water bottle
 • Be ready to discuss your fitness goals
 
-Add to your calendar:
-🔗 Google Calendar: ${calendarEvent.htmlLink}
-
-We've attached an .ics file so you can add this to Apple Calendar or any other calendar app.
+Add this appointment to your calendar using the .ics file attachment or by clicking the link below.
 
 Questions? Reply to this email or call us at (123) 456-7890.
 
@@ -199,7 +159,7 @@ The LiftLab Team
     return Response.json({
         success: true,
         booking,
-        googleCalendarLink: calendarEvent.htmlLink,
+        googleCalendarLink,
         icsContent
     });
 }
