@@ -167,13 +167,18 @@ async function createBooking(base44, { serviceType, clientName, clientEmail, cli
         organizer: 'LiftLab'
     });
 
-    // Send confirmation email
-    await base44.asServiceRole.integrations.Core.SendEmail({
-        from_name: 'LiftLab',
-        to: clientEmail,
-        subject: `Phone Consultation Confirmed: ${serviceType} on ${startTime.toLocaleDateString()}`,
-        body: `
-Hi ${clientName},
+    // Send confirmation email via Resend
+    const resendResponse = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${Deno.env.get('RESEND_API_KEY')}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            from: 'LiftLab <contact@liftlab.ca>',
+            to: clientEmail,
+            subject: `Phone Consultation Confirmed: ${serviceType} on ${startTime.toLocaleDateString()}`,
+            text: `Hi ${clientName},
 
 Your phone consultation with LiftLab has been confirmed!
 
@@ -193,9 +198,14 @@ Add this appointment to your calendar using the .ics file attachment or by click
 Questions? Reply to this email or call us at (613) 627-3054.
 
 Talk to you soon!
-The LiftLab Team
-        `
+The LiftLab Team`
+        })
     });
+
+    if (!resendResponse.ok) {
+        const errorText = await resendResponse.text();
+        console.error('Failed to send email:', errorText);
+    }
 
     return Response.json({
         success: true,
