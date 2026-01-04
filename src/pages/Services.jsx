@@ -170,7 +170,7 @@ export default function Services() {
                     <service.icon className="w-7 h-7 text-white" />
                   </div>
                   
-                  <h2 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tight mb-4">
+                  <h2 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tight mb-4 klavika-header">
                     {service.title}
                   </h2>
                   
@@ -226,7 +226,7 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mb-4 klavika-header">
               Not Sure Which Is Right For You?
             </h2>
             <p className="text-zinc-400 mb-8 max-w-xl mx-auto">

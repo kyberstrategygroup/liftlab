@@ -146,7 +146,7 @@ export default function StartNow() {
                     {archetype.subtitle}
                   </p>
 
-                  <h3 className="text-2xl font-black text-black uppercase tracking-tight mb-4">
+                  <h3 className="text-2xl font-black text-black uppercase tracking-tight mb-4 klavika-header">
                     {archetype.title}
                   </h3>
 
@@ -168,7 +168,7 @@ export default function StartNow() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mb-4 klavika-header">
               Not sure which path is right?
             </h2>
             <p className="text-zinc-400 mb-8 max-w-xl mx-auto">

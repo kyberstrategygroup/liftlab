@@ -159,7 +159,7 @@ export default function Memberships() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tight mb-4 klavika-header">
               Ready to Join?
             </h2>
             <p className="text-zinc-600 mb-8 max-w-xl mx-auto">

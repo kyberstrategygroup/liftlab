@@ -20,7 +20,7 @@ export default function SectionHeading({
           {subtitle}
         </p>
       )}
-      <h2 className={`text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tight ${dark ? 'text-white' : 'text-black'}`}>
+      <h2 className={`text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tight klavika-header ${dark ? 'text-white' : 'text-black'}`}>
         {title}
       </h2>
     </div>

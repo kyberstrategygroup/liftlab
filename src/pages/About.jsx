@@ -239,7 +239,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mb-4 klavika-header">
               Come See The Space
             </h2>
             <p className="text-zinc-400 mb-8 max-w-xl mx-auto">
