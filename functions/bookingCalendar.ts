@@ -126,7 +126,7 @@ async function createBooking(base44, { serviceType, clientName, clientEmail, cli
     };
 
     const calendarResponse = await fetch(
-        'https://www.googleapis.com/calendar/v3/calendars/contact@liftlab.ca/events',
+        'https://www.googleapis.com/calendar/v3/calendars/9a1a1c7fc5a02f07c4b1d037f59bce3affddf48b41afb8ca7b3cfc887977b3e3@group.calendar.google.com/events',
         {
             method: 'POST',
             headers: {
