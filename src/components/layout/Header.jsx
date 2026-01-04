@@ -4,6 +4,7 @@ import { createPageUrl } from '@/utils';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CTAButton from '@/components/ui/CTAButton';
+import MemberLoginModal from '@/components/auth/MemberLoginModal';
 
 const navLinks = [
   { name: 'Start Now', page: 'StartNow' },
