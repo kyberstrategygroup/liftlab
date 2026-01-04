@@ -93,13 +93,56 @@ function generateTimeSlots(date, bookedSlots) {
 }
 
 async function createBooking(base44, { serviceType, clientName, clientEmail, clientPhone, appointmentDate, notes }) {
+    const accessToken = await base44.asServiceRole.connectors.getAccessToken("googlecalendar");
+    
     const startTime = new Date(appointmentDate);
     const endTime = new Date(startTime);
     endTime.setMinutes(endTime.getMinutes() + 30);
 
     const eventSummary = `LiftLab ${serviceType} – ${clientName}`;
     const eventDescription = `Client: ${clientName}\nEmail: ${clientEmail}\nPhone: ${clientPhone}\nService: ${serviceType}${notes ? `\n\nNotes: ${notes}` : ''}`;
-    const location = 'LiftLab, 123 Main St, Toronto, ON';
+    const location = 'Phone Consultation';
+
+    // Create Google Calendar event
+    const event = {
+        summary: eventSummary,
+        description: eventDescription,
+        start: {
+            dateTime: startTime.toISOString(),
+            timeZone: 'America/Toronto'
+        },
+        end: {
+            dateTime: endTime.toISOString(),
+            timeZone: 'America/Toronto'
+        },
+        location: location,
+        reminders: {
+            useDefault: false,
+            overrides: [
+                { method: 'email', minutes: 24 * 60 },
+                { method: 'popup', minutes: 60 }
+            ]
+        }
+    };
+
+    const calendarResponse = await fetch(
+        'https://www.googleapis.com/calendar/v3/calendars/contact@liftlab.ca/events',
+        {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(event)
+        }
+    );
+
+    if (!calendarResponse.ok) {
+        const errorText = await calendarResponse.text();
+        throw new Error(`Failed to create calendar event: ${errorText}`);
+    }
+
+    const calendarEvent = await calendarResponse.json();
 
     // Save booking to database
     const booking = await base44.asServiceRole.entities.Booking.create({
@@ -109,6 +152,7 @@ async function createBooking(base44, { serviceType, clientName, clientEmail, cli
         client_phone: clientPhone,
         appointment_date: appointmentDate,
         duration_minutes: 30,
+        google_calendar_event_id: calendarEvent.id,
         status: 'confirmed',
         notes: notes || ''
     });
@@ -122,9 +166,6 @@ async function createBooking(base44, { serviceType, clientName, clientEmail, cli
         end: endTime,
         organizer: 'LiftLab'
     });
-
-    // Create Google Calendar link for client
-    const googleCalendarLink = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventSummary)}&dates=${startTime.toISOString().replace(/[-:]/g, '').split('.')[0]}Z/${endTime.toISOString().replace(/[-:]/g, '').split('.')[0]}Z&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(location)}`;
 
     // Send confirmation email
     await base44.asServiceRole.integrations.Core.SendEmail({
@@ -159,7 +200,7 @@ The LiftLab Team
     return Response.json({
         success: true,
         booking,
-        googleCalendarLink,
+        googleCalendarLink: calendarEvent.htmlLink,
         icsContent
     });
 }
