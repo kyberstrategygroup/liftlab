@@ -118,9 +118,6 @@ export default function BookingCalendar() {
                 })}{' '}
                 EST
               </p>
-              <p className="text-sm text-zinc-600">
-                <strong className="text-black">Location:</strong> LiftLab, 123 Main St, Toronto, ON
-              </p>
             </div>
 
             <div className="space-y-3">
