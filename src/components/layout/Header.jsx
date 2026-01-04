@@ -18,6 +18,7 @@ const navLinks = [
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,14 +67,12 @@ export default function Header() {
               <CTAButton to="StartNow#ready" variant="primary" size="small">
                 Schedule Consult
               </CTAButton>
-              <a 
-                href="https://kinectmp.ca/clients/YGK-LiftLab-1/login"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => setLoginModalOpen(true)}
                 className="inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider transition-all duration-300 px-5 py-2.5 text-xs border-2 border-white text-white hover:bg-white hover:text-black"
               >
                 Member Login
-              </a>
+              </button>
             </div> 
 
             <div>
@@ -138,20 +137,26 @@ export default function Header() {
                   >
                     Schedule Consult
                   </CTAButton>
-                  <a
-                    href="https://kinectmp.ca/clients/YGK-LiftLab-1/login"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() => {
+                      setLoginModalOpen(true);
+                      setMobileMenuOpen(false);
+                    }}
                     className="block w-full text-center px-10 py-5 text-base border-2 border-white text-white hover:bg-white hover:text-black font-bold uppercase tracking-wider transition-all duration-300"
                   >
                     Member Login
-                  </a>
+                  </button>
                 </div>
               </div>
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <MemberLoginModal 
+        isOpen={loginModalOpen} 
+        onClose={() => setLoginModalOpen(false)} 
+      />
     </>
   );
 }
