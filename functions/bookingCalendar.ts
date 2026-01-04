@@ -1,4 +1,7 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.6';
+import ICAL from 'npm:ical.js@2.1.0';
+
+const ICAL_URL = 'https://calendar.google.com/calendar/ical/contact%40liftlab.ca/public/basic.ics';
 
 Deno.serve(async (req) => {
     try {
@@ -18,41 +21,37 @@ Deno.serve(async (req) => {
 });
 
 async function getAvailability(base44, { date }) {
-    const accessToken = await base44.asServiceRole.connectors.getAccessToken("googlecalendar");
-    
-    // Parse date and get day boundaries in Toronto timezone
-    const targetDate = new Date(date);
-    const timeMin = new Date(targetDate);
-    timeMin.setHours(0, 0, 0, 0);
-    const timeMax = new Date(targetDate);
-    timeMax.setHours(23, 59, 59, 999);
+    try {
+        // Fetch booked events from public iCal feed
+        const response = await fetch(ICAL_URL);
+        const icalData = await response.text();
+        
+        const jcalData = ICAL.parse(icalData);
+        const comp = new ICAL.Component(jcalData);
+        const vevents = comp.getAllSubcomponents('vevent');
+        
+        const bookedSlots = vevents.map(vevent => {
+            const event = new ICAL.Event(vevent);
+            return {
+                start: event.startDate.toJSDate().toISOString(),
+                end: event.endDate.toJSDate().toISOString()
+            };
+        });
 
-    // Fetch events from Google Calendar
-    const calendarResponse = await fetch(
-        `https://www.googleapis.com/calendar/v3/calendars/primary/events?` +
-        `timeMin=${timeMin.toISOString()}&timeMax=${timeMax.toISOString()}&singleEvents=true`,
-        {
-            headers: {
-                'Authorization': `Bearer ${accessToken}`,
-                'Content-Type': 'application/json'
-            }
-        }
-    );
+        // Parse target date
+        const targetDate = new Date(date);
+        
+        // Generate available slots (9 AM - 8 PM, 30-min slots, 10-min buffer)
+        const availableSlots = generateTimeSlots(targetDate, bookedSlots);
 
-    if (!calendarResponse.ok) {
-        throw new Error('Failed to fetch calendar events');
+        return Response.json({ availableSlots });
+    } catch (error) {
+        console.error('Error fetching iCal:', error);
+        // Fallback to empty booked slots if iCal fetch fails
+        const targetDate = new Date(date);
+        const availableSlots = generateTimeSlots(targetDate, []);
+        return Response.json({ availableSlots });
     }
-
-    const calendarData = await calendarResponse.json();
-    const bookedSlots = calendarData.items.map(event => ({
-        start: event.start.dateTime,
-        end: event.end.dateTime
-    }));
-
-    // Generate available slots (9 AM - 8 PM, 30-min slots, 10-min buffer)
-    const availableSlots = generateTimeSlots(targetDate, bookedSlots);
-
-    return Response.json({ availableSlots });
 }
 
 function generateTimeSlots(date, bookedSlots) {
