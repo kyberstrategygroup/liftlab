@@ -207,6 +207,32 @@ The LiftLab Team`
         console.error('Failed to send email:', errorText);
     }
 
+    // Send notification email to LiftLab
+    await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${Deno.env.get('RESEND_API_KEY')}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            from: 'LiftLab Bookings <contact@liftlab.ca>',
+            to: 'contact@liftlabs.ca',
+            subject: `New Booking: ${serviceType} - ${clientName}`,
+            text: `New booking received:
+
+Client: ${clientName}
+Email: ${clientEmail}
+Phone: ${clientPhone}
+Service: ${serviceType}
+Date: ${startTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+Time: ${startTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/Toronto' })} EST
+
+${notes ? `Notes: ${notes}` : 'No notes provided'}
+
+View in Google Calendar: ${calendarEvent.htmlLink}`
+        })
+    });
+
     return Response.json({
         success: true,
         booking,
