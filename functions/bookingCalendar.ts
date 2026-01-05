@@ -202,7 +202,7 @@ async function createBooking(base44, { serviceType, clientName, clientEmail, cli
             attachments: [
                 {
                     filename: 'liftlab-appointment.ics',
-                    content: btoa(icsContent)
+                    content: btoa(unescape(encodeURIComponent(icsContent)))
                 }
             ]
         })
