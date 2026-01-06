@@ -59,8 +59,8 @@ function generateTimeSlots(date, bookedSlots) {
     const dayOfWeek = date.getDay();
     
     // Working hours: Mon-Fri 9 AM - 8 PM, Sat-Sun 10 AM - 6 PM
-    let startHour = 12;
-    let endHour = 11;
+    let startHour = (dayOfWeek >= 1 && dayOfWeek <= 5) ? 9 : 10;
+    let endHour = (dayOfWeek >= 1 && dayOfWeek <= 5) ? 20 : 18;
 
     for (let hour = startHour; hour < endHour; hour++) {
         for (let minute = 0; minute < 60; minute += 30) {
@@ -180,25 +180,31 @@ async function createBooking(base44, { serviceType, clientName, clientEmail, cli
             subject: `Phone Consultation Confirmed: ${serviceType} on ${startTime.toLocaleDateString()}`,
             text: `Hi ${clientName},
 
-Your phone consultation with LiftLab has been confirmed!
+    Your phone consultation with LiftLab has been confirmed!
 
-📅 Date: ${startTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
-⏰ Time: ${startTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/Toronto' })} EST
-📞 Format: Phone Call
-⏱️ Duration: 30 minutes
+    📅 Date: ${startTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+    ⏰ Time: ${startTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/Toronto' })} EST
+    📞 Format: Phone Call
+    ⏱️ Duration: 30 minutes
 
-What to expect:
-• We'll call you at ${clientPhone} at the scheduled time
-• Have your schedule ready if you want to book training sessions
-• Be ready to discuss your fitness goals and training history
-• Feel free to ask any questions about our programs
+    What to expect:
+    • We'll call you at ${clientPhone} at the scheduled time
+    • Have your schedule ready if you want to book training sessions
+    • Be ready to discuss your fitness goals and training history
+    • Feel free to ask any questions about our programs
 
-Add this appointment to your calendar using the .ics file attachment or by clicking the link below.
+    Add this appointment to your calendar using the .ics file attachment.
 
-Questions? Reply to this email or call us at (613) 627-3054.
+    Questions? Reply to this email or call us at (613) 627-3054.
 
-Talk to you soon!
-The LiftLab Team`
+    Talk to you soon!
+    The LiftLab Team`,
+            attachments: [
+                {
+                    filename: 'liftlab-appointment.ics',
+                    content: btoa(unescape(encodeURIComponent(icsContent)))
+                }
+            ]
         })
     });
 

@@ -227,7 +227,6 @@ export default function BookingCalendar() {
                 ) : (
                   <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
                     {availableSlots.map((slot) => {
-                      console.log("slot raw:", slot);
                       const time = new Date(slot);
                       return (
                         <button
