@@ -58,8 +58,12 @@ function generateTimeSlots(date, bookedSlots) {
     const slots = [];
     const dayOfWeek = date.getDay();
 
-    let startHour = 5;
-    let endHour = 29;
+    const offset = getUtcOffsetHours(date, 'America/Toronto');
+
+    // Toronto midnight in UTC
+    let startHour = (24 - offset) % 24;
+    // 11:30 PM Toronto = midnight + 23.5 hours
+    let endHour = startHour + 24; // use `< endHour` in loop
 
     for (let hour = startHour; hour < endHour; hour++) {
         for (let minute = 0; minute < 60; minute += 30) {
@@ -89,6 +93,25 @@ function generateTimeSlots(date, bookedSlots) {
     }
 
     return slots;
+}
+
+function getUtcOffsetHours(date, timeZone) {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone,
+    hour: 'numeric',
+    hourCycle: 'h23'
+  }).formatToParts(date);
+
+  const localHour = Number(parts.find(p => p.type === 'hour').value);
+  const utcHour = date.getUTCHours();
+
+  let offset = localHour - utcHour;
+
+  // normalize to range -12..+14
+  if (offset < -12) offset += 24;
+  if (offset > 12) offset -= 24;
+
+  return offset;
 }
 
 async function createBooking(base44, { serviceType, clientName, clientEmail, clientPhone, appointmentDate, notes }) {
