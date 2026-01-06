@@ -60,7 +60,7 @@ function generateTimeSlots(date, bookedSlots) {
     
     // Working hours: Mon-Fri 9 AM - 8 PM, Sat-Sun 10 AM - 6 PM
     let startHour = 5;
-    let endHour = (dayOfWeek >= 1 && dayOfWeek <= 5) ? 20 : 18;
+    let endHour = 29;
 
     for (let hour = startHour; hour < endHour; hour++) {
         for (let minute = 0; minute < 60; minute += 30) {
