@@ -154,13 +154,9 @@ export default function StartNow() {
                     {archetype.description}
                   </p>
 
-                  <iframe
-                    src={archetype.href}
-                    title={archetype.title}
-                    className="absolute inset-0 w-full h-full"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
+                  <VideoEmbed
+                    url={archetype.href}
+                    title={"Test"}
                     />
                 </motion.div>
               </a>
