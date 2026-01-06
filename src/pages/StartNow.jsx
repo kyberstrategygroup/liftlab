@@ -153,9 +153,9 @@ export default function StartNow() {
                   <p className="text-zinc-600 leading-relaxed min-h-[120px]">
                     {archetype.description}
                   </p>
-                  <br /> <br />
                   <VideoEmbed
                     url={archetype.href}
+                    className={mt-4}
                     />
                 </motion.div>
               </a>
