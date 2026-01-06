@@ -78,7 +78,7 @@ export default function Header() {
               {/* Mobile nav CTA */}
               <button
                 onClick={() => window.location.href = "/StartNow#ready"}
-                className="lg:hidden text-white px-4 bg-blue-600 font-bold uppercase mr-2 text-center min-w-[32]  sm:-translate-y-[5px]"
+                className="lg:hidden text-white px-4 bg-blue-600 font-bold uppercase mr-2 text-center min-w-[32]  sm:-translate-y-[6px]"
               >
                   {/* Mobile: two lines */}
                   <span className="block sm:hidden leading-tight">
