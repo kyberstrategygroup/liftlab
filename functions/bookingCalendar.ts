@@ -59,9 +59,8 @@ function generateTimeSlots(date, bookedSlots) {
     const dayOfWeek = date.getDay();
     
     // Working hours: Mon-Fri 9 AM - 8 PM, Sat-Sun 10 AM - 6 PM
-    let startHour = new Date().getTimezoneOffset() == 300 ? 5 : 4;
-    let endHour = new Date().getTimezoneOffset() == 300 ? 29 : 28;
-    console.log(new Date().getTimezoneOffset())
+    let startHour = date.getTimezoneOffset() == 300 ? 5 : 4;
+    let endHour = date.getTimezoneOffset() == 300 ? 29 : 28;
 
     for (let hour = startHour; hour < endHour; hour++) {
         for (let minute = 0; minute < 60; minute += 30) {
