@@ -41,7 +41,7 @@ export default function Footer() {
               Book a free consultation and let's talk about your goals.
             </p>
             <CTAButton to="StartNow#ready" variant="primary" size="large">
-              Schedule Consult
+              Start Now
             </CTAButton>
           </div>
         </div>
