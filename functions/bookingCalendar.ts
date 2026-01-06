@@ -60,7 +60,7 @@ function generateTimeSlots(date, bookedSlots) {
 
     let startHour = date.getTimezoneOffset() == 300 ? 5 : 4;
     let endHour = date.getTimezoneOffset() == 300 ? 29 : 28;
-    console.log("FRONTEND LOG", "TESTING TESTING TESTING")
+    console.error("FRONTEND LOG", "TESTING TESTING TESTING");
 
     for (let hour = startHour; hour < endHour; hour++) {
         for (let minute = 0; minute < 60; minute += 30) {
