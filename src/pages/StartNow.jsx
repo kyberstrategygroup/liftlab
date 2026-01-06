@@ -153,6 +153,15 @@ export default function StartNow() {
                   <p className="text-zinc-600 leading-relaxed min-h-[120px]">
                     {archetype.description}
                   </p>
+
+                  <iframe
+                    src={archetype.href}
+                    title={archetype.title}
+                    className="absolute inset-0 w-full h-full"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    />
                 </motion.div>
               </a>
             ))}
