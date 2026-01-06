@@ -209,7 +209,7 @@ export default function Services() {
                   )}
 
                   <CTAButton to={service.pricing ? "StartNow#ready" : "StartNow"} variant="primary">
-                    {service.pricing ? 'Schedule Consult' : 'Get Started'}
+                    {service.pricing ? 'Start Now' : 'Get Started'}
                   </CTAButton>
                 </div>
               </motion.div>
