@@ -155,7 +155,7 @@ export default function StartNow() {
                   </p>
                   <VideoEmbed
                     url={archetype.href}
-                    className={mt-4}
+                    className="mt-4"
                     />
                 </motion.div>
               </a>
