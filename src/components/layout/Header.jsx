@@ -10,7 +10,7 @@ const navLinks = [
   { name: 'Our Services', page: 'Services' },
   { name: 'Our Members', page: 'Memberships' },
   { name: 'Meet The Team', page: 'Team' },
-  { name: 'Book a Session', page: 'Schedule' },
+  { name: 'Book a Call', page: 'Schedule' },
   { name: 'About', page: 'About' },
 ];
 
