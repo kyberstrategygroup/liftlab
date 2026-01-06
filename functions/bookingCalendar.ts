@@ -58,7 +58,7 @@ function generateTimeSlots(date, bookedSlots) {
     const slots = [];
     const dayOfWeek = date.getDay();
 
-    let startHour = date.getTimezoneOffset() == 300 ? 5 : date.getTimezoneOffset();
+    let startHour = date.getTimezoneOffset() == 300 ? 5 : 4;
     let endHour = date.getTimezoneOffset() == 300 ? 29 : 28;
     console.error("FRONTEND LOG", "TESTING TESTING TESTING");
 
