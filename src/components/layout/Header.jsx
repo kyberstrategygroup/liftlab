@@ -7,7 +7,6 @@ import CTAButton from '@/components/ui/CTAButton';
 import MemberLoginModal from '@/components/auth/MemberLoginModal';
 
 const navLinks = [
-  { name: 'Start Now', page: 'StartNow' },
   { name: 'Our Services', page: 'Services' },
   { name: 'Our Members', page: 'Memberships' },
   { name: 'Meet The Team', page: 'Team' },
@@ -65,7 +64,7 @@ export default function Header() {
             {/* CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3">
               <CTAButton to="StartNow#ready" variant="primary" size="small">
-                Schedule Consult
+                Start Now
               </CTAButton>
               <button
                 onClick={() => setLoginModalOpen(true)}
@@ -83,12 +82,12 @@ export default function Header() {
               >
                   {/* Mobile: two lines */}
                   <span className="block sm:hidden leading-tight">
-                    Schedule<br />Consult
+                    Start<br />Now
                   </span>
 
                   {/* Tablet/Desktop: one line */}
                   <span className="hidden sm:block">
-                    Schedule Consult →
+                    Start Now →
                   </span>
               </button>
 
@@ -135,7 +134,7 @@ export default function Header() {
                     window.location.href = "/StartNow#ready"}
                     }
                   >
-                    Schedule Consult
+                    Start Now
                   </CTAButton>
                   <button
                     onClick={() => {
