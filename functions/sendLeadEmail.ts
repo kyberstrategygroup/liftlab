@@ -8,9 +8,10 @@ Deno.serve(async (req) => {
     const base44 = createClientFromRequest(req);
     const { name, email, phone, commitment, source_page } = await req.json();
 
-    const submissionDate = new Date().toLocaleString('en-US', { 
-      dateStyle: 'full', 
-      timeStyle: 'short' 
+    const submissionDate = new Date().toLocaleString('en-US', {
+      timeZone: 'America/Toronto',
+      dateStyle: 'full',
+      timeStyle: 'short',
     });
 
     const htmlBody = `
