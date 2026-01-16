@@ -4,7 +4,7 @@ import CTAButton from '@/components/ui/CTAButton';
 
 export default function HeroSection({ onOpenChallenge }) {
   return (
-    <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black/60 z-10" />
@@ -33,23 +33,23 @@ export default function HeroSection({ onOpenChallenge }) {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           {/* Logo Mark */}
-          <div className="mb-8">
+          <div className="mb-6 md:mb-8">
             <img 
               src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/c7e7092e7_LL-40-dark-bckgrnd.png"
               alt="LiftLab Logo"
-              className="h-40 w-auto mx-auto"
+              className="h-24 sm:h-32 md:h-40 w-auto mx-auto"
             />
           </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tight mb-6 klavika-logo">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tight mb-4 md:mb-6 klavika-logo px-4">
             Lift<span className="text-blue-500">Lab</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-zinc-300 max-w-2xl mx-auto mb-4 font-light">
+          <p className="text-lg sm:text-xl md:text-2xl text-zinc-300 max-w-2xl mx-auto mb-3 md:mb-4 font-light px-4">
             Where Serious Training Happens
           </p>
           
-          <p className="text-base md:text-lg text-zinc-400 max-w-xl mx-auto mb-10">
+          <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-xl mx-auto mb-8 md:mb-10 px-4">
             Semi-private coaching. Individualized programming. 
             A community built on accountability, not hype.
           </p>
@@ -64,10 +64,10 @@ export default function HeroSection({ onOpenChallenge }) {
           </div>
 
           {/* 8-Week Challenge Button */}
-          <div className="mt-8">
+          <div className="mt-6 md:mt-8 px-4">
             <button
               onClick={onOpenChallenge}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-500 text-white font-bold uppercase tracking-wider text-sm transition-all duration-300 hover:shadow-lg hover:shadow-green-600/25"
+              className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-green-600 hover:bg-green-500 text-white font-bold uppercase tracking-wider text-xs sm:text-sm transition-all duration-300 hover:shadow-lg hover:shadow-green-600/25"
             >
               🔥 Apply for Win your money back promo
             </button>

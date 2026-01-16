@@ -45,8 +45,8 @@ export default function LeadForm({
   };
 
   const inputClasses = dark 
-    ? "bg-zinc-900 border-zinc-700 text-white placeholder:text-zinc-500 focus:border-blue-500 focus:ring-blue-500/20 h-14 text-base"
-    : "bg-white border-zinc-300 text-black placeholder:text-zinc-400 focus:border-blue-500 focus:ring-blue-500/20 h-14 text-base";
+    ? "bg-zinc-900 border-zinc-700 text-white placeholder:text-zinc-500 focus:border-blue-500 focus:ring-blue-500/20 h-12 sm:h-14 text-sm sm:text-base"
+    : "bg-white border-zinc-300 text-black placeholder:text-zinc-400 focus:border-blue-500 focus:ring-blue-500/20 h-12 sm:h-14 text-sm sm:text-base";
 
   return (
     <div className={className}>
@@ -57,9 +57,9 @@ export default function LeadForm({
             animate={{ opacity: 1, y: 0 }}
             className={`text-center py-8 ${dark ? 'text-white' : 'text-black'}`}
           >
-            <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-            <h3 className="text-2xl font-bold mb-2">You're In.</h3>
-            <p className={dark ? 'text-zinc-400' : 'text-zinc-600'}>
+            <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-green-500 mx-auto mb-3 sm:mb-4" />
+            <h3 className="text-xl sm:text-2xl font-bold mb-2">You're In.</h3>
+            <p className={`text-sm sm:text-base ${dark ? 'text-zinc-400' : 'text-zinc-600'}`}>
               A coach will reach out within 24 hours.
             </p>
           </motion.div>
@@ -104,7 +104,7 @@ export default function LeadForm({
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full h-14 bg-blue-600 hover:bg-blue-500 text-white font-bold uppercase tracking-wider text-base transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/25"
+              className="w-full h-12 sm:h-14 bg-blue-600 hover:bg-blue-500 text-white font-bold uppercase tracking-wider text-sm sm:text-base transition-all duration-300 hover:shadow-lg hover:shadow-blue-600/25"
             >
               {isSubmitting ? (
                 <Loader2 className="w-5 h-5 animate-spin" />

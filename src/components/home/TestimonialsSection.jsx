@@ -32,8 +32,8 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-white">
-      <div className="container mx-auto px-12">
+    <section className="py-16 md:py-24 lg:py-32 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,9 +63,9 @@ export default function TestimonialsSection() {
                 title={`${testimonialVideos[currentIndex].name}'s Story`}
                 className="w-full"
               />
-              <div className="p-6 md:p-8">
-                <Quote className="w-8 h-8 text-blue-600 mb-4" />
-                <p className="text-zinc-700 text-lg md:text-xl italic mb-6">
+              <div className="p-4 sm:p-6 md:p-8">
+                <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 mb-3 sm:mb-4" />
+                <p className="text-zinc-700 text-base sm:text-lg md:text-xl italic mb-4 sm:mb-6">
                   "{testimonialVideos[currentIndex].quote}"
                 </p>
                 <div>
@@ -83,18 +83,18 @@ export default function TestimonialsSection() {
           {/* Navigation Buttons */}
           <button
             onClick={() => { prevSlide(); handleInteraction(); }}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 md:-translate-x-12 w-12 h-12 bg-black border-2 border-black hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center group"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-6 md:-translate-x-12 w-10 h-10 sm:w-12 sm:h-12 bg-black border-2 border-black hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center group z-10"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
           
           <button
             onClick={() => { nextSlide(); handleInteraction(); }}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 md:translate-x-12 w-12 h-12 bg-black border-2 border-black hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center group"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-6 md:translate-x-12 w-10 h-10 sm:w-12 sm:h-12 bg-black border-2 border-black hover:bg-blue-600 hover:text-white transition-all duration-300 flex items-center justify-center group z-10"
             aria-label="Next testimonial"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
 
           {/* Dots Indicator */}
