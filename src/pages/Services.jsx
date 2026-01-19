@@ -124,7 +124,7 @@ const services = [
     large: "px-10 py-5 text-base"
   };
 
-  const combinedStyles = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
+  const combinedStyles = `${baseStyles} ${variants[primary]} ${sizes[size]} ${className}`;
 
 
 export default function Services() {
