@@ -39,7 +39,8 @@ const services = [
     pricing: '2 sessions per week — $300 biweekly',
     pricingNote: 'Fully personalized, one-on-one coaching',
     image: 'https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?w=800&q=80',
-    popular: false
+    popular: false,
+    outbound_link: ''
   },
   {
     id: 'semi-private',
@@ -56,7 +57,8 @@ const services = [
     pricing: '2 sessions per week — $160 biweekly',
     pricingNote: 'Best value option for coached training in a small-group setting',
     image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80',
-    popular: true
+    popular: true,
+    outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695820fa29c17ae187c8e4b8'
   },
   {
     id: 'remote',
@@ -73,7 +75,8 @@ const services = [
     pricing: '$100 biweekly',
     pricingNote: 'Professional guidance for independent gym-goers',
     image: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=800&q=80',
-    popular: false
+    popular: false,
+    outbound_link: ''
   },
   {
     id: 'premium-solo',
@@ -89,7 +92,8 @@ const services = [
     ],
     pricing: '$29.99 (biweekly)',
     image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80',
-    popular: false
+    popular: false,
+    outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/66049a21f7a31a735a8857ee'
   },
   {
     id: 'basic-solo',
@@ -105,7 +109,8 @@ const services = [
     ],
     pricing: '$21.99 (biweekly)',
     image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80',
-    popular: false
+    popular: false,
+    outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/6132272689a6d431294e39bd'
   }
 ];
 
