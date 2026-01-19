@@ -58,7 +58,7 @@ const services = [
     pricingNote: 'Fully personalized, one-on-one coaching',
     image: 'https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?w=800&q=80',
     popular: false,
-    outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695820fa29c17ae187c8e4b8'
+    outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/6132273789a6d431294e39be'
   },
   {
     id: 'semi-private',
