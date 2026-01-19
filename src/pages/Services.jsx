@@ -208,10 +208,6 @@ export default function Services() {
                     </div>
                   )}
 
-                  <CTAButton to={service.pricing ? "StartNow#ready" : "StartNow"} variant="primary">
-                    {service.pricing ? 'Start Now' : 'Get Started'}
-                  </CTAButton>
-
                   <button onClick={() => {
     window.location.href = service.outbound_link;
   }} className="inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider transition-all duration-300 group bg-blue-600 text-white hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/25 px-8 py-4 text-sm">
