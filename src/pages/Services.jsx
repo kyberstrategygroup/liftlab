@@ -14,22 +14,22 @@ const services = [
       'Posture',
       'Mobility',
       'Joint stability',
-      'Gait',
-      'Breath strategy',
-      'Foot mechanics'
-    ],
-    pricing: '3 Sessions — $199.99',
-    guarantee: 'Better mobility and posture — or your money back.',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/fb2be8da2_poster.png',
-    popular: false,
-    featured: true
-  },
-  {
-    id: 'private',
-    icon: User,
-    title: 'Private Training',
-    description: "One-on-one coaching for those who want maximum attention and customization. Ideal for specific goals, injury rehabilitation, or accelerated progress.",
-    features: [
+            'Gait',
+                  'Breath strategy',
+                        'Foot mechanics'
+                            ],
+                                pricing: '3 Sessions — $199.99',
+                                    guarantee: 'Better mobility and posture — or your money back.',
+                                        image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/fb2be8da2_poster.png',
+                                            popular: false,
+                                                featured: true
+                                                  },
+                                                    {
+                                                        id: 'private',
+                                                            icon: User,
+                                                                title: 'Private Training',
+                                                                    description: "One-on-one coaching for those who want maximum attention and customization. Ideal for specific goals, injury rehabilitation, or accelerated progress.",
+                                                                        features: [
       'Dedicated 1:1 coaching sessions',
       'Fully customized programming',
       'Flexible scheduling',
@@ -108,6 +108,24 @@ const services = [
     popular: false
   }
 ];
+
+  const baseStyles = "inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider transition-all duration-300 group";
+  
+  const variants = {
+    primary: "bg-blue-600 text-white hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/25",
+    secondary: "bg-white text-black hover:bg-zinc-100",
+    outline: "border-2 border-white text-white hover:bg-white hover:text-black",
+    outlineDark: "border-2 border-black text-black hover:bg-black hover:text-white"
+  };
+
+  const sizes = {
+    small: "px-5 py-2.5 text-xs",
+    default: "px-8 py-4 text-sm",
+    large: "px-10 py-5 text-base"
+  };
+
+  const combinedStyles = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
+
 
 export default function Services() {
   return (
