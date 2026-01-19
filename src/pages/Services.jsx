@@ -212,7 +212,7 @@ export default function Services() {
                     {service.pricing ? 'Start Now' : 'Get Started'}
                   </CTAButton>
 
-                  <button onClick={window.location(service.outbound_link)} className={combinedStyles}>
+                  <button onClick={window.location.href = service.outbound_link} className={combinedStyles}>
                     Start Now
                   </button>
                 </div>
