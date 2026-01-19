@@ -14,33 +14,15 @@ const services = [
       'Posture',
       'Mobility',
       'Joint stability',
-            'Gait',
-                  'Breath strategy',
-                        'Foot mechanics'
-                            ],
-                                pricing: '3 Sessions — $199.99',
-                                    guarantee: 'Better mobility and posture — or your money back.',
-                                        image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/fb2be8da2_poster.png',
-                                            popular: false,
-                                                featured: true
-                                                  },
-                                                    {
-                                                        id: 'private',
-                                                            icon: User,
-                                                                title: 'Private Training',
-                                                                    description: "One-on-one coaching for those who want maximum attention and customization. Ideal for specific goals, injury rehabilitation, or accelerated progress.",
-                                                                        features: [
-      'Dedicated 1:1 coaching sessions',
-      'Fully customized programming',
-      'Flexible scheduling',
-      'Priority booking access',
-      'Direct coach communication'
+      'Gait',
+      'Breath strategy',
+      'Foot mechanics'
     ],
-    pricing: '2 sessions per week — $300 biweekly',
-    pricingNote: 'Fully personalized, one-on-one coaching',
-    image: 'https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?w=800&q=80',
+    pricing: '3 Sessions — $199.99',
+    guarantee: 'Better mobility and posture — or your money back.',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/fb2be8da2_poster.png',
     popular: false,
-    outbound_link: ''
+    featured: true
   },
   {
     id: 'private',
