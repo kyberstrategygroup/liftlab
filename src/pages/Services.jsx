@@ -43,6 +43,24 @@ const services = [
     outbound_link: ''
   },
   {
+    id: 'private',
+    icon: User,
+    title: 'Private Training',
+    description: "One-on-one coaching for those who want maximum attention and customization. Ideal for specific goals, injury rehabilitation, or accelerated progress.",
+    features: [
+      'Dedicated 1:1 coaching sessions',
+      'Fully customized programming',
+      'Flexible scheduling',
+      'Priority booking access',
+      'Direct coach communication'
+    ],
+    pricing: '$5.99 biweekly, $65-$100 per session',
+    pricingNote: 'Fully personalized, one-on-one coaching',
+    image: 'https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?w=800&q=80',
+    popular: false,
+    outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695820fa29c17ae187c8e4b8'
+  },
+  {
     id: 'semi-private',
     icon: Users,
     title: 'Semi-Private Training',
@@ -214,8 +232,8 @@ export default function Services() {
                   )}
 
                   <button onClick={() => {
-    window.location.href = service.outbound_link;
-  }} className="inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider transition-all duration-300 group bg-blue-600 text-white hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/25 px-8 py-4 text-sm">
+                    window.location.href = service.outbound_link;
+                  }} className="inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider transition-all duration-300 group bg-blue-600 text-white hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/25 px-8 py-4 text-sm">
                     Start Now
                   </button>
                 </div>
