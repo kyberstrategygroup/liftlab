@@ -211,6 +211,10 @@ export default function Services() {
                   <CTAButton to={service.pricing ? "StartNow#ready" : "StartNow"} variant="primary">
                     {service.pricing ? 'Start Now' : 'Get Started'}
                   </CTAButton>
+
+                  <button onClick={window.location(service.outbound_link)} className={combinedStyles}>
+                    Start Now
+                  </button>
                 </div>
               </motion.div>
             ))}
