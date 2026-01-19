@@ -109,23 +109,7 @@ const services = [
   }
 ];
 
-  const baseStyles = "inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider transition-all duration-300 group";
-  
-  const variants = {
-    primary: "bg-blue-600 text-white hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/25",
-    secondary: "bg-white text-black hover:bg-zinc-100",
-    outline: "border-2 border-white text-white hover:bg-white hover:text-black",
-    outlineDark: "border-2 border-black text-black hover:bg-black hover:text-white"
-  };
-
-  const sizes = {
-    small: "px-5 py-2.5 text-xs",
-    default: "px-8 py-4 text-sm",
-    large: "px-10 py-5 text-base"
-  };
-
-  const combinedStyles = `${baseStyles} ${variants[primary]} ${sizes[size]} ${className}`;
-
+const combinedStyles = `inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider transition-all duration-300 group bg-blue-600 text-white hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-600/25 px-8 py-4 text-sm`;
 
 export default function Services() {
   return (
