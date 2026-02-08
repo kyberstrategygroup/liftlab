@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Loader2, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { trackMetaEvent } from '@/lib/metaPixel';
 
 export default function ChallengeForm({ onSuccess }) {
   const [formData, setFormData] = useState({
@@ -30,6 +31,13 @@ export default function ChallengeForm({ onSuccess }) {
       const response = await base44.functions.invoke('sendChallengeEmail', formData);
       console.log('Response:', response);
       setIsSubmitted(true);
+      
+      // Track Meta Pixel Lead event
+      trackMetaEvent('Lead', {
+        content_name: '8-Week Challenge Application',
+        content_category: 'Challenge'
+      });
+      
       if (onSuccess) onSuccess();
     } catch (err) {
       console.error('Submission error:', err);

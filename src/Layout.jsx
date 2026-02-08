@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { trackPageView } from '@/utils/metaPixel';
+import { trackPageView } from '@/lib/metaPixel';
 
 export default function Layout({ children, currentPageName }) {
   const isAdminPage = currentPageName === 'AdminDashboard' || currentPageName === 'AdminSetup';

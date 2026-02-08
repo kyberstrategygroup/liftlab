@@ -4,7 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Loader2, CheckCircle, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { trackMetaEvent } from '@/utils/metaPixel';
+import { trackMetaEvent } from '@/lib/metaPixel';
 
 export default function LeadForm({ 
   sourcePage = "unknown",
