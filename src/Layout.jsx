@@ -1,10 +1,38 @@
 import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import { trackPageView } from '@/utils/metaPixel';
 
 export default function Layout({ children, currentPageName }) {
   const isAdminPage = currentPageName === 'AdminDashboard' || currentPageName === 'AdminSetup';
+  const location = useLocation();
   
+  // Meta Pixel - Base Code
+  useEffect(() => {
+    const metaPixelScript = document.createElement('script');
+    metaPixelScript.innerHTML = `
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window,document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1474428567531087');
+      fbq('track', 'PageView');
+    `;
+    document.head.appendChild(metaPixelScript);
+
+    const metaPixelNoscript = document.createElement('noscript');
+    metaPixelNoscript.innerHTML = `
+      <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1474428567531087&ev=PageView&noscript=1"/>
+    `;
+    document.head.appendChild(metaPixelNoscript);
+  }, []);
+
   // Google Analytics
   useEffect(() => {
     const script1 = document.createElement('script');
@@ -21,6 +49,11 @@ export default function Layout({ children, currentPageName }) {
     `;
     document.head.appendChild(script2);
   }, []);
+  
+  // Track PageView on route changes
+  useEffect(() => {
+    trackPageView();
+  }, [location]);
   
   // Scroll to top whenever page changes
   useEffect(() => {

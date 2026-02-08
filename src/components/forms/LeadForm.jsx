@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Loader2, CheckCircle, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { trackMetaEvent } from '@/utils/metaPixel';
 
 export default function LeadForm({ 
   sourcePage = "unknown",
@@ -38,6 +39,12 @@ export default function LeadForm({
 
     setIsSubmitting(false);
     setIsSubmitted(true);
+    
+    // Track Meta Pixel Lead event
+    trackMetaEvent('Lead', {
+      content_name: 'Lead Form Submission',
+      content_category: sourcePage
+    });
     
     if (onSuccess) {
       onSuccess(formData);
