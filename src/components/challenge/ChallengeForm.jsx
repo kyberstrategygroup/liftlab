@@ -6,7 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Loader2, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { trackMetaEvent } from '@/lib/metaPixel';
+import { trackMetaEvent } from '@/components/utils/metaPixel';
 
 export default function ChallengeForm({ onSuccess }) {
   const [formData, setFormData] = useState({

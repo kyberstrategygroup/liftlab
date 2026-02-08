@@ -9,6 +9,7 @@ import { Calendar as CalendarUI } from '@/components/ui/calendar';
 import { Textarea } from '@/components/ui/textarea';
 import { Calendar, Clock, CheckCircle2, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { trackMetaEvent } from '@/components/utils/metaPixel';
 
 export default function BookingCalendar() {
   const [step, setStep] = useState(1);
@@ -64,6 +65,13 @@ export default function BookingCalendar() {
       });
 
       setConfirmation(data);
+      
+      // Track Meta Pixel Schedule event
+      trackMetaEvent('Schedule', {
+        content_name: 'Phone Consultation Booking',
+        service_type: formData.serviceType
+      });
+      
       setStep(4);
     } catch (error) {
       alert('Booking failed: ' + error.message);
