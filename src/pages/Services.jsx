@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import SectionHeading from '@/components/ui/SectionHeading';
 import CTAButton from '@/components/ui/CTAButton';
 import { Users, User, Globe, Check, Activity, Key, Clock } from 'lucide-react';
+import { trackMetaEvent } from '@/components/utils/metaPixel';
 
 const services = [
   {
@@ -213,9 +214,24 @@ export default function Services() {
                     </div>
                   )}
 
-                  <CTAButton to={service.pricing ? "StartNow#ready" : "StartNow"} variant="primary">
-                    {service.pricing ? 'Start Now' : 'Get Started'}
-                  </CTAButton>
+                  {service.outbound_link ? (
+                    <CTAButton 
+                      to={service.outbound_link} 
+                      variant="primary"
+                      external={true}
+                      onClick={() => trackMetaEvent('ViewContent', {
+                        content_name: service.title,
+                        content_category: 'Service',
+                        content_type: 'service'
+                      })}
+                    >
+                      {service.pricing ? 'Start Now' : 'Get Started'}
+                    </CTAButton>
+                  ) : (
+                    <CTAButton to={service.pricing ? "StartNow#ready" : "StartNow"} variant="primary">
+                      {service.pricing ? 'Start Now' : 'Get Started'}
+                    </CTAButton>
+                  )}
                 </div>
               </motion.div>
             ))}
