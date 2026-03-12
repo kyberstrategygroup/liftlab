@@ -37,7 +37,7 @@ const trainers = [
     first_name: 'Ashley H.',
     title: 'Senior Coach',
     headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/859995a8b_profileashH.jpg',
-    instagram: 'h3o2training',
+    instagram_url: 'https://www.instagram.com/h3o2training/',
     linkedin: '#'
   }
 ];
