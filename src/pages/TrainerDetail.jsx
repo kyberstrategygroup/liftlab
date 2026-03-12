@@ -57,13 +57,14 @@ const trainersData = {
     headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/ef855e7e8_ashhoptimized.jpg',
     bio: "I help active adults build strength, reduce pain, and improve long-term performance through a highly individualized, biomechanics-based approach.\\n\\nWhether you’re a golfer looking to increase distance and protect your joints, a recreational athlete wanting to stay competitive, or a woman navigating chronic pain, fatigue, or midlife changes — my work begins with detailed posture, movement, and lifestyle assessments to understand how your structure, stress load, and recovery capacity are influencing your performance and health.\\n\\nFrom there, I design personalized programs that integrate corrective exercise, functional strength training, injury prevention, and holistic lifestyle coaching — including nutrition, recovery, breathwork, and nervous system regulation.\\n\\nMy approach supports:\\n\\n• Spinal and joint rehabilitation\\n\\n• Sport performance (in particular golf)\\n\\n• Women’s health & midlife transition\\n\\n• Chronic pain & inflammation management\\n\\n• Sustainable strength & longevity",
     credentials: [
+      { name: 'CHEK Practitioner', location: 'CHEK Institute' },
+      { name: 'Holistic Lifestyle Coach', location: 'CHEK Institute' },
+      { name: 'Gold Performance Coach', location: '' },
+      { name: 'Personal Trainer', location: '' },
       { name: 'BSc in Human Kinetics', location: '' },
-      { name: 'CSEP Certified Personal Trainer', location: 'Canadian Society for Exercise Physiology' },
-      { name: 'Level 2 Practitioner', location: 'CHEK Institute' },
-      { name: 'Holistic Lifestyle Coach', location: 'CHEK Institute' }
     ],
-    why_story_video_url: '',
-    mission_video_url: '',
+    why_story_video_url: 'https://www.youtube.com/shorts/GRG_Ukt_Al0',
+    mission_video_url: 'https://www.youtube.com/shorts/8EXXFPKu58c',
     instagram: 'h3o2training',
   }
 };
