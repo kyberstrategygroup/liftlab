@@ -104,13 +104,6 @@ export default function LeadForm({
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               className={inputClasses}
             />
-            <Input
-             type="text"
-             placeholder="I'm committed to achieving... (optional)"
-             value={formData.commitment}
-             onChange={(e) => setFormData({ ...formData, commitment: e.target.value })}
-             className={inputClasses}
-            />
             {showLabTechDropdown && (
              <Select
                value={formData.preferred_lab_tech}
@@ -128,6 +121,13 @@ export default function LeadForm({
                </SelectContent>
              </Select>
             )}
+            <Input
+             type="text"
+             placeholder="I'm committed to achieving... (optional)"
+             value={formData.commitment}
+             onChange={(e) => setFormData({ ...formData, commitment: e.target.value })}
+             className={inputClasses}
+            />            
             <Button
               type="submit"
               disabled={isSubmitting}
