@@ -56,7 +56,7 @@ const services = [
     ],
     pricing: '2 sessions per week — $80/week',
     pricingNote: 'Best value option for coached training in a small-group setting',
-    image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/cf46b6628_sptopt.jpg',
     popular: true,
     outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695820fa29c17ae187c8e4b8',
     pricing_2: '3 sessions per week — $115/week',
