@@ -124,16 +124,16 @@ export default function TrainerDetail() {
               </h1>
 
               <div className="prose prose-invert prose-lg max-w-none mb-8">
-  {trainer.bio
-    .replace(/\\n/g, '\n')
-    .split(/\n\s*\n/)
-    .filter(Boolean)
-    .map((paragraph, index) => (
-      <p key={index} className="text-zinc-300 mt-4">
-        {paragraph}
-      </p>
-    ))}
-</div>
+                {trainer.bio
+                  .replace(/\\n/g, '\n')
+                  .split(/\n\s*\n/)
+                  .filter(Boolean)
+                  .map((paragraph, index) => (
+                    <p key={index} className="text-zinc-300 mt-4">
+                      {paragraph}
+                    </p>
+                  ))}
+              </div>
 
               {/* Credentials */}
               <div className="mb-8">
