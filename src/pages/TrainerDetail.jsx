@@ -172,50 +172,52 @@ export default function TrainerDetail() {
       </section>
 
       {/* Videos */}
-      {(trainer.why_story_video_url || trainer.mission_video_url) && <section className="py-24 md:py-32 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Why Story */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
-                My Story
-              </h3>
-              <h2 className="text-2xl font-black text-black uppercase tracking-tight mb-6">
-                Why I Coach
-              </h2>
-              <VideoEmbed 
-                url={trainer.why_story_video_url}
-                title={`${trainer.first_name} - Why I Coach`}
-                className="shadow-xl"
-              />
-            </motion.div>
+      {(trainer.why_story_video_url || trainer.mission_video_url) && (
+        <section className="py-24 md:py-32 bg-white">
+          <div className="container mx-auto px-6">
+            <div className="grid md:grid-cols-2 gap-12">
+              {/* Why Story */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
+                  My Story
+                </h3>
+                <h2 className="text-2xl font-black text-black uppercase tracking-tight mb-6">
+                  Why I Coach
+                </h2>
+                <VideoEmbed 
+                  url={trainer.why_story_video_url}
+                  title={`${trainer.first_name} - Why I Coach`}
+                  className="shadow-xl"
+                />
+              </motion.div>
 
-            {/* Mission */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
-                My Approach
-              </h3>
-              <h2 className="text-2xl font-black text-black uppercase tracking-tight mb-6">
-                Mission Statement
-              </h2>
-              <VideoEmbed 
-                url={trainer.mission_video_url}
-                title={`${trainer.first_name} - Mission Statement`}
-                className="shadow-xl"
-              />
-            </motion.div>
+              {/* Mission */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+              >
+                <h3 className="text-sm font-bold uppercase tracking-[0.2em] text-blue-600 mb-3">
+                  My Approach
+                </h3>
+                <h2 className="text-2xl font-black text-black uppercase tracking-tight mb-6">
+                  Mission Statement
+                </h2>
+                <VideoEmbed 
+                  url={trainer.mission_video_url}
+                  title={`${trainer.first_name} - Mission Statement`}
+                  className="shadow-xl"
+                />
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </section>}
+        </section>
+      )}
 
       {/* CTA */}
       <section className="py-20 bg-zinc-950">
