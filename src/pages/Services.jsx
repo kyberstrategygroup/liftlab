@@ -76,7 +76,7 @@ const services = [
     ],
     pricing: '$100 biweekly',
     pricingNote: 'Professional guidance for independent gym-goers',
-    image: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=800&q=80',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/e32a9622a_DSC02371_1bluoptimized.jpg',
     popular: false,
     outbound_link: ''
   },
