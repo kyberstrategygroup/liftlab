@@ -37,7 +37,7 @@ const services = [
     ],
     pricing: '$5.99 biweekly membership, $65-$75 per 1 hr session',
     pricingNote: 'Fully personalized, one-on-one coaching',
-    image: 'https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?w=800&q=80',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/0d3da6853_unnamed1.jpg',
     popular: false,
     outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/6132273789a6d431294e39be'
   },
