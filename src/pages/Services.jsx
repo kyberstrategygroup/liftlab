@@ -2,10 +2,27 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import SectionHeading from '@/components/ui/SectionHeading';
 import CTAButton from '@/components/ui/CTAButton';
-import { Users, User, Globe, Check, Activity, Key, Clock } from 'lucide-react';
+import { Calendar, Users, User, Globe, Check, Activity, Key, Clock } from 'lucide-react';
 import { trackMetaEvent } from '@/components/utils/metaPixel';
 
 const services = [
+  {
+    id: 'day-pass',
+    icon: Calendar,
+    title: 'Day Pass',
+    description: "Train on your schedule with a Day Pass that gives you 24 hours of full gym access.",
+    features: [
+      'Good for 24 Hours from Time of Purchase',
+      '24/7 Access',
+      'No commitment',
+      'Great for hectic schedules'
+    ],
+    pricing: '$15.99 per session',
+    pricingNote: '24 Hour day pass',
+    image: 'https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?w=800&q=80',
+    popular: false,
+    outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/65afed9d512cc31b03d26a93'
+  },
   {
     id: 'private',
     icon: User,
