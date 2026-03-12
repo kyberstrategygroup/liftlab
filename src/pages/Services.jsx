@@ -227,7 +227,7 @@ export default function Services() {
                   )}
 
                   {service.guarantee && (
-                    <div className="mb-6 p-4 bg-blue-50 border-l-4 border-blue-600">
+                    <div className="mb-4 p-4 bg-blue-50 border-l-4 border-blue-600">
                       <p className="text-sm font-bold text-blue-900 uppercase tracking-wider">
                         {service.guarantee}
                       </p>
