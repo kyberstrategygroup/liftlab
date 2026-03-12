@@ -124,7 +124,7 @@ export default function TrainerDetail() {
               </h1>
 
               <div className="prose prose-invert prose-lg max-w-none mb-8">
-                {trainer.bio.split('\n\n').map((paragraph, index) => (
+                {trainer.bio.split('\n\n\n').map((paragraph, index) => (
                   <p key={index} className="text-zinc-300">
                     {paragraph}
                   </p>
