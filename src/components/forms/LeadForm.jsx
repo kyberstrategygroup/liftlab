@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { base44 } from '@/api/base44Client';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Loader2, CheckCircle, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { trackMetaEvent } from '@/components/utils/metaPixel';
@@ -10,13 +11,15 @@ export default function LeadForm({
   sourcePage = "unknown",
   dark = true,
   onSuccess,
-  className = ""
+  className = "",
+  showLabTechDropdown = false
 }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    commitment: ''
+    commitment: '',
+    preferred_lab_tech: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -102,12 +105,29 @@ export default function LeadForm({
               className={inputClasses}
             />
             <Input
-              type="text"
-              placeholder="I'm committed to achieving... (optional)"
-              value={formData.commitment}
-              onChange={(e) => setFormData({ ...formData, commitment: e.target.value })}
-              className={inputClasses}
+             type="text"
+             placeholder="I'm committed to achieving... (optional)"
+             value={formData.commitment}
+             onChange={(e) => setFormData({ ...formData, commitment: e.target.value })}
+             className={inputClasses}
             />
+            {showLabTechDropdown && (
+             <Select
+               value={formData.preferred_lab_tech}
+               onValueChange={(value) => setFormData({ ...formData, preferred_lab_tech: value })}
+             >
+               <SelectTrigger className={inputClasses}>
+                 <SelectValue placeholder="Preferred Lab Tech (optional)" />
+               </SelectTrigger>
+               <SelectContent>
+                 <SelectItem value="Ashley M">Ashley M</SelectItem>
+                 <SelectItem value="Ashley H">Ashley H</SelectItem>
+                 <SelectItem value="Colin">Colin</SelectItem>
+                 <SelectItem value="Stephen">Stephen</SelectItem>
+                 <SelectItem value="Unsure">Unsure</SelectItem>
+               </SelectContent>
+             </Select>
+            )}
             <Button
               type="submit"
               disabled={isSubmitting}
