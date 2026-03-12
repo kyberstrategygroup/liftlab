@@ -50,6 +50,21 @@ const trainersData = {
     why_story_video_url: 'https://www.youtube.com/watch?v=rumoervg8Ec',
     mission_video_url: 'https://www.youtube.com/watch?v=V419iRu5IJo',
     instagram: 'a_macs_lifestyle',
+  },
+  'coach-4': {
+    first_name: 'Ashley Howatt',
+    title: 'Senior Coach',
+    headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/859995a8b_profileashH.jpg',
+    bio: "Ashley Howatt is a Senior Coach at LiftLab with a strong academic and practical foundation in human movement and holistic health. With a BSc in Human Kinetics and multiple certifications, she brings a science-backed, whole-person approach to her coaching.\n\nAshley specializes in the Health archetype with a secondary focus in Fitness, helping clients build sustainable strength, improve their quality of life, and develop lasting healthy habits. Her calm and knowledgeable coaching style makes her an excellent guide for anyone on a health-first journey.",
+    credentials: [
+      { name: 'BSc in Human Kinetics', location: '' },
+      { name: 'CSEP Certified Personal Trainer', location: 'Canadian Society for Exercise Physiology' },
+      { name: 'Level 2 Practitioner', location: 'CHEK Institute' },
+      { name: 'Holistic Lifestyle Coach', location: 'CHEK Institute' }
+    ],
+    why_story_video_url: '',
+    mission_video_url: '',
+    instagram: 'h3o2training',
   }
 };
 

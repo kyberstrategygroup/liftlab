@@ -31,6 +31,14 @@ const trainers = [
     headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/681641156_profileAshleyIG.png',
     instagram: 'a_macs_lifestyle',
     linkedin: '#'
+  },
+  {
+    id: 'coach-4',
+    first_name: 'Ashley H.',
+    title: 'Senior Coach',
+    headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/859995a8b_profileashH.jpg',
+    instagram: 'h3o2training',
+    linkedin: '#'
   }
 ];
 
