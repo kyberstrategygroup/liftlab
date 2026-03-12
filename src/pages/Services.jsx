@@ -252,6 +252,33 @@ export default function Services() {
                       {service.pricing ? 'Start Now' : 'Get Started'}
                     </CTAButton>
                   )}
+
+                  {service.pricing_2 && (
+                    <div className="mb-6">
+                      <p className="text-2xl font-black text-black uppercase tracking-tight">
+                        {service.pricing_2}
+                      </p>
+                    </div>
+                  )}
+
+                  {service.outbound_link_2 ? (
+                    <CTAButton 
+                      to={service.outbound_link_2} 
+                      variant="primary"
+                      external={true}
+                      onClick={() => trackMetaEvent('ViewContent', {
+                        content_name: service.title,
+                        content_category: 'Service',
+                        content_type: 'service'
+                      })}
+                    >
+                      {service.pricing_2 ? 'Start Now' : 'Get Started'}
+                    </CTAButton>
+                  ) : (
+                    <CTAButton to={service.pricing_2 ? "StartNow#ready" : "StartNow"} variant="primary">
+                      {service.pricing_2 ? 'Start Now' : 'Get Started'}
+                    </CTAButton>
+                  )}
                 </div>
               </motion.div>
             ))}
