@@ -261,7 +261,7 @@ export default function Services() {
                     </div>
                   )}
 
-                  {service.outbound_link_2 ? (
+                  {service.pricing_2 != null && service.outbound_link_2 != null ? (
                     <CTAButton 
                       to={service.outbound_link_2} 
                       variant="primary"
