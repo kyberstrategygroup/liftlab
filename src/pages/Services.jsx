@@ -19,7 +19,7 @@ const services = [
     ],
     pricing: '$15.99 per session',
     pricingNote: '24 Hour day pass',
-    image: 'https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?w=800&q=80',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/8e382405a_DSC02378_1bluoptimized.jpg',
     popular: false,
     outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/65afed9d512cc31b03d26a93'
   },
