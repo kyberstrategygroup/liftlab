@@ -111,9 +111,9 @@ export default function Team() {
 
                 {/* Social Links */}
                 <div className="flex gap-3">
-                  {trainer.instagram && (
+                  {(trainer.instagram || trainer.instagram_url) && (
                     <a 
-                      href={`https://instagram.com/${trainer.instagram}`}
+                      href={trainer.instagram_url || `https://instagram.com/${trainer.instagram}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-9 h-9 bg-blue-600 hover:bg-zinc-100 hover:text-white flex items-center justify-center transition-all"
