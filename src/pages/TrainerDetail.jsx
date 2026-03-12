@@ -13,7 +13,7 @@ const trainersData = {
     first_name: 'Stephen Radecki',
     title: 'Owner/Senior Coach',
     headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/730038021_stephen2opt.jpg',
-    bio: "Stephen is a seasoned strength and conditioning coach with over a decade of experience helping athletes and fitness enthusiasts reach their full potential. His coaching philosophy centers around individualized programming, ensuring that each member's unique goals and needs are met.\n\nStephen's expertise spans powerlifting, Olympic lifting, and general strength training. He is passionate about educating members on proper technique and programming to foster long-term progress and injury prevention.",
+    bio: "Stephen is a seasoned strength and conditioning coach with over a decade of experience helping athletes and fitness enthusiasts reach their full potential. His coaching philosophy centers around individualized programming, ensuring that each member's unique goals and needs are met.\\n\\nStephen's expertise spans powerlifting, Olympic lifting, and general strength training. He is passionate about educating members on proper technique and programming to foster long-term progress and injury prevention.",
     credentials: [
       { name: 'Diploma, Fitness and Health Promotion', location: 'St. Lawrence College' },
       { name: 'Certified Personal Trainer', location: 'American College of Sports Medicine' },
@@ -28,7 +28,7 @@ const trainersData = {
     first_name: 'Colin Roberts',
     title: 'Senior Coach',
     headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/2aefb96a0_colinopt.jpg',
-    bio: "Senior Coach and Owner/Operator of Paradox Kinetics\n\nMy promise is simple: a bespoke training experience designed for aspirational people.\n\n\nIn many Eastern traditions, a \"Way\" signifies the integration of multiple practices into a harmonious lifestyle. This philosophy inspires my approach to coaching: I believe that having a fitness practice is a comprehensive Way of Training that deeply connects you with yourself and your potential. It's a powerful catalyst for personal growth and enhanced human agency.\n\n\nMy goal is to fully engage you in this Way. We'll approach your training with the focus and commitment as if your life depends on it – because, in many ways, it does. This isn't just about food and exercise; it's about building a sustainable approach to well-being that empowers you in every aspect of your agency.\n\n\nIt’s time. Ignite your spirit, unleash your creativity and challenge your goals",
+    bio: "Senior Coach and Owner/Operator of Paradox Kinetics\\n\\nMy promise is simple: a bespoke training experience designed for aspirational people.\\n\\nIn many Eastern traditions, a \"Way\" signifies the integration of multiple practices into a harmonious lifestyle. This philosophy inspires my approach to coaching: I believe that having a fitness practice is a comprehensive Way of Training that deeply connects you with yourself and your potential. It's a powerful catalyst for personal growth and enhanced human agency.\\n\\nMy goal is to fully engage you in this Way. We'll approach your training with the focus and commitment as if your life depends on it – because, in many ways, it does. This isn't just about food and exercise; it's about building a sustainable approach to well-being that empowers you in every aspect of your agency.\\n\\nIt’s time. Ignite your spirit, unleash your creativity and challenge your goals",
     credentials: [
       { name: 'Diploma, Fitness and Health Promotion', location: 'St. Lawrence College' }
     ],
@@ -40,7 +40,7 @@ const trainersData = {
     first_name: 'Ashley MacDonald',
     title: 'Junior Coach',
     headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/07bac34a1_ashoptimized.jpg',
-    bio: "Working out is hard, but never moving makes life a lot harder.\n\n\nI help a variety of people overcome common hurdles, to build healthy bodies and mentality, inside and outside of the gym!\n\n\nWith six years of experience coaching dozens of clients to get back in shape, let me be your guide to nourish your body and mind to become to strongest version of you yet!",
+    bio: "Working out is hard, but never moving makes life a lot harder.\\n\\nI help a variety of people overcome common hurdles, to build healthy bodies and mentality, inside and outside of the gym!\\n\\nWith six years of experience coaching dozens of clients to get back in shape, let me be your guide to nourish your body and mind to become to strongest version of you yet!",
     credentials: [
       { name: 'Diploma, Fitness and Health Promotion', location: 'St. Lawrence College' },
       { name: 'Certified Fitness Leader: Gold (Personal Training / Spin / Group Fitness)', location: 'Ontario Fitness Council' },
@@ -55,7 +55,7 @@ const trainersData = {
     first_name: 'Ashley Howatt',
     title: 'Senior Coach',
     headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/859995a8b_profileashH.jpg',
-    bio: "Ashley Howatt is a Senior Coach at LiftLab with a strong academic and practical foundation in human movement and holistic health. With a BSc in Human Kinetics and multiple certifications, she brings a science-backed, whole-person approach to her coaching.\n\nAshley specializes in the Health archetype with a secondary focus in Fitness, helping clients build sustainable strength, improve their quality of life, and develop lasting healthy habits. Her calm and knowledgeable coaching style makes her an excellent guide for anyone on a health-first journey.",
+    bio: "Ashley Howatt is a Senior Coach at LiftLab with a strong academic and practical foundation in human movement and holistic health. With a BSc in Human Kinetics and multiple certifications, she brings a science-backed, whole-person approach to her coaching.\\n\\nAshley specializes in the Health archetype with a secondary focus in Fitness, helping clients build sustainable strength, improve their quality of life, and develop lasting healthy habits. Her calm and knowledgeable coaching style makes her an excellent guide for anyone on a health-first journey.",
     credentials: [
       { name: 'BSc in Human Kinetics', location: '' },
       { name: 'CSEP Certified Personal Trainer', location: 'Canadian Society for Exercise Physiology' },
@@ -124,7 +124,7 @@ export default function TrainerDetail() {
               </h1>
 
               <div className="prose prose-invert prose-lg max-w-none mb-8">
-                {trainer.bio.split('\n\n\n').map((paragraph, index) => (
+                {trainer.bio.split('\n\n').map((paragraph, index) => (
                   <p key={index} className="text-zinc-300">
                     {paragraph}
                   </p>
