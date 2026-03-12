@@ -129,7 +129,7 @@ export default function TrainerDetail() {
     .split(/\n\s*\n/)
     .filter(Boolean)
     .map((paragraph, index) => (
-      <p key={index} className="text-zinc-300">
+      <p key={index} className="text-zinc-300 mt-10">
         {paragraph}
       </p>
     ))}
