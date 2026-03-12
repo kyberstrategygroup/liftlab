@@ -7,25 +7,6 @@ import { trackMetaEvent } from '@/components/utils/metaPixel';
 
 const services = [
   {
-    id: 'mvmt-tuneup',
-    icon: Activity,
-    title: 'MVMNT TUNE-UP',
-    description: "A 3-session movement tune-up designed as a pit stop for your training, your sport, or your lifestyle. Focused on identifying and addressing movement limitations before they become training problems.",
-    features: [
-      'Posture',
-      'Mobility',
-      'Joint stability',
-      'Gait',
-      'Breath strategy',
-      'Foot mechanics'
-    ],
-    pricing: '3 Sessions — $199.99',
-    guarantee: 'Better mobility and posture — or your money back.',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/fb2be8da2_poster.png',
-    popular: false,
-    featured: true
-  },
-  {
     id: 'private',
     icon: User,
     title: 'Private Training',
@@ -112,6 +93,25 @@ const services = [
     image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80',
     popular: false,
     outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/6132272689a6d431294e39bd'
+  },
+  {
+    id: 'mvmt-tuneup',
+    icon: Activity,
+    title: 'MVMNT TUNE-UP',
+    description: "A 3-session movement tune-up designed as a pit stop for your training, your sport, or your lifestyle. Focused on identifying and addressing movement limitations before they become training problems.",
+    features: [
+      'Posture',
+      'Mobility',
+      'Joint stability',
+      'Gait',
+      'Breath strategy',
+      'Foot mechanics'
+    ],
+    pricing: '3 Sessions — $199.99',
+    guarantee: 'Better mobility and posture — or your money back.',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/fb2be8da2_poster.png',
+    popular: false,
+    featured: true
   }
 ];
 
