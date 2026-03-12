@@ -12,7 +12,7 @@ const trainersData = {
   'coach-1': {
     first_name: 'Stephen Radecki',
     title: 'Owner/Senior Coach',
-    headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/730038021_stephen2opt.jpg',
+    headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/8fad8d44f_stephen1.jpg',
     bio: "You lack the timenergy to pursue the things in life that you care about - and don't even know you might\\n\\nMy task is to help you win it back through fitness.\\n\\nWe won’t get there by chasing extremes or perfection, but through data-driven strength training, biomechanics and postural correction.\\n\\nWith me you’ll gain the tools to become more conscious, capable, driven, formidable, and look good doing it.",
     credentials: [
       { name: 'Diploma, Fitness and Health Promotion', location: 'St. Lawrence College' },
