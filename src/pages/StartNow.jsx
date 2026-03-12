@@ -12,7 +12,7 @@ const archetypes = [
     icon: Target,
     title: 'Health',
     subtitle: 'Foundation First',
-    description: "You want to look good, feel good and support your lifestyle through movement.\n\nYou're not after extreme transformations or performance. You're after longevity, balance & benefits.\n\nYour training is a fun, inclusive, energizing and challenging reprieve from the stresses of life.\n\nIf this is you, we recommend working with Ashley or Stephen",
+    description: "You want to look good, feel good and support your lifestyle through movement.\n\nYou're not after extreme transformations or performance. You're after longevity, balance & benefits.\n\nYour training is a fun, inclusive, energizing and challenging reprieve from the stresses of life.\n\nIf this is you, we recommend working with Ashley H, Ashley M, or Stephen",
     color: 'bg-emerald-600',
     borderColor: 'border-emerald-500',
     href: 'https://www.youtube.com/watch?v=ugvmec8eZ5k'
@@ -22,7 +22,7 @@ const archetypes = [
     icon: Dumbbell,
     title: 'Fitness',
     subtitle: 'Balanced Performance',
-    description: "Your training is more than just maintenance. You have goals that require programming and process.\n\nIf you're looking to change your body shape and composition, become resilient to life's challenges, or to prepare for your next adventure - we've got you covered.\n\nIf this is you, we recommend working with: Ashley, Colin, Stephen",
+    description: "Your training is more than just maintenance. You have goals that require programming and process.\n\nIf you're looking to change your body shape and composition, become resilient to life's challenges, or to prepare for your next adventure - we've got you covered.\n\nIf this is you, we recommend working with Ashley H, Ashley M, Colin, or Stephen",
     color: 'bg-blue-600',
     borderColor: 'border-blue-500',
     href: 'https://www.youtube.com/watch?v=s5Q-ylXcHgM'
