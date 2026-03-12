@@ -35,7 +35,7 @@ const services = [
       'Priority booking access',
       'Direct coach communication'
     ],
-    pricing: '$5.99 biweekly, $65-$100 per session',
+    pricing: '$5.99 biweekly membership, $65-$75 per 1 hr session',
     pricingNote: 'Fully personalized, one-on-one coaching',
     image: 'https://images.unsplash.com/photo-1597452485669-2c7bb5fef90d?w=800&q=80',
     popular: false,
@@ -50,8 +50,9 @@ const services = [
       'Personalized program within group setting',
       'Coach-to-athlete ratio never exceeds 1:4',
       'Flexible scheduling with multiple time slots',
-      'Access to all training archetypes',
-      'Progress tracking and regular assessments'
+      'Progress tracking and regular assessments',
+      'Everyone gets 2 weeks of private training upfront at no extra cost',
+      'Different class options for different fitness levels and goals and training Archetypes'
     ],
     pricing: '2 sessions per week — $160 biweekly',
     pricingNote: 'Best value option for coached training in a small-group setting',
