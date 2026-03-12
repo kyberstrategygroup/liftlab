@@ -110,7 +110,7 @@ export default function LeadForm({
                onValueChange={(value) => setFormData({ ...formData, preferred_lab_tech: value })}
              >
                <SelectTrigger className={inputClasses}>
-                 <SelectValue placeholder="Preferred Lab Tech (optional)" />
+                 <SelectValue placeholder="Preferred Lab Tech" />
                </SelectTrigger>
                <SelectContent>
                  <SelectItem value="Ashley M">Ashley M</SelectItem>
