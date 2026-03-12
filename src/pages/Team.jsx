@@ -26,7 +26,7 @@ const trainers = [
   },
   {
     id: 'coach-3',
-    first_name: 'Ashley',
+    first_name: 'Ashley M.',
     title: 'Junior Coach',
     headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/681641156_profileAshleyIG.png',
     instagram: 'a_macs_lifestyle',
