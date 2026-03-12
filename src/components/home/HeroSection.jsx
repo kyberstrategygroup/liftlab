@@ -50,8 +50,7 @@ export default function HeroSection({ onOpenChallenge }) {
           </p>
           
           <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-xl mx-auto mb-8 md:mb-10 px-4">
-            Private, Semi-Private and Remote coaching. Individualized programming. 
-            A community built on accountability, not hype.
+            Private, Semi-Private and Remote coaching. Solo memberships. 24 hours. Community built on accountability, not hype.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
