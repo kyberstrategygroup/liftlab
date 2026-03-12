@@ -20,7 +20,7 @@ const trainers = [
     id: 'coach-2',
     first_name: 'Colin',
     title: 'Senior Coach',
-    headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/c0dfd19a0_profileColinIG.png',
+    headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/547d5e4e4_profilecolin.jpg',
     instagram: 'colin.roberts.7',
     linkedin: '#'
   },
