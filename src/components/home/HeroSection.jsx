@@ -46,7 +46,7 @@ export default function HeroSection({ onOpenChallenge }) {
           </h1>
           
           <p className="text-lg sm:text-xl md:text-2xl text-zinc-300 max-w-2xl mx-auto mb-3 md:mb-4 font-light px-4">
-            Where Serious Training Happens
+            Where Training Makes Impact
           </p>
           
           <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-xl mx-auto mb-8 md:mb-10 px-4">
