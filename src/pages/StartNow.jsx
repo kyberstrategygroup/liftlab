@@ -86,7 +86,7 @@ export default function StartNow() {
                 Fill out the form below and a coach will reach out within 24 hours to schedule your consultation.
               </p>
 
-              <LeadForm sourcePage="start-now" dark={true} />
+              <LeadForm sourcePage="start-now" dark={true} showLabTechDropdown={true} />
 
               <p className="mt-6 text-sm text-zinc-500">
                 Questions? Email us at{' '}
