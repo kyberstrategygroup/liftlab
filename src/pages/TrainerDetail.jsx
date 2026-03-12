@@ -215,7 +215,7 @@ export default function TrainerDetail() {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* CTA */}
       <section className="py-20 bg-zinc-950">
