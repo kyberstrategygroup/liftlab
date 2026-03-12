@@ -93,7 +93,7 @@ const services = [
       'Train at your own pace'
     ],
     pricing: '$29.99 (biweekly)',
-    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80',
+    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/0bb90df39_coveroptimized.jpg',
     popular: false,
     outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/66049a21f7a31a735a8857ee'
   },
