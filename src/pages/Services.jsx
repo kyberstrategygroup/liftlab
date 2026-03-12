@@ -54,11 +54,13 @@ const services = [
       'Everyone gets 2 weeks of private training upfront at no extra cost',
       'Different class options for different fitness levels and goals and training Archetypes'
     ],
-    pricing: '2 sessions per week — $160 biweekly',
+    pricing: '2 sessions per week — $80/week',
     pricingNote: 'Best value option for coached training in a small-group setting',
     image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80',
     popular: true,
-    outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695820fa29c17ae187c8e4b8'
+    outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695820fa29c17ae187c8e4b8',
+    pricing_2: '3 sessions per week — $115/week',
+    outbound_link_2: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695f3356de70e103e4b27af3'
   },
   {
     id: 'remote',
