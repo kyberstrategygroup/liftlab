@@ -172,7 +172,7 @@ export default function TrainerDetail() {
       </section>
 
       {/* Videos */}
-      <section className="py-24 md:py-32 bg-white">
+      {(trainer.why_story_video_url || trainer.mission_video_url) && <section className="py-24 md:py-32 bg-white">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Why Story */}
