@@ -253,7 +253,7 @@ export default function Services() {
                     </CTAButton>
                   )}
 
-                  {service.pricing_2 && (
+                  {service.pricing_2 != null && (
                     <div className="mb-6">
                       <p className="text-2xl font-black text-black uppercase tracking-tight">
                         {service.pricing_2}
