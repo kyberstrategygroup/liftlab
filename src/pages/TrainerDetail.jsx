@@ -54,7 +54,7 @@ const trainersData = {
   'coach-4': {
     first_name: 'Ashley Howatt',
     title: 'Senior Coach',
-    headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/859995a8b_profileashH.jpg',
+    headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/ef855e7e8_ashhoptimized.jpg',
     bio: "Ashley Howatt is a Senior Coach at LiftLab with a strong academic and practical foundation in human movement and holistic health. With a BSc in Human Kinetics and multiple certifications, she brings a science-backed, whole-person approach to her coaching.\\n\\nAshley specializes in the Health archetype with a secondary focus in Fitness, helping clients build sustainable strength, improve their quality of life, and develop lasting healthy habits. Her calm and knowledgeable coaching style makes her an excellent guide for anyone on a health-first journey.",
     credentials: [
       { name: 'BSc in Human Kinetics', location: '' },
