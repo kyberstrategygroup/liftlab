@@ -12,7 +12,7 @@ const trainers = [
     id: 'coach-1',
     first_name: 'Stephen',
     title: 'Owner/Senior Coach',
-    headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/255370ca0_profileStephenIG2.png',
+    headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/031025eb3_profilestephen.jpg',
     instagram: 'coach.stephen.wrt',
     linkedin: '#'
   },
