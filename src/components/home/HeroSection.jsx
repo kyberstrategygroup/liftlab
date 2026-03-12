@@ -61,16 +61,6 @@ export default function HeroSection({ onOpenChallenge }) {
               Meet The Coaches
             </CTAButton>
           </div>
-
-          {/* 8-Week Challenge Button */}
-          <div className="mt-6 md:mt-8 px-4">
-            <button
-              onClick={onOpenChallenge}
-              className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-green-600 hover:bg-green-500 text-white font-bold uppercase tracking-wider text-xs sm:text-sm transition-all duration-300 hover:shadow-lg hover:shadow-green-600/25"
-            >
-              🔥 Apply for Win your money back promo
-            </button>
-          </div>
         </motion.div>
       </div>
 
