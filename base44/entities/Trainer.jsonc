@@ -1,0 +1,58 @@
+{
+  "name": "Trainer",
+  "type": "object",
+  "properties": {
+    "first_name": {
+      "type": "string",
+      "description": "Trainer's first name"
+    },
+    "title": {
+      "type": "string",
+      "enum": [
+        "Founder",
+        "Senior Coach",
+        "Junior Coach"
+      ],
+      "description": "Role/title"
+    },
+    "bio": {
+      "type": "string",
+      "description": "Trainer biography"
+    },
+    "credentials": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of certifications and credentials"
+    },
+    "headshot_url": {
+      "type": "string",
+      "description": "URL to trainer headshot image"
+    },
+    "why_story_video_url": {
+      "type": "string",
+      "description": "YouTube embed URL for Why Story"
+    },
+    "mission_video_url": {
+      "type": "string",
+      "description": "YouTube embed URL for Mission Statement"
+    },
+    "instagram": {
+      "type": "string",
+      "description": "Instagram handle"
+    },
+    "linkedin": {
+      "type": "string",
+      "description": "LinkedIn profile URL"
+    },
+    "display_order": {
+      "type": "number",
+      "description": "Order to display on team page"
+    }
+  },
+  "required": [
+    "first_name",
+    "title"
+  ]
+}

@@ -1,293 +1,420 @@
-import { createClientFromRequest } from 'npm:@base44/sdk@0.8.6';
-import ICAL from 'npm:ical.js@2.1.0';
+import { createClientFromRequest } from 'npm:@base44/sdk@0.8.25';
 
-const ICAL_URL = 'https://calendar.google.com/calendar/ical/9a1a1c7fc5a02f07c4b1d037f59bce3affddf48b41afb8ca7b3cfc887977b3e3%40group.calendar.google.com/public/basic.ics';
+// The two Google Calendar IDs powering the appointment schedules
+const CALENDARS = [
+  {
+    id: 'kyberstrategygroup@gmail.com',
+    coach: 'Stephen Radecki'
+  },
+  {
+    id: 'info@rideaufitco.ca',
+    coach: 'Ashley Howatt'
+  }
+];
+
+const TORONTO_TZ = 'America/Toronto';
+const SLOT_DURATION_MINUTES = 30;
 
 Deno.serve(async (req) => {
-    try {
-        const base44 = createClientFromRequest(req);
-        const { action, ...params } = await req.json();
+  try {
+    const base44 = createClientFromRequest(req);
+    const body = await req.json();
+    const { action, ...params } = body;
 
-        if (action === 'getAvailability') {
-            return await getAvailability(base44, params);
-        } else if (action === 'createBooking') {
-            return await createBooking(base44, params);
-        }
-
-        return Response.json({ error: 'Invalid action' }, { status: 400 });
-    } catch (error) {
-        return Response.json({ error: error.message }, { status: 500 });
+    if (action === 'getAvailability') {
+      return await getAvailability(base44, params);
+    } else if (action === 'createBooking') {
+      return await createBooking(base44, params);
+    } else if (action === 'getCalendarIds') {
+      return await getCalendarIds(base44);
     }
+
+    return Response.json({ error: 'Invalid action' }, { status: 400 });
+  } catch (error) {
+    console.error('bookingCalendar error:', error);
+    return Response.json({ error: error.message }, { status: 500 });
+  }
 });
 
-async function getAvailability(base44, { date }) {
-    try {
-        // Fetch booked events from public iCal feed
-        const response = await fetch(ICAL_URL);
-        const icalData = await response.text();
-        
-        const jcalData = ICAL.parse(icalData);
-        const comp = new ICAL.Component(jcalData);
-        const vevents = comp.getAllSubcomponents('vevent');
-        
-        const bookedSlots = vevents.map(vevent => {
-            const event = new ICAL.Event(vevent);
-            return {
-                start: event.startDate.toJSDate().toISOString(),
-                end: event.endDate.toJSDate().toISOString()
-            };
+async function getAuthHeader(base44) {
+  const { accessToken } = await base44.asServiceRole.connectors.getConnection('googlecalendar');
+  return { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' };
+}
+
+// Helper: discover actual calendar IDs by listing calendars and finding appointment schedules
+async function getCalendarIds(base44) {
+  const headers = await getAuthHeader(base44);
+  const res = await fetch('https://www.googleapis.com/calendar/v3/users/me/calendarList?maxResults=250', { headers });
+  const data = await res.json();
+  return Response.json({ calendars: data.items || [] });
+}
+
+async function getAvailability(base44, { date, calendarIds }) {
+  const headers = await getAuthHeader(base44);
+
+  // Use the provided calendarIds or fall back to defaults
+  const cals = calendarIds && calendarIds.length > 0
+    ? calendarIds.map(id => ({ id, coach: 'Unknown' }))
+    : CALENDARS;
+
+  // Build day boundaries in Toronto time
+  const dayStart = torontoMidnight(date);
+  const dayEnd = new Date(dayStart);
+  dayEnd.setDate(dayEnd.getDate() + 1);
+
+  // Query freebusy for all calendars to find blocked times
+  const freebusyBody = {
+    timeMin: dayStart.toISOString(),
+    timeMax: dayEnd.toISOString(),
+    timeZone: TORONTO_TZ,
+    items: cals.map(c => ({ id: c.id }))
+  };
+
+  const fbRes = await fetch('https://www.googleapis.com/calendar/v3/freeBusy', {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(freebusyBody)
+  });
+
+  if (!fbRes.ok) {
+    const err = await fbRes.text();
+    console.error('FreeBusy error:', err);
+    // Fallback: try to fetch events from each calendar
+    return await getAvailabilityFromEvents(base44, headers, cals, dayStart, dayEnd);
+  }
+
+  const fbData = await fbRes.json();
+
+  // Also fetch actual appointment schedule events to find available windows
+  // Google Appointment Schedules create "Open appointment slots" as events with specific format
+  const allSlots = [];
+  
+  for (const cal of cals) {
+    const busyPeriods = (fbData.calendars?.[cal.id]?.busy) || [];
+    const slots = await getSlotsForCalendar(headers, cal, dayStart, dayEnd, busyPeriods);
+    allSlots.push(...slots);
+  }
+
+  // Sort by time and deduplicate
+  allSlots.sort((a, b) => new Date(a.start) - new Date(b.start));
+  const unique = deduplicateSlots(allSlots);
+
+  return Response.json({ availableSlots: unique });
+}
+
+async function getSlotsForCalendar(headers, cal, dayStart, dayEnd, busyPeriods) {
+  // Fetch all events for this calendar on this day to find appointment slot openings
+  const eventsUrl = new URL(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(cal.id)}/events`);
+  eventsUrl.searchParams.set('timeMin', dayStart.toISOString());
+  eventsUrl.searchParams.set('timeMax', dayEnd.toISOString());
+  eventsUrl.searchParams.set('singleEvents', 'true');
+  eventsUrl.searchParams.set('maxResults', '250');
+
+  const evRes = await fetch(eventsUrl.toString(), { headers });
+  if (!evRes.ok) {
+    console.error(`Events fetch error for ${cal.id}:`, await evRes.text());
+    return [];
+  }
+
+  const evData = await evRes.json();
+  const events = evData.items || [];
+
+  // Look for appointment availability windows (Google creates "Open slots" or "Appointment slot" events)
+  // These typically have eventType = 'outOfOffice' for blocks, or the schedule creates slot events
+  // For appointment schedules, available slots appear as events with status='tentative' or specific titles
+  // Also check for working hours / appointment slot openings
+  
+  // Strategy: generate 30-min slots within business hours, then remove busy ones
+  // If we find appointment slot events, use those windows instead
+  
+  const appointmentSlotEvents = events.filter(e => 
+    e.eventType === 'workingLocation' ||
+    (e.summary && (
+      e.summary.toLowerCase().includes('appointment') ||
+      e.summary.toLowerCase().includes('available') ||
+      e.summary.toLowerCase().includes('open')
+    ))
+  );
+
+  let availableWindows = [];
+
+  if (appointmentSlotEvents.length > 0) {
+    // Use the appointment slot events as available windows
+    availableWindows = appointmentSlotEvents.map(e => ({
+      start: new Date(e.start.dateTime || e.start.date),
+      end: new Date(e.end.dateTime || e.end.date)
+    }));
+  } else {
+    // Fall back to generating slots within the appointment schedule's working hours
+    // Default: 9 AM - 5 PM Toronto time, 30-min slots
+    const windowStart = new Date(dayStart);
+    const windowEnd = new Date(dayStart);
+    setTorontoTime(windowStart, 9, 0);
+    setTorontoTime(windowEnd, 17, 0);
+    availableWindows = [{ start: windowStart, end: windowEnd }];
+  }
+
+  const slots = [];
+  const now = new Date();
+
+  for (const window of availableWindows) {
+    const current = new Date(window.start);
+    while (current < window.end) {
+      const slotEnd = new Date(current);
+      slotEnd.setMinutes(slotEnd.getMinutes() + SLOT_DURATION_MINUTES);
+
+      if (slotEnd > window.end) break;
+
+      // Skip past slots
+      if (current <= now) {
+        current.setMinutes(current.getMinutes() + SLOT_DURATION_MINUTES);
+        continue;
+      }
+
+      // Check against busy periods
+      const isBusy = busyPeriods.some(busy => {
+        const bs = new Date(busy.start);
+        const be = new Date(busy.end);
+        // 10-min buffer
+        bs.setMinutes(bs.getMinutes() - 10);
+        be.setMinutes(be.getMinutes() + 10);
+        return current < be && slotEnd > bs;
+      });
+
+      if (!isBusy) {
+        slots.push({
+          start: current.toISOString(),
+          end: slotEnd.toISOString(),
+          calendarId: cal.id,
+          coach: cal.coach
         });
+      }
 
-        // Parse target date
-        const targetDate = new Date(date);
-        
-        // Generate available slots (9 AM - 8 PM, 30-min slots, 10-min buffer)
-        const availableSlots = generateTimeSlots(targetDate, bookedSlots);
-
-        return Response.json({ availableSlots });
-    } catch (error) {
-        console.error('Error fetching iCal:', error);
-        // Fallback to empty booked slots if iCal fetch fails
-        const targetDate = new Date(date);
-        const availableSlots = generateTimeSlots(targetDate, []);
-        return Response.json({ availableSlots });
+      current.setMinutes(current.getMinutes() + SLOT_DURATION_MINUTES);
     }
+  }
+
+  return slots;
 }
 
-function generateTimeSlots(date, bookedSlots) {
-    const slots = [];
-    const dayOfWeek = date.getDay();
+// Fallback: use events API directly if FreeBusy fails
+async function getAvailabilityFromEvents(base44, headers, cals, dayStart, dayEnd) {
+  const allSlots = [];
+  
+  for (const cal of cals) {
+    const slots = await getSlotsForCalendar(headers, cal, dayStart, dayEnd, []);
+    allSlots.push(...slots);
+  }
 
-    const offset = getUtcOffsetHours(date, 'America/Toronto');
-
-    // Toronto midnight in UTC
-    let startHour = (24 - offset) % 24;
-    // 11:30 PM Toronto = midnight + 23.5 hours
-    let endHour = startHour + 24; // use `< endHour` in loop
-
-    for (let hour = startHour; hour < endHour; hour++) {
-        for (let minute = 0; minute < 60; minute += 30) {
-            const slotStart = new Date(date);
-            slotStart.setHours(hour, minute, 0, 0);
-            
-            const slotEnd = new Date(slotStart);
-            slotEnd.setMinutes(slotEnd.getMinutes() + 30);
-
-            // Check if slot conflicts with booked times (including 10-min buffer)
-            const hasConflict = bookedSlots.some(booked => {
-                const bookedStart = new Date(booked.start);
-                const bookedEnd = new Date(booked.end);
-                
-                // Add 10-min buffer
-                bookedStart.setMinutes(bookedStart.getMinutes() - 10);
-                bookedEnd.setMinutes(bookedEnd.getMinutes() + 10);
-
-                return (slotStart < bookedEnd && slotEnd > bookedStart);
-            });
-
-            // Only include future slots
-            if (!hasConflict && slotStart > new Date()) {
-                slots.push(slotStart.toISOString());
-            }
-        }
-    }
-
-    return slots;
+  allSlots.sort((a, b) => new Date(a.start) - new Date(b.start));
+  return Response.json({ availableSlots: deduplicateSlots(allSlots) });
 }
 
-function getUtcOffsetHours(date, timeZone) {
-  const parts = new Intl.DateTimeFormat('en-US', {
-    timeZone,
+function deduplicateSlots(slots) {
+  const seen = new Set();
+  return slots.filter(slot => {
+    const key = slot.start;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function torontoMidnight(dateStr) {
+  // Parse YYYY-MM-DD and get midnight Toronto time as UTC
+  const [year, month, day] = dateStr.split('-').map(Number);
+  // Create date in Toronto timezone by formatting
+  const dt = new Date(`${dateStr}T00:00:00`);
+  // Use Intl to find the UTC equivalent of midnight in Toronto
+  const torontoMidnightStr = new Intl.DateTimeFormat('sv-SE', {
+    timeZone: TORONTO_TZ,
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit'
+  }).format(dt);
+  
+  // Build the date at Toronto midnight
+  // Simpler approach: use a fixed reference
+  const utcDate = new Date(`${dateStr}T00:00:00`);
+  // Get offset at that moment
+  const fmt = new Intl.DateTimeFormat('en-US', {
+    timeZone: TORONTO_TZ,
     hour: 'numeric',
-    hourCycle: 'h23'
-  }).formatToParts(date);
-
-  const localHour = Number(parts.find(p => p.type === 'hour').value);
-  const utcHour = date.getUTCHours();
-
-  let offset = localHour - utcHour;
-
-  // normalize to range -12..+14
-  if (offset < -12) offset += 24;
-  if (offset > 12) offset -= 24;
-
-  return offset;
+    hour12: false,
+    day: 'numeric'
+  });
+  
+  // Just create the date directly
+  const result = new Date(Date.UTC(year, month - 1, day, 5, 0, 0)); // 5 AM UTC = midnight EST (UTC-5)
+  // Adjust for DST: Toronto is UTC-4 in summer, UTC-5 in winter
+  // Use Intl to find actual offset
+  const testDate = new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
+  const torontoHour = parseInt(new Intl.DateTimeFormat('en-US', {
+    timeZone: TORONTO_TZ,
+    hour: 'numeric',
+    hour12: false
+  }).format(testDate));
+  const utcOffset = 12 - torontoHour; // hours behind UTC
+  
+  return new Date(Date.UTC(year, month - 1, day, utcOffset, 0, 0));
 }
 
-async function createBooking(base44, { serviceType, clientName, clientEmail, clientPhone, appointmentDate, notes }) {
-    const accessToken = await base44.asServiceRole.connectors.getAccessToken("googlecalendar");
-    
-    const startTime = new Date(appointmentDate);
-    const endTime = new Date(startTime);
-    endTime.setMinutes(endTime.getMinutes() + 30);
+function setTorontoTime(date, hour, minute) {
+  // Set the date to a specific hour/minute in Toronto time
+  // Get the date in Toronto
+  const dateStr = new Intl.DateTimeFormat('sv-SE', {
+    timeZone: TORONTO_TZ,
+    year: 'numeric', month: '2-digit', day: '2-digit'
+  }).format(date);
+  
+  // Get UTC offset for Toronto at this date
+  const testDate = new Date(`${dateStr}T12:00:00Z`);
+  const torontoHour = parseInt(new Intl.DateTimeFormat('en-US', {
+    timeZone: TORONTO_TZ,
+    hour: 'numeric',
+    hour12: false
+  }).format(testDate));
+  const utcOffset = 12 - torontoHour;
 
-    const eventSummary = `LiftLab ${serviceType} – ${clientName}`;
-    const eventDescription = `Client: ${clientName}\nEmail: ${clientEmail}\nPhone: ${clientPhone}\nService: ${serviceType}${notes ? `\n\nNotes: ${notes}` : ''}`;
-    const location = 'Phone Consultation';
-
-    // Create Google Calendar event
-    const event = {
-        summary: eventSummary,
-        description: eventDescription,
-        start: {
-            dateTime: startTime.toISOString(),
-            timeZone: 'America/Toronto'
-        },
-        end: {
-            dateTime: endTime.toISOString(),
-            timeZone: 'America/Toronto'
-        },
-        location: location,
-        reminders: {
-            useDefault: false,
-            overrides: [
-                { method: 'email', minutes: 24 * 60 },
-                { method: 'popup', minutes: 60 }
-            ]
-        }
-    };
-
-    const calendarResponse = await fetch(
-        'https://www.googleapis.com/calendar/v3/calendars/9a1a1c7fc5a02f07c4b1d037f59bce3affddf48b41afb8ca7b3cfc887977b3e3@group.calendar.google.com/events',
-        {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${accessToken}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(event)
-        }
-    );
-
-    if (!calendarResponse.ok) {
-        const errorText = await calendarResponse.text();
-        throw new Error(`Failed to create calendar event: ${errorText}`);
-    }
-
-    const calendarEvent = await calendarResponse.json();
-
-    // Save booking to database
-    const booking = await base44.asServiceRole.entities.Booking.create({
-        service_type: serviceType,
-        client_name: clientName,
-        client_email: clientEmail,
-        client_phone: clientPhone,
-        appointment_date: appointmentDate,
-        duration_minutes: 30,
-        google_calendar_event_id: calendarEvent.id,
-        status: 'confirmed',
-        notes: notes || ''
-    });
-
-    // Generate iCal file content
-    const icsContent = generateICS({
-        summary: eventSummary,
-        description: eventDescription,
-        location: location,
-        start: startTime,
-        end: endTime,
-        organizer: 'LiftLab'
-    });
-
-    // Send confirmation email via Resend
-    const resendResponse = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-            'Authorization': `Bearer ${Deno.env.get('RESEND_API_KEY')}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            from: 'LiftLab <contact@liftlab.ca>',
-            to: clientEmail,
-            subject: `Phone Consultation Confirmed: ${serviceType} on ${startTime.toLocaleDateString()}`,
-            text: `Hi ${clientName},
-
-    Your phone consultation with LiftLab has been confirmed!
-
-    📅 Date: ${startTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
-    ⏰ Time: ${startTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/Toronto' })} EST
-    📞 Format: Phone Call
-    ⏱️ Duration: 30 minutes
-
-    What to expect:
-    • We'll call you at ${clientPhone} at the scheduled time
-    • Have your schedule ready if you want to book training sessions
-    • Be ready to discuss your fitness goals and training history
-    • Feel free to ask any questions about our programs
-
-    Add this appointment to your calendar using the .ics file attachment.
-
-    Questions? Reply to this email or call us at (613) 627-3054.
-
-    Talk to you soon!
-    The LiftLab Team`,
-            attachments: [
-                {
-                    filename: 'liftlab-appointment.ics',
-                    content: btoa(unescape(encodeURIComponent(icsContent)))
-                }
-            ]
-        })
-    });
-
-    if (!resendResponse.ok) {
-        const errorText = await resendResponse.text();
-        console.error('Failed to send email:', errorText);
-    }
-
-    // Send notification email to LiftLab
-    await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-            'Authorization': `Bearer ${Deno.env.get('RESEND_API_KEY')}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            from: 'LiftLab Bookings <contact@liftlab.ca>',
-            to: 'contact@liftlab.ca',
-            subject: `New Booking: ${serviceType} - ${clientName}`,
-            text: `New booking received:
-
-Client: ${clientName}
-Email: ${clientEmail}
-Phone: ${clientPhone}
-Service: ${serviceType}
-Date: ${startTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
-Time: ${startTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: 'America/Toronto' })} EST
-
-${notes ? `Notes: ${notes}` : 'No notes provided'}
-
-View in Google Calendar: ${calendarEvent.htmlLink}`
-        })
-    });
-
-    return Response.json({
-        success: true,
-        booking,
-        googleCalendarLink: calendarEvent.htmlLink,
-        icsContent
-    });
+  const [year, month, day] = dateStr.split('-').map(Number);
+  const utcHour = hour + utcOffset;
+  date.setTime(Date.UTC(year, month - 1, day, utcHour, minute, 0));
 }
 
-function generateICS({ summary, description, location, start, end, organizer }) {
-    const formatDate = (date) => {
-        return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
-    };
+async function createBooking(base44, {
+  firstName, lastName, clientEmail, clientPhone,
+  preferredCoach, appointmentDate, slotEnd, calendarId, notes
+}) {
+  const headers = await getAuthHeader(base44);
 
-    return `BEGIN:VCALENDAR
+  const clientName = `${firstName} ${lastName}`.trim();
+  const startTime = new Date(appointmentDate);
+  const endTime = slotEnd ? new Date(slotEnd) : new Date(startTime.getTime() + SLOT_DURATION_MINUTES * 60000);
+
+  // Determine which calendar to write to
+  let targetCalendarId = calendarId;
+  if (!targetCalendarId) {
+    // Default to first calendar if not specified
+    targetCalendarId = CALENDARS[0].id;
+  }
+
+  const eventSummary = `LiftLab Consultation – ${clientName}`;
+  const eventDescription = [
+    `Full Name: ${clientName}`,
+    `Email: ${clientEmail}`,
+    `Phone: ${clientPhone}`,
+    preferredCoach ? `Preferred Lab Tech: ${preferredCoach}` : null,
+    notes ? `Notes: ${notes}` : null,
+    `Source: LiftLab website`
+  ].filter(Boolean).join('\n');
+
+  const event = {
+    summary: eventSummary,
+    description: eventDescription,
+    start: { dateTime: startTime.toISOString(), timeZone: TORONTO_TZ },
+    end: { dateTime: endTime.toISOString(), timeZone: TORONTO_TZ },
+    reminders: {
+      useDefault: false,
+      overrides: [
+        { method: 'email', minutes: 24 * 60 },
+        { method: 'popup', minutes: 60 }
+      ]
+    },
+    attendees: [{ email: clientEmail, displayName: clientName }]
+  };
+
+  const calRes = await fetch(
+    `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(targetCalendarId)}/events`,
+    { method: 'POST', headers, body: JSON.stringify(event) }
+  );
+
+  if (!calRes.ok) {
+    const err = await calRes.text();
+    throw new Error(`Failed to create Google Calendar event: ${err}`);
+  }
+
+  const calEvent = await calRes.json();
+
+  // Save booking record to DB
+  const booking = await base44.asServiceRole.entities.Booking.create({
+    service_type: 'Consultation',
+    client_name: clientName,
+    client_email: clientEmail,
+    client_phone: clientPhone,
+    appointment_date: startTime.toISOString(),
+    duration_minutes: SLOT_DURATION_MINUTES,
+    google_calendar_event_id: calEvent.id,
+    status: 'confirmed',
+    notes: [preferredCoach ? `Preferred Lab Tech: ${preferredCoach}` : '', notes || ''].filter(Boolean).join('\n')
+  });
+
+  // Generate ICS
+  const icsContent = generateICS({ summary: eventSummary, description: eventDescription, start: startTime, end: endTime });
+
+  // Send confirmation email to client
+  await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${Deno.env.get('RESEND_API_KEY')}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      from: 'LiftLab <contact@liftlab.ca>',
+      to: clientEmail,
+      subject: `Consultation Confirmed – ${startTime.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}`,
+      text: `Hi ${firstName},
+
+Your consultation with LiftLab has been confirmed!
+
+📅 Date: ${startTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+⏰ Time: ${startTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: TORONTO_TZ })} EST
+⏱️ Duration: ${SLOT_DURATION_MINUTES} minutes
+${preferredCoach ? `👤 Lab Tech: ${preferredCoach}` : ''}
+
+Questions? Reply to this email or call us at (613) 627-3054.
+
+Talk to you soon!
+The LiftLab Team`,
+      attachments: [{ filename: 'liftlab-consultation.ics', content: btoa(unescape(encodeURIComponent(icsContent))) }]
+    })
+  });
+
+  // Notify LiftLab
+  await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${Deno.env.get('RESEND_API_KEY')}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      from: 'LiftLab Bookings <contact@liftlab.ca>',
+      to: 'contact@liftlab.ca',
+      subject: `New Consultation Booked – ${clientName}`,
+      text: `New booking:\n\n${eventDescription}\n\nDate: ${startTime.toLocaleString('en-US', { timeZone: TORONTO_TZ })} EST\nCalendar Event: ${calEvent.htmlLink}`
+    })
+  });
+
+  return Response.json({
+    success: true,
+    booking,
+    googleCalendarLink: calEvent.htmlLink,
+    icsContent
+  });
+}
+
+function generateICS({ summary, description, start, end }) {
+  const fmt = (d) => d.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+  return `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//LiftLab//Booking System//EN
+PRODID:-//LiftLab//Booking//EN
 BEGIN:VEVENT
 UID:${Date.now()}@liftlab.ca
-DTSTAMP:${formatDate(new Date())}
-DTSTART:${formatDate(start)}
-DTEND:${formatDate(end)}
+DTSTAMP:${fmt(new Date())}
+DTSTART:${fmt(start)}
+DTEND:${fmt(end)}
 SUMMARY:${summary}
 DESCRIPTION:${description.replace(/\n/g, '\\n')}
-LOCATION:${location}
-ORGANIZER;CN=${organizer}:MAILTO:contact@liftlab.ca
+ORGANIZER;CN=LiftLab:MAILTO:contact@liftlab.ca
 STATUS:CONFIRMED
-SEQUENCE:0
 END:VEVENT
 END:VCALENDAR`;
 }
