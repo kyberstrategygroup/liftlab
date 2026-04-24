@@ -3,13 +3,13 @@ import { createClientFromRequest } from 'npm:@base44/sdk@0.8.25';
 // The two Google Calendar IDs powering the appointment schedules
 const CALENDARS = [
   {
-    id: 'kyberstrategygroup@gmail.com',
+    id: 'a00464030248694c2d26fa507db36d4ff1cf1ed23cf856f6af27744058991ee7@group.calendar.google.com',
     coach: 'Stephen Radecki'
-  },
-  {
-    id: 'info@rideaufitco.ca',
-    coach: 'Ashley Howatt'
-  }
+  }//,
+  // {
+  //   id: 'info@rideaufitco.ca',
+  //   coach: 'Ashley Howatt'
+  // }
 ];
 
 const TORONTO_TZ = 'America/Toronto';
