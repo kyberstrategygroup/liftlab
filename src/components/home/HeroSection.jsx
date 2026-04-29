@@ -45,8 +45,8 @@ export default function HeroSection({ onOpenChallenge }) {
             Lift<span className="text-blue-500">Lab</span>
           </h1>
           
-          <p className="text-lg sm:text-xl md:text-2xl text-zinc-300 max-w-2xl mx-auto mb-3 md:mb-4 font-light px-4">
-            A Place to Train
+          <p className="text-lg sm:text-xl md:text-2xl text-zinc-300 max-w-2xl mx-auto mb-3 md:mb-4 font-light px-4">SEMI-PRIVATE PERSONAL TRAINING IN KINGSTON
+
           </p>
           
           <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-xl mx-auto mb-8 md:mb-10 px-4">Lift Lab offers semi-private personal training in Kingston that combines individualized coaching with the structure and team energy of a small group. Each workout is personalized using detailed movement assessments that allow you to train based on your fitness level, goals, and movement quality
