@@ -27,13 +27,15 @@ export const testimonialVideos = [
     url: "https://youtube.com/shorts/0fKbPurumIY",
     name: "Natalie",
     duration: "LiftLab Member",
-    quote: "LiftLab gave me the tools and confidence to keep showing up."
+    quote: "LiftLab gave me the tools and confidence to keep showing up.",
+    aspectRatio: "9/16"
   },
   {
     url: "https://www.youtube.com/shorts/kb_wbzAS9Zw",
     name: "Lab Rat Testimonial | Naomi & Corinne",
     duration: "LiftLab Members",
-    quote: "The coaching and community here make all the difference."
+    quote: "The coaching and community here make all the difference.",
+    aspectRatio: "9/16"
   },
   {
     url: "https://www.youtube.com/watch?v=bhKmwlETFc8",

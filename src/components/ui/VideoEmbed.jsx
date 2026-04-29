@@ -15,8 +15,14 @@ export default function VideoEmbed({
       return videoUrl;
     }
     
+    // YouTube Shorts URL
+    const shortsMatch = videoUrl.match(/youtube\.com\/shorts\/([^?&]+)/);
+    if (shortsMatch) {
+      return `https://www.youtube.com/embed/${shortsMatch[1]}`;
+    }
+
     // YouTube watch URL
-    const watchMatch = videoUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&]+)/);
+    const watchMatch = videoUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?]+)/);
     if (watchMatch) {
       return `https://www.youtube.com/embed/${watchMatch[1]}`;
     }

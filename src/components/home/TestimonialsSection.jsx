@@ -62,6 +62,7 @@ export default function TestimonialsSection() {
                 url={testimonialVideos[currentIndex].url}
                 title={`${testimonialVideos[currentIndex].name}'s Story`}
                 className="w-full"
+                aspectRatio={testimonialVideos[currentIndex].aspectRatio || "16/9"}
               />
               <div className="p-4 sm:p-6 md:p-8">
                 <Quote className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 mb-3 sm:mb-4" />
