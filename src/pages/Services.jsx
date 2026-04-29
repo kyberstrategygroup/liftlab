@@ -2,27 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import SectionHeading from '@/components/ui/SectionHeading';
 import CTAButton from '@/components/ui/CTAButton';
-import { Calendar, Users, User, Globe, Check, Activity, Key, Clock } from 'lucide-react';
+import { Users, User, Check, Activity, Key, Clock } from 'lucide-react';
 import { trackMetaEvent } from '@/components/utils/metaPixel';
 
 const services = [
-  {
-    id: 'day-pass',
-    icon: Calendar,
-    title: 'Day Pass',
-    description: "Train on your schedule with a Day Pass that gives you 24 hours of full gym access.",
-    features: [
-      'Good for 24 Hours from Time of Purchase',
-      '24/7 Access',
-      'No commitment',
-      'Great for hectic schedules'
-    ],
-    pricing: '$15.99 per session',
-    pricingNote: '24 Hour day pass',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/8e382405a_DSC02378_1bluoptimized.jpg',
-    popular: false,
-    outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/65afed9d512cc31b03d26a93'
-  },
   {
     id: 'private',
     icon: User,
@@ -47,12 +30,13 @@ const services = [
     title: 'Semi-Private Training',
     description: "Small group sessions (max 4 people) with individualized programming. You get personal attention while training alongside others who push you to be better.",
     features: [
-      'Personalized program within group setting',
-      'Coach-to-athlete ratio never exceeds 1:4',
-      'Flexible scheduling with multiple time slots',
-      'Progress tracking and regular assessments',
-      'Everyone gets 2 weeks of private training upfront at no extra cost',
-      'Different class options for different fitness levels and goals and training Archetypes'
+      '2 week money-back guarantee',
+      'Personalized program within a group setting of up to 4',
+      'Flexible scheduling with multiple time slots, and training levels',
+      'Progress tracking',
+      '24/hour facility access',
+      'Exclusive members-only fitness and health video tutorials',
+      '1-4 weeks of private training upfront at no extra cost'
     ],
     pricing: '2 sessions per week — $80/week',
     pricingNote: 'Best value option for coached training in a small-group setting',
@@ -61,24 +45,6 @@ const services = [
     outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695820fa29c17ae187c8e4b8',
     pricing_2: '3 sessions per week — $115/week',
     outbound_link_2: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695f3356de70e103e4b27af3'
-  },
-  {
-    id: 'remote',
-    icon: Globe,
-    title: 'Remote Training',
-    description: "Train anywhere with programming from our coaches. Perfect for those who travel, prefer their own gym, or live outside Kingston.",
-    features: [
-      'Custom programming delivered weekly',
-      'Video form review and feedback',
-      'Regular check-ins via video call',
-      'Training app with exercise demos',
-      'Full support via messaging'
-    ],
-    pricing: '$100 biweekly',
-    pricingNote: 'Professional guidance for independent gym-goers',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/e32a9622a_DSC02371_1bluoptimized.jpg',
-    popular: false,
-    outbound_link: ''
   },
   {
     id: 'premium-solo',
@@ -159,11 +125,85 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Services Grid */}
+      {/* Semi-Private — Standalone Hero Section */}
+      {(() => {
+        const sp = services.find(s => s.id === 'semi-private');
+        const semiPrivateGrid = [
+          { label: '2x / week', price: '$80/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695820fa29c17ae187c8e4b8' },
+          { label: '3x / week', price: '$115/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695f3356de70e103e4b27af3' },
+          { label: 'PLACEHOLDER 3', price: 'TBD', link: '#' },
+          { label: 'PLACEHOLDER 4', price: 'TBD', link: '#' },
+          { label: 'PLACEHOLDER 5', price: 'TBD', link: '#' },
+          { label: 'PLACEHOLDER 6', price: 'TBD', link: '#' },
+        ];
+        return (
+          <section className="py-20 md:py-28 bg-white border-b border-zinc-100">
+            <div className="container mx-auto px-6">
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="grid lg:grid-cols-2 gap-12 items-start"
+              >
+                {/* Image */}
+                <div className="relative">
+                  <div className="bg-zinc-100">
+                    <img src={sp.image} alt={sp.title} className="w-full" />
+                  </div>
+                  <div className="absolute top-4 left-4 bg-blue-600 text-white px-4 py-2 text-xs font-bold uppercase tracking-wider">
+                    Most Popular
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div>
+                  <div className="w-14 h-14 flex items-center justify-center mb-6 bg-blue-600">
+                    <sp.icon className="w-7 h-7 text-white" />
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tight mb-4 klavika-header">
+                    {sp.title}
+                  </h2>
+                  <p className="text-zinc-600 text-lg mb-6">{sp.description}</p>
+
+                  <ul className="space-y-3 mb-10">
+                    {sp.features.map((feature, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                        <span className="text-zinc-700">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* 3x2 Options Grid */}
+                  <h3 className="text-sm font-bold uppercase tracking-[0.15em] text-zinc-500 mb-4">Choose Your Plan</h3>
+                  <div className="grid grid-cols-3 gap-3">
+                    {semiPrivateGrid.map((option, i) => (
+                      <a
+                        key={i}
+                        href={option.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => trackMetaEvent('ViewContent', { content_name: `Semi-Private ${option.label}`, content_category: 'Service' })}
+                        className="border-2 border-zinc-200 hover:border-blue-600 hover:bg-blue-50 transition-all duration-200 p-4 text-center group"
+                      >
+                        <p className="font-black text-black uppercase text-sm tracking-tight group-hover:text-blue-600">{option.label}</p>
+                        <p className="text-blue-600 font-bold text-sm mt-1">{option.price}</p>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+        );
+      })()}
+
+      {/* Other Services */}
       <section className="py-20 md:py-28 bg-white">
         <div className="container mx-auto px-6">
           <div className="space-y-16">
-            {services.map((service, index) => (
+            {services.filter(s => s.id !== 'semi-private').map((service, index) => (
               <motion.div
                 key={service.id}
                 initial={{ opacity: 0, y: 40 }}
@@ -177,17 +217,8 @@ export default function Services() {
                 {/* Image */}
                 <div className={`relative ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                   <div className="bg-zinc-100">
-                    <img 
-                      src={service.image} 
-                      alt={service.title}
-                      className="w-full"
-                    />
+                    <img src={service.image} alt={service.title} className="w-full" />
                   </div>
-                  {service.popular && (
-                    <div className="absolute top-4 left-4 bg-blue-600 text-white px-4 py-2 text-xs font-bold uppercase tracking-wider">
-                      Most Popular
-                    </div>
-                  )}
                 </div>
 
                 {/* Content */}
@@ -195,15 +226,10 @@ export default function Services() {
                   <div className={`w-14 h-14 flex items-center justify-center mb-6 ${service.featured ? 'bg-blue-600 animate-pulse' : 'bg-blue-600'}`}>
                     <service.icon className="w-7 h-7 text-white" />
                   </div>
-                  
                   <h2 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tight mb-4 klavika-header">
                     {service.title}
                   </h2>
-                  
-                  <p className="text-zinc-600 text-lg mb-8">
-                    {service.description}
-                  </p>
-                  
+                  <p className="text-zinc-600 text-lg mb-8">{service.description}</p>
                   <ul className="space-y-3 mb-8">
                     {service.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
@@ -212,39 +238,20 @@ export default function Services() {
                       </li>
                     ))}
                   </ul>
-
                   {service.pricing && (
                     <div className="mb-6">
-                      <p className="text-2xl font-black text-black uppercase tracking-tight">
-                        {service.pricing}
-                      </p>
-                      {service.pricingNote && (
-                        <p className="text-sm text-zinc-500 mt-2">
-                          {service.pricingNote}
-                        </p>
-                      )}
+                      <p className="text-2xl font-black text-black uppercase tracking-tight">{service.pricing}</p>
+                      {service.pricingNote && <p className="text-sm text-zinc-500 mt-2">{service.pricingNote}</p>}
                     </div>
                   )}
-
                   {service.guarantee && (
                     <div className="mb-4 p-4 bg-blue-50 border-l-4 border-blue-600">
-                      <p className="text-sm font-bold text-blue-900 uppercase tracking-wider">
-                        {service.guarantee}
-                      </p>
+                      <p className="text-sm font-bold text-blue-900 uppercase tracking-wider">{service.guarantee}</p>
                     </div>
                   )}
-
                   {service.outbound_link ? (
-                    <CTAButton 
-                      to={service.outbound_link} 
-                      variant="primary"
-                      external={true}
-                      onClick={() => trackMetaEvent('ViewContent', {
-                        content_name: service.title,
-                        content_category: 'Service',
-                        content_type: 'service'
-                      })}
-                    >
+                    <CTAButton to={service.outbound_link} variant="primary" external={true}
+                      onClick={() => trackMetaEvent('ViewContent', { content_name: service.title, content_category: 'Service', content_type: 'service' })}>
                       {service.pricing ? 'Start Now' : 'Get Started'}
                     </CTAButton>
                   ) : (
@@ -252,29 +259,6 @@ export default function Services() {
                       {service.pricing ? 'Start Now' : 'Get Started'}
                     </CTAButton>
                   )}
-                  {service.pricing_2 != null && (
-                    <div className="mt-6 mb-2">
-                      <p className="text-2xl font-black text-black uppercase tracking-tight">
-                        {service.pricing_2}
-                      </p>
-                    </div>
-                  )}
-
-                  {service.pricing_2 != null && service.outbound_link_2 != null && (
-                    <CTAButton 
-                      to={service.outbound_link_2} 
-                      variant="primary"
-                      external={true}
-                      onClick={() => trackMetaEvent('ViewContent', {
-                        content_name: service.title,
-                        content_category: 'Service',
-                        content_type: 'service'
-                      })}
-                    >
-                      {service.pricing_2 ? 'Start Now' : 'Get Started'}
-                    </CTAButton>
-                  )}
-                 
                 </div>
               </motion.div>
             ))}
