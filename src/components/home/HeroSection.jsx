@@ -21,8 +21,8 @@ export default function HeroSection({ onOpenChallenge }) {
             minHeight: '100vh',
             transform: 'translate(-50%, -55%) scale(1.1)',
             border: 'none'
-          }} />
-        
+          }}
+        />
       </div>
 
       {/* Content */}
@@ -30,27 +30,27 @@ export default function HeroSection({ onOpenChallenge }) {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}>
-          
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           {/* Logo Mark */}
           <div className="mb-6 md:mb-8">
-            <img
+            <img 
               src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/c7e7092e7_LL-40-dark-bckgrnd.png"
               alt="LiftLab Logo"
-              className="h-24 sm:h-32 md:h-40 w-auto mx-auto" />
-            
+              className="h-24 sm:h-32 md:h-40 w-auto mx-auto"
+            />
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tight mb-4 md:mb-6 klavika-logo px-4">
             Lift<span className="text-blue-500">Lab</span>
           </h1>
           
-          <p className="text-lg sm:text-xl md:text-2xl text-zinc-300 max-w-2xl mx-auto mb-3 md:mb-4 font-light px-4">SEMI-PRIVATE PERSONAL TRAINING IN KINGSTON
-
+          <p className="text-lg sm:text-xl md:text-2xl text-zinc-300 max-w-2xl mx-auto mb-3 md:mb-4 font-light px-4">
+            SEMI-PRIVATE PERSONAL TRAINING IN KINGSTON
           </p>
           
-          <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-xl mx-auto mb-8 md:mb-10 px-4">Lift Lab offers semi-private personal training in Kingston that combines individualized coaching with the structure and team energy of a small group. Each workout is personalized using detailed movement assessments that allow you to train based on your fitness level, goals, and movement quality
-
+          <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-xl mx-auto mb-8 md:mb-10 px-4">
+            Lift Lab offers semi-private personal training in Kingston that combines individualized coaching with the structure and team energy of a small group. Each workout is personalized using detailed movement assessments that allow you to train based on your fitness level, goals, and movement quality.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -65,15 +65,15 @@ export default function HeroSection({ onOpenChallenge }) {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      <motion.div 
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
         animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}>
-        
+        transition={{ duration: 2, repeat: Infinity }}
+      >
         <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
           <div className="w-1 h-3 bg-white/50 rounded-full" />
         </div>
       </motion.div>
-    </section>);
-
+    </section>
+  );
 }
