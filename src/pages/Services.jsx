@@ -129,12 +129,22 @@ export default function Services() {
       {(() => {
         const sp = services.find(s => s.id === 'semi-private');
         const semiPrivateGrid = [
-          { label: '2x / week', price: '$80/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695820fa29c17ae187c8e4b8' },
-          { label: '3x / week', price: '$115/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695f3356de70e103e4b27af3' },
-          { label: 'PLACEHOLDER 3', price: 'TBD', link: '#' },
-          { label: 'PLACEHOLDER 4', price: 'TBD', link: '#' },
-          { label: 'PLACEHOLDER 5', price: 'TBD', link: '#' },
-          { label: 'PLACEHOLDER 6', price: 'TBD', link: '#' },
+          {
+            row: 'Annual Contract Early Bird Rate',
+            rowNote: '*$500 Early Termination Fee',
+            options: [
+              { label: '2x / Week', wasPrice: '$89.99', price: '$80/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695820fa29c17ae187c8e4b8' },
+              { label: 'Unlimited', wasPrice: '$129.99', price: '$120/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695f3356de70e103e4b27af3' },
+            ]
+          },
+          {
+            row: 'Weekly',
+            rowNote: '+Freezable',
+            options: [
+              { label: '2x / Week', wasPrice: null, price: '$112.50/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695820fa29c17ae187c8e4b8' },
+              { label: 'Unlimited', wasPrice: null, price: '$162.50/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695f3356de70e103e4b27af3' },
+            ]
+          },
         ];
         return (
           <section className="py-20 md:py-28 bg-white border-b border-zinc-100">
@@ -164,7 +174,8 @@ export default function Services() {
                   <h2 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tight mb-4 klavika-header">
                     {sp.title}
                   </h2>
-                  <p className="text-zinc-600 text-lg mb-6">{sp.description}</p>
+                  <p className="text-zinc-600 text-lg mb-1">{sp.description}</p>
+                  <p className="text-zinc-500 text-sm italic mb-6">Stackable with weekly private sessions for bonus support.</p>
 
                   <ul className="space-y-3 mb-10">
                     {sp.features.map((feature, i) => (
@@ -175,21 +186,42 @@ export default function Services() {
                     ))}
                   </ul>
 
-                  {/* 3x2 Options Grid */}
+                  {/* Pricing Grid */}
                   <h3 className="text-sm font-bold uppercase tracking-[0.15em] text-zinc-500 mb-4">Choose Your Plan</h3>
-                  <div className="grid grid-cols-3 gap-3">
-                    {semiPrivateGrid.map((option, i) => (
-                      <a
-                        key={i}
-                        href={option.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => trackMetaEvent('ViewContent', { content_name: `Semi-Private ${option.label}`, content_category: 'Service' })}
-                        className="border-2 border-zinc-200 hover:border-blue-600 hover:bg-blue-50 transition-all duration-200 p-4 text-center group"
-                      >
-                        <p className="font-black text-black uppercase text-sm tracking-tight group-hover:text-blue-600">{option.label}</p>
-                        <p className="text-blue-600 font-bold text-sm mt-1">{option.price}</p>
-                      </a>
+                  <div className="border border-zinc-200 overflow-hidden">
+                    {/* Header row */}
+                    <div className="grid grid-cols-3 bg-zinc-950">
+                      <div className="p-3" />
+                      <div className="p-3 text-center border-l border-zinc-700">
+                        <p className="text-white font-black uppercase tracking-tight text-sm">2x/Week</p>
+                      </div>
+                      <div className="p-3 text-center border-l border-zinc-700">
+                        <p className="text-white font-black uppercase tracking-tight text-sm">Unlimited</p>
+                      </div>
+                    </div>
+                    {/* Data rows */}
+                    {semiPrivateGrid.map((row, ri) => (
+                      <div key={ri} className={`grid grid-cols-3 ${ri % 2 === 0 ? 'bg-zinc-100' : 'bg-white'} border-t border-zinc-200`}>
+                        <div className="p-4 flex flex-col justify-center">
+                          <p className="font-black text-black uppercase text-xs tracking-tight">{row.row}</p>
+                          {row.rowNote && <p className="text-zinc-500 text-xs mt-1">{row.rowNote}</p>}
+                        </div>
+                        {row.options.map((opt, oi) => (
+                          <a
+                            key={oi}
+                            href={opt.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => trackMetaEvent('ViewContent', { content_name: `Semi-Private ${opt.label} ${row.row}`, content_category: 'Service' })}
+                            className="p-4 text-center border-l border-zinc-200 hover:bg-blue-50 transition-colors group"
+                          >
+                            {opt.wasPrice && (
+                              <p className="text-zinc-400 text-xs line-through">{opt.wasPrice}</p>
+                            )}
+                            <p className="font-black text-blue-600 text-lg group-hover:text-blue-700">{opt.price}</p>
+                          </a>
+                        ))}
+                      </div>
                     ))}
                   </div>
                 </div>
