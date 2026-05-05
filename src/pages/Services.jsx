@@ -133,16 +133,16 @@ export default function Services() {
             row: 'Annual Contract Early Bird Rate',
             rowNote: '*$500 Early Termination Fee',
             options: [
-              { label: '2x / Week', wasPrice: '$89.99', price: '$80/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695820fa29c17ae187c8e4b8' },
-              { label: 'Unlimited', wasPrice: '$129.99', price: '$120/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695f3356de70e103e4b27af3' },
+              { label: '2x / Week', wasPrice: '$89.99', price: '$80/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/info?selectedFacilityID=610d0c1db463aa70bd213b91&selectedPlanIDs=69f3f9a8dde69d208886b2aa' },
+              { label: 'Unlimited', wasPrice: '$129.99', price: '$120/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/info?selectedFacilityID=610d0c1db463aa70bd213b91&selectedPlanIDs=69f3f973dde69d208886b060' },
             ]
           },
           {
             row: 'Weekly',
             rowNote: '+Freezable',
             options: [
-              { label: '2x / Week', wasPrice: null, price: '$112.50/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695820fa29c17ae187c8e4b8' },
-              { label: 'Unlimited', wasPrice: null, price: '$162.50/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695f3356de70e103e4b27af3' },
+              { label: '2x / Week', wasPrice: null, price: '$112.50/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/69e78af5b22376a45f4cdee4' },
+              { label: 'Unlimited', wasPrice: null, price: '$162.50/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/69e78b4cb22376a45f4ce243' },
             ]
           },
         ];
