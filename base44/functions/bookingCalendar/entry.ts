@@ -1,6 +1,13 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.25';
 
 const CAL_1 = '7e2797a656fa7730ccac060877626de31b0a05d2c53b42eeeb49f6a3a295a474@group.calendar.google.com';
+
+const TRAINER_EMAILS = {
+    'Stephen':   'stephen@liftlab.ca',
+    'Colin':     'colin@liftlab.ca',
+    'Ashley M.': 'ashleym@liftlab.ca',
+    'Ashley H.': 'ashleyh@liftlab.ca',
+};
 const CAL_2 = 'a00464030248694c2d26fa507db36d4ff1cf1ed23cf856f6af27744058991ee7@group.calendar.google.com';
 const TZ = 'America/Toronto';
 
@@ -236,6 +243,24 @@ The LiftLab Team`,
             ]
         })
     });
+
+    // Trainer notification
+    const trainerEmail = TRAINER_EMAILS[preferredLabTech];
+    if (trainerEmail) {
+        await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${Deno.env.get('RESEND_API_KEY')}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                from: 'LiftLab Bookings <contact@liftlab.ca>',
+                to: trainerEmail,
+                subject: `New Consultation: ${clientName} – ${startTime.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: TZ })}`,
+                text: `Hi ${preferredLabTech},\n\nA new consultation has been booked with you:\n\nClient: ${clientName}\nEmail: ${clientEmail}\nPhone: ${clientPhone}\nDate: ${startTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: TZ })}\nTime: ${startTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: TZ })} EST\n${notes ? `\nNotes: ${notes}` : ''}\n\nGoogle Calendar: ${calendarEvent.htmlLink}`
+            })
+        });
+    }
 
     // Internal notification
     await fetch('https://api.resend.com/emails', {
