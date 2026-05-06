@@ -264,7 +264,7 @@ The LiftLab Team`,
             body: JSON.stringify({
                 from: 'LiftLab Bookings <contact@liftlab.ca>',
                 to: trainerEmail,
-                bcc: 'info@kyberstrategygroup.ca',
+                bcc: 'kyberstrategygroup@gmail.com',
                 subject: `New Consultation: ${clientName} – ${startTime.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: TZ })}`,
                 text: `Hi ${preferredLabTech},\n\nA new consultation has been booked with you:\n\nClient: ${clientName}\nEmail: ${clientEmail}\nPhone: ${clientPhone}\nDate: ${startTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: TZ })}\nTime: ${startTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: TZ })} EST\n${notes ? `\nNotes: ${notes}` : ''}\n\nGoogle Calendar: ${calendarEvent.htmlLink}`
             })
@@ -281,7 +281,7 @@ The LiftLab Team`,
         body: JSON.stringify({
             from: 'LiftLab Bookings <contact@liftlab.ca>',
             to: 'contact@liftlab.ca',
-            bcc: 'info@kyberstrategygroup.ca',
+            bcc: 'kyberstrategygroup@gmail.com',
             subject: `New Consultation: ${clientName} – ${startTime.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: TZ })}`,
             text: `New consultation booked via LiftLab website:\n\n${eventDescription}\n\nDate: ${startTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: TZ })}\nTime: ${startTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: TZ })} EST\n\nGoogle Calendar: ${calendarEvent.htmlLink}`
         })
