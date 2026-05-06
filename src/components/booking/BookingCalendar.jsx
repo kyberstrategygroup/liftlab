@@ -85,7 +85,7 @@ export default function BookingCalendar() {
         submittedRef.current = false;
         // Refresh slots
         const dateStr = selectedDate.toLocaleDateString('en-CA');
-        loadAvailableSlots(dateStr);
+        loadAvailableSlots(dateStr, formData.preferredLabTech);
         return;
       }
 
@@ -244,23 +244,41 @@ export default function BookingCalendar() {
           {/* Step 1: Date */}
           {step === 1 && (
             <div className="space-y-6">
-              <Label className="text-sm font-bold uppercase tracking-wider mb-4 block">
-                Select a Date
-              </Label>
-              <div className="flex justify-center">
-                <CalendarUI
-                  mode="single"
-                  selected={selectedDate}
-                  onSelect={setSelectedDate}
-                  disabled={(date) => {
-                    const today = new Date();
-                    today.setHours(0, 0, 0, 0);
-                    const maxDate = new Date();
-                    maxDate.setDate(maxDate.getDate() + 60);
-                    return date < today || date > maxDate;
-                  }}
-                  className="border rounded-md"
-                />
+              <div>
+                <Label className="text-sm font-bold uppercase tracking-wider mb-2 block">Preferred Lab Tech</Label>
+                <Select
+                  value={formData.preferredLabTech}
+                  onValueChange={(val) => setFormData({ ...formData, preferredLabTech: val })}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select a coach (optional)" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {LAB_TECHS.map((tech) => (
+                      <SelectItem key={tech} value={tech}>{tech}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div>
+                <Label className="text-sm font-bold uppercase tracking-wider mb-4 block">
+                  Select a Date
+                </Label>
+                <div className="flex justify-center">
+                  <CalendarUI
+                    mode="single"
+                    selected={selectedDate}
+                    onSelect={setSelectedDate}
+                    disabled={(date) => {
+                      const today = new Date();
+                      today.setHours(0, 0, 0, 0);
+                      const maxDate = new Date();
+                      maxDate.setDate(maxDate.getDate() + 60);
+                      return date < today || date > maxDate;
+                    }}
+                    className="border rounded-md"
+                  />
+                </div>
               </div>
               <Button
                 onClick={() => setStep(2)}
@@ -381,23 +399,6 @@ export default function BookingCalendar() {
                   onChange={(e) => setFormData({ ...formData, clientPhone: e.target.value })}
                   placeholder="(613) 555-0100"
                 />
-              </div>
-
-              <div>
-                <Label className="text-sm font-bold uppercase tracking-wider mb-2 block">Preferred Lab Tech</Label>
-                <Select
-                  value={formData.preferredLabTech}
-                  onValueChange={(val) => setFormData({ ...formData, preferredLabTech: val })}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a coach (optional)" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {LAB_TECHS.map((tech) => (
-                      <SelectItem key={tech} value={tech}>{tech}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
               </div>
 
               <div>
