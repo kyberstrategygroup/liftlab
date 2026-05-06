@@ -1,0 +1,35 @@
+{
+  "name": "AdminAuditLog",
+  "type": "object",
+  "properties": {
+    "admin_email": {
+      "type": "string",
+      "description": "Email of the admin who made the change"
+    },
+    "action": {
+      "type": "string",
+      "description": "Description of what was changed"
+    },
+    "page_id": {
+      "type": "string",
+      "description": "Page that was modified"
+    },
+    "component_id": {
+      "type": "string",
+      "description": "Component that was modified"
+    },
+    "old_value": {
+      "type": "string",
+      "description": "Previous content value"
+    },
+    "new_value": {
+      "type": "string",
+      "description": "New content value"
+    }
+  },
+  "required": [
+    "admin_email",
+    "action",
+    "page_id"
+  ]
+}
