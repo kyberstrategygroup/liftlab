@@ -37,18 +37,17 @@ export default function BookingCalendar() {
       setSelectedTime('');
       setSlotError('');
       const dateStr = selectedDate.toLocaleDateString('en-CA');
-      loadAvailableSlots(dateStr, formData.preferredLabTech);
+      loadAvailableSlots(dateStr);
     }
-  }, [selectedDate, formData.preferredLabTech]);
+  }, [selectedDate]);
 
-  const loadAvailableSlots = async (date, trainer) => {
+  const loadAvailableSlots = async (date) => {
     setLoading(true);
     setAvailableSlots([]);
     try {
       const { data } = await base44.functions.invoke('bookingCalendar', {
         action: 'getAvailability',
-        date,
-        preferredLabTech: trainer || formData.preferredLabTech || ''
+        date
       });
       setAvailableSlots(data.availableSlots || []);
     } catch (error) {

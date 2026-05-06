@@ -46,22 +46,17 @@ async function getAccessToken(base44) {
     return accessToken;
 }
 
-async function getAvailability(base44, { date, preferredLabTech }) {
+async function getAvailability(base44, { date }) {
     const accessToken = await getAccessToken(base44);
 
     const timeMin = torontoToUTC(date, 6, 0);
     const timeMax = torontoToUTC(date, 22, 0);
 
-    // Only check the relevant trainer's calendar(s)
-    const calsToCheck = (preferredLabTech && TRAINER_CALENDARS[preferredLabTech])
-        ? TRAINER_CALENDARS[preferredLabTech]
-        : ALL_CALS;
-
     const freeBusyBody = {
         timeMin: timeMin.toISOString(),
         timeMax: timeMax.toISOString(),
         timeZone: TZ,
-        items: calsToCheck.map(id => ({ id }))
+        items: ALL_CALS.map(id => ({ id }))
     };
 
     const fbRes = await fetch('https://www.googleapis.com/calendar/v3/freeBusy', {
@@ -80,41 +75,33 @@ async function getAvailability(base44, { date, preferredLabTech }) {
 
     const fbData = await fbRes.json();
 
-    // Collect all busy intervals from the relevant calendars
-    const busyIntervals = [];
-    for (const calId of calsToCheck) {
-        const cal = fbData.calendars?.[calId];
-        if (cal?.busy) {
-            for (const b of cal.busy) {
-                busyIntervals.push({ start: new Date(b.start), end: new Date(b.end) });
-            }
-        }
-    }
+    // Build busy intervals per calendar
+    const busyAshley = (fbData.calendars?.[CAL_ASHLEY]?.busy || []).map(b => ({ start: new Date(b.start), end: new Date(b.end) }));
+    const busyEamon  = (fbData.calendars?.[CAL_EAMON]?.busy  || []).map(b => ({ start: new Date(b.start), end: new Date(b.end) }));
 
-    // Generate 30-min slots from 6am to 9:30pm Toronto
+    const isBusy = (busyList, slotStart, slotEnd) =>
+        busyList.some(b => {
+            const bufStart = new Date(b.start.getTime() - 10 * 60 * 1000);
+            const bufEnd   = new Date(b.end.getTime()   + 10 * 60 * 1000);
+            return slotStart < bufEnd && slotEnd > bufStart;
+        });
+
+    // Generate 30-min slots — include slot if at least one trainer is free
     const slots = [];
     const slotStart = torontoToUTC(date, 6, 0);
-    const slotEnd = torontoToUTC(date, 22, 0);
+    const slotEnd   = torontoToUTC(date, 22, 0);
     const now = new Date();
 
     let cursor = new Date(slotStart);
     while (cursor < slotEnd) {
         const end = new Date(cursor.getTime() + 30 * 60 * 1000);
 
-        // Skip past slots
-        if (cursor <= now) {
-            cursor = end;
-            continue;
-        }
+        if (cursor <= now) { cursor = end; continue; }
 
-        // Check conflict with busy intervals (10-min buffer)
-        const conflict = busyIntervals.some(b => {
-            const bufStart = new Date(b.start.getTime() - 10 * 60 * 1000);
-            const bufEnd = new Date(b.end.getTime() + 10 * 60 * 1000);
-            return cursor < bufEnd && end > bufStart;
-        });
+        const ashleyFree = !isBusy(busyAshley, cursor, end);
+        const eamonFree  = !isBusy(busyEamon,  cursor, end);
 
-        if (!conflict) {
+        if (ashleyFree || eamonFree) {
             slots.push(cursor.toISOString());
         }
 
@@ -131,27 +118,36 @@ async function createBooking(base44, { firstName, lastName, clientEmail, clientP
     const startTime = new Date(appointmentDate);
     const endTime = new Date(startTime.getTime() + 30 * 60 * 1000);
 
-    // Double-check slot is still free via FreeBusy (only trainer's calendar)
-    const calsToCheck = (preferredLabTech && TRAINER_CALENDARS[preferredLabTech])
-        ? TRAINER_CALENDARS[preferredLabTech]
-        : ALL_CALS;
+    // Double-check which calendars are free for this slot
     const checkBody = {
         timeMin: startTime.toISOString(),
         timeMax: endTime.toISOString(),
         timeZone: TZ,
-        items: calsToCheck.map(id => ({ id }))
+        items: ALL_CALS.map(id => ({ id }))
     };
     const checkRes = await fetch('https://www.googleapis.com/calendar/v3/freeBusy', {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
         body: JSON.stringify(checkBody)
     });
+
+    let targetCalendar = CAL_ASHLEY; // default
     if (checkRes.ok) {
         const checkData = await checkRes.json();
-        for (const calId of calsToCheck) {
-            if ((checkData.calendars?.[calId]?.busy || []).length > 0) {
-                return Response.json({ error: 'SLOT_TAKEN', message: 'This time slot is no longer available. Please choose another time.' }, { status: 409 });
-            }
+        const ashleyFree = (checkData.calendars?.[CAL_ASHLEY]?.busy || []).length === 0;
+        const eamonFree  = (checkData.calendars?.[CAL_EAMON]?.busy  || []).length === 0;
+
+        if (!ashleyFree && !eamonFree) {
+            return Response.json({ error: 'SLOT_TAKEN', message: 'This time slot is no longer available. Please choose another time.' }, { status: 409 });
+        }
+
+        // Coin flip if both free, otherwise pick the free one
+        if (ashleyFree && eamonFree) {
+            targetCalendar = Math.random() < 0.5 ? CAL_ASHLEY : CAL_EAMON;
+        } else if (eamonFree) {
+            targetCalendar = CAL_EAMON;
+        } else {
+            targetCalendar = CAL_ASHLEY;
         }
     }
 
@@ -179,9 +175,9 @@ async function createBooking(base44, { firstName, lastName, clientEmail, clientP
         }
     };
 
-    // Write to CAL_1 (primary booking calendar)
+    // Write to whichever calendar is free (coin flip if both free)
     const calRes = await fetch(
-        `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(CAL_1)}/events`,
+        `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(targetCalendar)}/events`,
         {
             method: 'POST',
             headers: { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
