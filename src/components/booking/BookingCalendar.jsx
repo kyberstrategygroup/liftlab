@@ -36,18 +36,19 @@ export default function BookingCalendar() {
     if (selectedDate) {
       setSelectedTime('');
       setSlotError('');
-      const dateStr = selectedDate.toLocaleDateString('en-CA'); // YYYY-MM-DD in local time
-      loadAvailableSlots(dateStr);
+      const dateStr = selectedDate.toLocaleDateString('en-CA');
+      loadAvailableSlots(dateStr, formData.preferredLabTech);
     }
-  }, [selectedDate]);
+  }, [selectedDate, formData.preferredLabTech]);
 
-  const loadAvailableSlots = async (date) => {
+  const loadAvailableSlots = async (date, trainer) => {
     setLoading(true);
     setAvailableSlots([]);
     try {
       const { data } = await base44.functions.invoke('bookingCalendar', {
         action: 'getAvailability',
-        date
+        date,
+        preferredLabTech: trainer || formData.preferredLabTech || ''
       });
       setAvailableSlots(data.availableSlots || []);
     } catch (error) {

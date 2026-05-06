@@ -1,14 +1,27 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.25';
 
-const CAL_1 = '7e2797a656fa7730ccac060877626de31b0a05d2c53b42eeeb49f6a3a295a474@group.calendar.google.com';
+const CAL_ASHLEY = '7e2797a656fa7730ccac060877626de31b0a05d2c53b42eeeb49f6a3a295a474@group.calendar.google.com';
+const CAL_EAMON  = 'a00464030248694c2d26fa507db36d4ff1cf1ed23cf856f6af27744058991ee7@group.calendar.google.com';
+
+// When no trainer is selected, check both calendars
+const ALL_CALS = [CAL_ASHLEY, CAL_EAMON];
 
 const TRAINER_EMAILS = {
     'Stephen':   'stephen@liftlab.ca',
     'Colin':     'colin@liftlab.ca',
     'Ashley M.': 'ashleym@liftlab.ca',
     'Ashley H.': 'ashleyh@liftlab.ca',
+    'Eamon':     'eamon@liftlab.ca',
 };
-const CAL_2 = 'a00464030248694c2d26fa507db36d4ff1cf1ed23cf856f6af27744058991ee7@group.calendar.google.com';
+
+// Map trainer names to their calendar IDs
+const TRAINER_CALENDARS = {
+    'Ashley M.': [CAL_ASHLEY],
+    'Ashley H.': [CAL_ASHLEY],
+    'Eamon':     [CAL_EAMON],
+    'Stephen':   ALL_CALS,
+    'Colin':     ALL_CALS,
+};
 const TZ = 'America/Toronto';
 
 Deno.serve(async (req) => {
@@ -33,26 +46,22 @@ async function getAccessToken(base44) {
     return accessToken;
 }
 
-async function getAvailability(base44, { date }) {
+async function getAvailability(base44, { date, preferredLabTech }) {
     const accessToken = await getAccessToken(base44);
 
-    // Build a time window for the selected date in Toronto time
-    // We'll query the full day 6am-10pm Toronto
-    const dateObj = new Date(date + 'T00:00:00');
-    
-    // timeMin = 6am Toronto, timeMax = 10pm Toronto
     const timeMin = torontoToUTC(date, 6, 0);
     const timeMax = torontoToUTC(date, 22, 0);
 
-    // Use FreeBusy API to get busy times for both calendars
+    // Only check the relevant trainer's calendar(s)
+    const calsToCheck = (preferredLabTech && TRAINER_CALENDARS[preferredLabTech])
+        ? TRAINER_CALENDARS[preferredLabTech]
+        : ALL_CALS;
+
     const freeBusyBody = {
         timeMin: timeMin.toISOString(),
         timeMax: timeMax.toISOString(),
         timeZone: TZ,
-        items: [
-            { id: CAL_1 },
-            { id: CAL_2 }
-        ]
+        items: calsToCheck.map(id => ({ id }))
     };
 
     const fbRes = await fetch('https://www.googleapis.com/calendar/v3/freeBusy', {
@@ -71,9 +80,9 @@ async function getAvailability(base44, { date }) {
 
     const fbData = await fbRes.json();
 
-    // Collect all busy intervals from both calendars
+    // Collect all busy intervals from the relevant calendars
     const busyIntervals = [];
-    for (const calId of [CAL_1, CAL_2]) {
+    for (const calId of calsToCheck) {
         const cal = fbData.calendars?.[calId];
         if (cal?.busy) {
             for (const b of cal.busy) {
@@ -122,12 +131,15 @@ async function createBooking(base44, { firstName, lastName, clientEmail, clientP
     const startTime = new Date(appointmentDate);
     const endTime = new Date(startTime.getTime() + 30 * 60 * 1000);
 
-    // Double-check slot is still free via FreeBusy
+    // Double-check slot is still free via FreeBusy (only trainer's calendar)
+    const calsToCheck = (preferredLabTech && TRAINER_CALENDARS[preferredLabTech])
+        ? TRAINER_CALENDARS[preferredLabTech]
+        : ALL_CALS;
     const checkBody = {
         timeMin: startTime.toISOString(),
         timeMax: endTime.toISOString(),
         timeZone: TZ,
-        items: [{ id: CAL_1 }, { id: CAL_2 }]
+        items: calsToCheck.map(id => ({ id }))
     };
     const checkRes = await fetch('https://www.googleapis.com/calendar/v3/freeBusy', {
         method: 'POST',
@@ -136,7 +148,7 @@ async function createBooking(base44, { firstName, lastName, clientEmail, clientP
     });
     if (checkRes.ok) {
         const checkData = await checkRes.json();
-        for (const calId of [CAL_1, CAL_2]) {
+        for (const calId of calsToCheck) {
             if ((checkData.calendars?.[calId]?.busy || []).length > 0) {
                 return Response.json({ error: 'SLOT_TAKEN', message: 'This time slot is no longer available. Please choose another time.' }, { status: 409 });
             }
