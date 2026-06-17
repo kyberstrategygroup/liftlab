@@ -4,7 +4,7 @@ import { X, ExternalLink } from 'lucide-react';
 
 export default function MemberLoginModal({ isOpen, onClose }) {
   const [iframeBlocked, setIframeBlocked] = useState(false);
-  const LOGIN_URL = 'https://kinectmp.ca/clients/YGK-LiftLab-1/login';
+  const LOGIN_URL = 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/login';
 
   useEffect(() => {
     if (!isOpen) return;
