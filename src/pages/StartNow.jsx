@@ -66,7 +66,7 @@ export default function StartNow() {
               transition={{ duration: 0.6 }}
             >
               <VideoEmbed
-                url="https://www.youtube.com/watch?v=6EAayVxCe38"
+                url="https://youtube.com/shorts/NZZLduOD2jc"
                 title="Welcome to LiftLab"
                 className="shadow-2xl"
               />
