@@ -18,7 +18,7 @@ const services = [
       'Priority booking access',
       'Direct coach communication'
     ],
-    pricing: '$5.99 biweekly membership, $65-$75 per 1 hr session',
+    pricing: '$5.99 biweekly membership, $65-$110 per 1 hr session',
     pricingNote: 'Fully personalized, one-on-one coaching',
     image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/0d3da6853_unnamed1.jpg',
     popular: false,
@@ -79,26 +79,26 @@ const services = [
     image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/fbeff4021_basictrainingopt.jpg',
     popular: false,
     outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/6132272689a6d431294e39bd'
-  },
-  {
-    id: 'mvmt-tuneup',
-    icon: Activity,
-    title: 'MVMNT TUNE-UP',
-    description: "A 3-session movement tune-up designed as a pit stop for your training, your sport, or your lifestyle. Focused on identifying and addressing movement limitations before they become training problems.",
-    features: [
-      'Posture',
-      'Mobility',
-      'Joint stability',
-      'Gait',
-      'Breath strategy',
-      'Foot mechanics'
-    ],
-    pricing: '3 Sessions — $199.99',
-    guarantee: 'Better mobility and posture — or your money back.',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/fb2be8da2_poster.png',
-    popular: false,
-    featured: true
-  }
+  }//,
+  // {
+  //   id: 'mvmt-tuneup',
+  //   icon: Activity,
+  //   title: 'MVMNT TUNE-UP',
+  //   description: "A 3-session movement tune-up designed as a pit stop for your training, your sport, or your lifestyle. Focused on identifying and addressing movement limitations before they become training problems.",
+  //   features: [
+  //     'Posture',
+  //     'Mobility',
+  //     'Joint stability',
+  //     'Gait',
+  //     'Breath strategy',
+  //     'Foot mechanics'
+  //   ],
+  //   pricing: '3 Sessions — $199.99',
+  //   guarantee: 'Better mobility and posture — or your money back.',
+  //   image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/fb2be8da2_poster.png',
+  //   popular: false,
+  //   featured: true
+  // }
 ];
 
 export default function Services() {
