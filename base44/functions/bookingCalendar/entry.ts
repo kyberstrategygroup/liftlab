@@ -2,6 +2,8 @@ import { createClientFromRequest } from 'npm:@base44/sdk@0.8.25';
 
 const CAL_ASHLEY = '7e2797a656fa7730ccac060877626de31b0a05d2c53b42eeeb49f6a3a295a474@group.calendar.google.com';
 const CAL_EAMON  = 'a00464030248694c2d26fa507db36d4ff1cf1ed23cf856f6af27744058991ee7@group.calendar.google.com';
+// Eamon's availability is read from CAL_EAMON, but new booking events are written here:
+const CAL_EAMON_BOOKING = 'stephenradecki85@gmail.com';
 
 // When no trainer is selected, check both calendars
 const ALL_CALS = [CAL_ASHLEY, CAL_EAMON];
