@@ -221,12 +221,12 @@ async function createBooking(base44, { firstName, lastName, clientEmail, clientP
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            from: 'LiftLab <contact@liftlab.ca>',
+            from: 'Lift Lab <contact@liftlab.ca>',
             to: clientEmail,
             subject: `Consultation Confirmed – ${startTime.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', timeZone: TZ })}`,
             text: `Hi ${firstName},
 
-Your consultation with LiftLab has been confirmed!
+Your consultation with Lift Lab has been confirmed!
 
 📅 Date: ${startTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: TZ })}
 ⏰ Time: ${startTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: TZ })} EST
@@ -242,7 +242,7 @@ What to expect:
 Questions? Email us at contact@liftlab.ca or call (613) 627-3054.
 
 Talk soon,
-The LiftLab Team`,
+The Lift Lab Team`,
             attachments: [
                 {
                     filename: 'liftlab-consultation.ics',
