@@ -144,10 +144,11 @@ async function createBooking(base44, { firstName, lastName, clientEmail, clientP
         }
 
         // Coin flip if both free, otherwise pick the free one
+        // Note: Eamon's availability comes from CAL_EAMON, but bookings are written to CAL_EAMON_BOOKING
         if (ashleyFree && eamonFree) {
-            targetCalendar = Math.random() < 0.5 ? CAL_ASHLEY : CAL_EAMON;
+            targetCalendar = Math.random() < 0.5 ? CAL_ASHLEY : CAL_EAMON_BOOKING;
         } else if (eamonFree) {
-            targetCalendar = CAL_EAMON;
+            targetCalendar = CAL_EAMON_BOOKING;
         } else {
             targetCalendar = CAL_ASHLEY;
         }

@@ -15,7 +15,7 @@ Deno.serve(async (req) => {
     });
 
     const htmlBody = `
-      <h2>New LiftLab Lead Submission</h2>
+      <h2>New Lift Lab Lead Submission</h2>
       <p><strong>Full Name:</strong> ${name}</p>
       <p><strong>Email Address:</strong> ${email}</p>
       <p><strong>Phone Number:</strong> ${phone || 'Not provided'}</p>
@@ -28,10 +28,10 @@ Deno.serve(async (req) => {
     `;
 
     await resend.emails.send({
-      from: 'LiftLab Website <contact@liftlab.ca>',
+      from: 'Lift Lab Website <contact@liftlab.ca>',
       to: 'contact@liftlab.ca',
       bcc: 'kyberstrategygroup@gmail.com',
-      subject: 'New LiftLab Lead – Schedule Consult',
+      subject: 'New Lift Lab Lead – Schedule Consult',
       html: htmlBody
     });
 
