@@ -46,40 +46,40 @@ const services = [
     pricing_2: '3 sessions per week — $115/week',
     outbound_link_2: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695f3356de70e103e4b27af3'
   },
-  {
-    id: 'premium-solo',
-    icon: Key,
-    title: 'Premium Solo Membership',
-    description: "24/7 fitness access for individuals who want to train at their own pace on their own schedule. Full facility access with no time restrictions. Ideal for experienced or independent gym-goers.",
-    features: [
-      'Full facility access',
-      'No time restrictions',
-      '24/7 access',
-      'Ideal for experienced gym-goers',
-      'Train at your own pace'
-    ],
-    pricing: '$29.99 (biweekly)',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/0bb90df39_coveroptimized.jpg',
-    popular: false,
-    outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/66049a21f7a31a735a8857ee'
-  },
-  {
-    id: 'basic-solo',
-    icon: Clock,
-    title: 'Basic Solo Membership',
-    description: "24/7 fitness access at your own pace on your own schedule, with restricted access during peak hours. Cost-effective option for flexible schedules. Ideal for off-peak training.",
-    features: [
-      '24/7 access with peak hour restrictions',
-      'No access weekdays 7:00–10:00 AM',
-      'No access weekdays 4:30–7:30 PM',
-      'Full access all other times',
-      'Train at your own pace'
-    ],
-    pricing: '$21.99 (biweekly)',
-    image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/fbeff4021_basictrainingopt.jpg',
-    popular: false,
-    outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/6132272689a6d431294e39bd'
-  }//,
+  // {
+  //   id: 'premium-solo',
+  //   icon: Key,
+  //   title: 'Premium Solo Membership',
+  //   description: "24/7 fitness access for individuals who want to train at their own pace on their own schedule. Full facility access with no time restrictions. Ideal for experienced or independent gym-goers.",
+  //   features: [
+  //     'Full facility access',
+  //     'No time restrictions',
+  //     '24/7 access',
+  //     'Ideal for experienced gym-goers',
+  //     'Train at your own pace'
+  //   ],
+  //   pricing: '$29.99 (biweekly)',
+  //   image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/0bb90df39_coveroptimized.jpg',
+  //   popular: false,
+  //   outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/66049a21f7a31a735a8857ee'
+  // },
+  // {
+  //   id: 'basic-solo',
+  //   icon: Clock,
+  //   title: 'Basic Solo Membership',
+  //   description: "24/7 fitness access at your own pace on your own schedule, with restricted access during peak hours. Cost-effective option for flexible schedules. Ideal for off-peak training.",
+  //   features: [
+  //     '24/7 access with peak hour restrictions',
+  //     'No access weekdays 7:00–10:00 AM',
+  //     'No access weekdays 4:30–7:30 PM',
+  //     'Full access all other times',
+  //     'Train at your own pace'
+  //   ],
+  //   pricing: '$21.99 (biweekly)',
+  //   image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/fbeff4021_basictrainingopt.jpg',
+  //   popular: false,
+  //   outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/6132272689a6d431294e39bd'
+  // }
   // {
   //   id: 'mvmt-tuneup',
   //   icon: Activity,
