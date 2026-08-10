@@ -4,14 +4,11 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Calendar as CalendarUI } from '@/components/ui/calendar';
 import { Textarea } from '@/components/ui/textarea';
 import { Calendar, Clock, CheckCircle2, Download, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { trackMetaEvent } from '@/components/utils/metaPixel';
-
-const LAB_TECHS = ['Stephen', 'Colin', 'Ashley M.', 'Ashley H.', 'No preference'];
 
 export default function BookingCalendar() {
   const [step, setStep] = useState(1);
@@ -26,7 +23,6 @@ export default function BookingCalendar() {
     lastName: '',
     clientEmail: '',
     clientPhone: '',
-    preferredLabTech: '',
     notes: ''
   });
   const [confirmation, setConfirmation] = useState(null);
@@ -72,7 +68,6 @@ export default function BookingCalendar() {
         lastName: formData.lastName,
         clientEmail: formData.clientEmail,
         clientPhone: formData.clientPhone,
-        preferredLabTech: formData.preferredLabTech,
         appointmentDate: selectedTime,
         notes: formData.notes
       });
@@ -90,8 +85,7 @@ export default function BookingCalendar() {
 
       setConfirmation(data);
       trackMetaEvent('Schedule', {
-        content_name: 'LiftLab Consultation Booking',
-        preferred_lab_tech: formData.preferredLabTech
+        content_name: 'LiftLab Consultation Booking'
       });
       setStep(4);
     } catch (error) {
@@ -157,11 +151,6 @@ export default function BookingCalendar() {
               <p className="text-sm text-zinc-600">
                 <strong className="text-black">Date & Time:</strong> {formatFullDate(selectedTime)} EST
               </p>
-              {formData.preferredLabTech && formData.preferredLabTech !== 'No preference' && (
-                <p className="text-sm text-zinc-600">
-                  <strong className="text-black">Preferred Lab Tech:</strong> {formData.preferredLabTech}
-                </p>
-              )}
             </div>
 
             <div className="space-y-3">
@@ -380,23 +369,6 @@ export default function BookingCalendar() {
                   onChange={(e) => setFormData({ ...formData, clientPhone: e.target.value })}
                   placeholder="(613) 555-0100"
                 />
-              </div>
-
-              <div>
-                <Label className="text-sm font-bold uppercase tracking-wider mb-2 block">Preferred Lab Tech</Label>
-                <Select
-                  value={formData.preferredLabTech}
-                  onValueChange={(val) => setFormData({ ...formData, preferredLabTech: val })}
-                >
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select a coach (optional)" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {LAB_TECHS.map((tech) => (
-                      <SelectItem key={tech} value={tech}>{tech}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
               </div>
 
               <div>
