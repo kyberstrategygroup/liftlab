@@ -238,7 +238,7 @@ export default function TrainerDetail() {
             <p className="text-zinc-400 mb-8 max-w-xl mx-auto">
               Book a consultation to discuss your goals and find the right training program.
             </p>
-            <CTAButton to="StartNow#ready" variant="primary" size="large">
+            <CTAButton to="Schedule" variant="primary" size="large">
               Schedule Consult
             </CTAButton>
           </motion.div>

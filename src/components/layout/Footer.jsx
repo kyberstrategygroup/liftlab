@@ -40,7 +40,7 @@ export default function Footer() {
             <p className="text-sm sm:text-base text-zinc-400 mb-6 sm:mb-8">
               Book a free consultation and let's talk about your goals.
             </p>
-            <CTAButton to="StartNow#ready" variant="primary" size="large">
+            <CTAButton to="Schedule" variant="primary" size="large">
               Start Now
             </CTAButton>
           </div>
@@ -73,7 +73,7 @@ export default function Footer() {
               <h4 className="font-bold uppercase tracking-wider text-xs sm:text-sm mb-3 sm:mb-4">Navigate</h4>
               <ul className="space-y-2 sm:space-y-3">
                 {[
-                  { name: 'Start Now', page: 'StartNow' },
+                  { name: 'Start Now', page: 'Schedule' },
                   { name: 'Our Services', page: 'Services' },
                   { name: 'Our Members', page: 'Memberships' },
                   { name: 'Meet The Team', page: 'Team' },
