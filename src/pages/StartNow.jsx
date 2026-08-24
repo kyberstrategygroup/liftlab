@@ -39,7 +39,10 @@ export default function StartNow() {
 
             <div className="mt-10 text-center">
               <a
-                href="/Enrolled"
+                href="https://kinectmp.ca/clients/YGK-Lift%20Lab-1/info?selectedFacilityID=610d0c1db463aa70bd213b91&selectedPlanIDs=69f3f973dde69d208886b060"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setTimeout(() => window.location.href = '/Enrolled', 100)}
                 className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-wider px-8 py-4 transition-colors"
               >
                 Skip the call, I'm ready to enroll NOW
