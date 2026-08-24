@@ -245,8 +245,8 @@ export default function About() {
             <p className="text-sm sm:text-base text-zinc-400 mb-6 sm:mb-8 max-w-xl mx-auto px-4">
               Book a tour and consultation. No pressure, just conversation.
             </p>
-            <CTAButton to="Schedule" variant="primary" size="large">
-              Schedule Consult
+            <CTAButton to="StartNow" variant="primary" size="large">
+                    Schedule Consult
             </CTAButton>
           </motion.div>
         </div>

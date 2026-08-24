@@ -287,7 +287,7 @@ export default function Services() {
                       {service.pricing ? 'Start Now' : 'Get Started'}
                     </CTAButton>
                   ) : (
-                    <CTAButton to="Schedule" variant="primary">
+                    <CTAButton to="StartNow" variant="primary">
                       {service.pricing ? 'Start Now' : 'Get Started'}
                     </CTAButton>
                   )}
@@ -312,7 +312,7 @@ export default function Services() {
             <p className="text-zinc-400 mb-8 max-w-xl mx-auto">
               Book a free consultation. We'll discuss your goals and recommend the best fit.
             </p>
-            <CTAButton to="Schedule" variant="primary" size="large">
+            <CTAButton to="StartNow" variant="primary" size="large">
               Schedule Consult
             </CTAButton>
           </motion.div>

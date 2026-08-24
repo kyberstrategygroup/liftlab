@@ -54,7 +54,7 @@ export default function HeroSection({ onOpenChallenge }) {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <CTAButton to="Schedule" variant="primary" size="large">
+            <CTAButton to="StartNow" variant="primary" size="large">
               Get Started Now
             </CTAButton>
             <CTAButton to="Team" variant="outline" size="large">

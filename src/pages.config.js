@@ -53,7 +53,6 @@ import AdminSetup from './pages/AdminSetup';
 import ChallengeApplication from './pages/ChallengeApplication';
 import Home from './pages/Home';
 import Memberships from './pages/Memberships';
-import Schedule from './pages/Schedule';
 import Services from './pages/Services';
 import StartNow from './pages/StartNow';
 import Team from './pages/Team';
@@ -68,7 +67,6 @@ export const PAGES = {
     "ChallengeApplication": ChallengeApplication,
     "Home": Home,
     "Memberships": Memberships,
-    "Schedule": Schedule,
     "Services": Services,
     "StartNow": StartNow,
     "Team": Team,

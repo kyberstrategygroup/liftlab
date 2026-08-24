@@ -10,7 +10,7 @@ const navLinks = [
   { name: 'Our Services', page: 'Services' },
   { name: 'Our Members', page: 'Memberships' },
   { name: 'Meet The Team', page: 'Team' },
-  { name: 'Book a Call', page: 'Schedule' },
+  { name: 'Book a Call', page: 'StartNow' },
   { name: 'About', page: 'About' },
 ];
 
@@ -63,7 +63,7 @@ export default function Header() {
 
             {/* CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3">
-              <CTAButton to="Schedule" variant="primary" size="small">
+              <CTAButton to="StartNow" variant="primary" size="small">
                 Start Now
               </CTAButton>
               <button
@@ -77,7 +77,7 @@ export default function Header() {
             <div>
               {/* Mobile nav CTA */}
               <button
-                onClick={() => window.location.href = "/Schedule"}
+                onClick={() => window.location.href = "/StartNow"}
                 className="lg:hidden text-white px-4 bg-blue-600 font-bold uppercase mr-2 text-center min-w-[32]  sm:-translate-y-[6px]"
               >
                   {/* Mobile: two lines */}
@@ -126,12 +126,12 @@ export default function Header() {
                 ))}
                 <div className="pt-6 border-t border-zinc-800 space-y-4">
                   <CTAButton 
-                    to="Schedule" 
+                    to="StartNow" 
                     variant="primary" 
                     size="large"
                     className="w-full"
                     onClick={() => {setMobileMenuOpen(false)
-                    window.location.href = "/Schedule"}
+                    window.location.href = "/StartNow"}
                     }
                   >
                     Start Now

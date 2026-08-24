@@ -169,8 +169,8 @@ export default function Team() {
             <p className="text-zinc-400 mb-8 max-w-xl mx-auto">
               Book a consultation and meet the coaches in person.
             </p>
-            <CTAButton to="Schedule" variant="primary" size="large">
-              Schedule Consult
+            <CTAButton to="StartNow" variant="primary" size="large">
+                    Schedule Consult
             </CTAButton>
           </motion.div>
         </div>
