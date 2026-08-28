@@ -25,9 +25,6 @@ export default function StartNow() {
         </div>
       </section>
 
-      {/* Schedule */}
-      <ScheduleSection />
-
       {/* Booking Calendar */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-6">
@@ -67,6 +64,9 @@ export default function StartNow() {
           </motion.div>
         </div>
       </section>
+
+      {/* Schedule */}
+      <ScheduleSection />
     </div>
   );
 }
