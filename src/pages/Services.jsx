@@ -29,22 +29,39 @@ const services = [
     icon: Users,
     title: 'Semi-Private Training',
     description: "Small group sessions (max 4 people) with individualized programming. You get personal attention while training alongside others who push you to be better.",
-    features: [
-      '2 week money-back guarantee',
-      'Personalized program within a group setting of up to 4',
-      'Flexible scheduling with multiple time slots, and training levels',
-      'Progress tracking',
-      '24/hour facility access',
-      'Exclusive members-only fitness and health video tutorials',
-      '1-4 weeks of private training upfront at no extra cost'
-    ],
-    pricing: '2 sessions per week — $80/week',
-    pricingNote: 'Best value option for coached training in a small-group setting',
     image: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/cf46b6628_sptopt.jpg',
     popular: true,
-    outbound_link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695820fa29c17ae187c8e4b8',
-    pricing_2: '3 sessions per week — $115/week',
-    outbound_link_2: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/695f3356de70e103e4b27af3'
+    tiers: [
+      {
+        name: 'BASIC',
+        features: [
+          '2-Week Money-Back Guarantee',
+          'Customized Training Program',
+          'Unlimited Weekly Sessions',
+          'Flexible Booking',
+          'Unlimited 24/7 Facility Access',
+          'Training Foundations Kickstart'
+        ],
+        plans: [
+          { row: 'Annual Contract', rowNote: '*$500 Early Termination Fee', price: '$119.99/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/info?selectedFacilityID=610d0c1db463aa70bd213b91&selectedPlanIDs=69f3f973dde69d208886b060' },
+          { row: 'No Contract', rowNote: '+Freezable', price: '$149.99/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/6a1b8511b5238ac9c47bc7b7' },
+        ]
+      },
+      {
+        name: 'GOLD',
+        features: [
+          'Everything in BASIC, Plus',
+          '1x/week Private Session',
+          '1x/month Progress Tracking',
+          '1x/month Nutrition Coaching',
+          'Reassessment'
+        ],
+        plans: [
+          { row: 'Annual Contract', rowNote: '*$500 Early Termination Fee', price: '$219.99/week', link: '#' },
+          { row: 'No Contract', rowNote: '+Freezable', price: '$274.99/week', link: '#' },
+        ]
+      }
+    ]
   },
   // {
   //   id: 'premium-solo',
@@ -128,24 +145,6 @@ export default function Services() {
       {/* Semi-Private — Standalone Hero Section */}
       {(() => {
         const sp = services.find(s => s.id === 'semi-private');
-        const semiPrivateGrid = [
-          {
-            row: 'Annual Contract',
-            rowNote: '*$500 Early Termination Fee',
-            options: [
-              { label: '2x / Week', wasPrice: null, price: '$89.99/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/info?selectedFacilityID=610d0c1db463aa70bd213b91&selectedPlanIDs=69f3f9a8dde69d208886b2aa' },
-              { label: 'Unlimited', wasPrice: null, price: '$119.99/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/info?selectedFacilityID=610d0c1db463aa70bd213b91&selectedPlanIDs=69f3f973dde69d208886b060' },
-            ]
-          },
-          {
-            row: 'No Contract',
-            rowNote: '+Freezable',
-            options: [
-              { label: '2x / Week', wasPrice: null, price: '$112.50/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/69e78af5b22376a45f4cdee4' },
-              { label: 'Unlimited', wasPrice: null, price: '$149.99/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/6a1b8511b5238ac9c47bc7b7' },
-            ]
-          },
-        ];
         return (
           <section className="py-20 md:py-28 bg-white border-b border-zinc-100">
             <div className="container mx-auto px-6">
@@ -175,52 +174,43 @@ export default function Services() {
                     {sp.title}
                   </h2>
                   <p className="text-zinc-600 text-lg mb-1">{sp.description}</p>
-                  <p className="text-zinc-500 text-sm italic mb-6">Stackable with weekly private sessions for bonus support.</p>
+                  <p className="text-zinc-500 text-sm italic mb-8">Stackable with weekly private sessions for bonus support.</p>
 
-                  <ul className="space-y-3 mb-10">
-                    {sp.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
-                        <span className="text-zinc-700">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Pricing Grid */}
-                  <h3 className="text-sm font-bold uppercase tracking-[0.15em] text-zinc-500 mb-4">Choose Your Plan</h3>
-                  <div className="border border-zinc-200 overflow-hidden">
-                    {/* Header row */}
-                    <div className="grid grid-cols-3 bg-zinc-950">
-                      <div className="p-3" />
-                      <div className="p-3 text-center border-l border-zinc-700">
-                        <p className="text-white font-black uppercase tracking-tight text-sm">2x/Week</p>
-                      </div>
-                      <div className="p-3 text-center border-l border-zinc-700">
-                        <p className="text-white font-black uppercase tracking-tight text-sm">Unlimited</p>
-                      </div>
-                    </div>
-                    {/* Data rows */}
-                    {semiPrivateGrid.map((row, ri) => (
-                      <div key={ri} className={`grid grid-cols-3 ${ri % 2 === 0 ? 'bg-zinc-100' : 'bg-white'} border-t border-zinc-200`}>
-                        <div className="p-4 flex flex-col justify-center">
-                          <p className="font-black text-black uppercase text-xs tracking-tight">{row.row}</p>
-                          {row.rowNote && <p className="text-zinc-500 text-xs mt-1">{row.rowNote}</p>}
+                  {/* Tier columns */}
+                  <div className="grid sm:grid-cols-2 gap-6">
+                    {sp.tiers.map((tier, ti) => (
+                      <div key={ti} className={`border ${ti === 1 ? 'border-blue-600' : 'border-zinc-200'} flex flex-col`}>
+                        <div className={`p-4 ${ti === 1 ? 'bg-blue-600' : 'bg-zinc-950'}`}>
+                          <p className="text-white font-black uppercase tracking-tight text-lg text-center klavika-header">{tier.name}</p>
                         </div>
-                        {row.options.map((opt, oi) => (
-                          <a
-                            key={oi}
-                            href={opt.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={() => trackMetaEvent('ViewContent', { content_name: `Semi-Private ${opt.label} ${row.row}`, content_category: 'Service' })}
-                            className="p-4 text-center border-l border-zinc-200 hover:bg-blue-50 transition-colors group"
-                          >
-                            {opt.wasPrice && (
-                              <p className="text-zinc-400 text-xs line-through">{opt.wasPrice}</p>
-                            )}
-                            <p className="font-black text-blue-600 text-lg group-hover:text-blue-700">{opt.price}</p>
-                          </a>
-                        ))}
+                        <ul className="p-5 space-y-3 flex-grow">
+                          {tier.features.map((feature, i) => (
+                            <li key={i} className="flex items-start gap-3">
+                              <Check className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                              <span className="text-zinc-700 text-sm">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        <div className="border-t border-zinc-200">
+                          {tier.plans.map((plan, pi) => (
+                            <a
+                              key={pi}
+                              href={plan.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              onClick={() => trackMetaEvent('ViewContent', { content_name: `Semi-Private ${tier.name} ${plan.row}`, content_category: 'Service' })}
+                              className={`block p-4 hover:bg-blue-50 transition-colors group ${pi % 2 === 0 ? 'bg-zinc-50' : 'bg-white'} border-t border-zinc-200`}
+                            >
+                              <div className="flex items-center justify-between gap-3">
+                                <div>
+                                  <p className="font-black text-black uppercase text-xs tracking-tight">{plan.row}</p>
+                                  {plan.rowNote && <p className="text-zinc-500 text-xs mt-0.5">{plan.rowNote}</p>}
+                                </div>
+                                <p className="font-black text-blue-600 text-lg group-hover:text-blue-700 whitespace-nowrap">{plan.price}</p>
+                              </div>
+                            </a>
+                          ))}
+                        </div>
                       </div>
                     ))}
                   </div>
