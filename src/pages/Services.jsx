@@ -57,8 +57,8 @@ const services = [
           'Reassessment'
         ],
         plans: [
-          { row: 'Annual Contract', rowNote: '*$500 Early Termination Fee', price: '$219.99/week', link: '#' },
-          { row: 'No Contract', rowNote: '+Freezable', price: '$274.99/week', link: '#' },
+          { row: 'Annual Contract', rowNote: '*$500 Early Termination Fee', price: '$219.99/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/6a1ce909b5238ac9c47f4ee9' },
+          { row: 'No Contract', rowNote: '+Freezable', price: '$274.99/week', link: 'https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/6a74f38ae8ebe980dd8a8c08' },
         ]
       }
     ]
