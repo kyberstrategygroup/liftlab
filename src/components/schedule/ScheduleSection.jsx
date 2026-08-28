@@ -3,14 +3,14 @@ import { motion } from 'framer-motion';
 
 const schedules = [
   {
-    label: 'Semi-Private+ (PM)',
-    src: 'https://media.base44.com/images/public/694b80b3d28da37df32ecb33/23ceb801c_SPPM.png',
-    alt: 'Semi-Private+ PM weekly schedule'
-  },
-  {
     label: 'Semi-Private+ (AM)',
     src: 'https://media.base44.com/images/public/694b80b3d28da37df32ecb33/8e5ee7e0a_SPAM.png',
     alt: 'Semi-Private+ AM weekly schedule'
+  },
+  {
+    label: 'Semi-Private+ (PM)',
+    src: 'https://media.base44.com/images/public/694b80b3d28da37df32ecb33/23ceb801c_SPPM.png',
+    alt: 'Semi-Private+ PM weekly schedule'
   }
 ];
 
