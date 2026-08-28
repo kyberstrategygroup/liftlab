@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import BookingCalendar from '@/components/booking/BookingCalendar';
+import ScheduleSection from '@/components/schedule/ScheduleSection';
 import { Clock } from 'lucide-react';
 
 export default function StartNow() {
@@ -14,9 +15,6 @@ export default function StartNow() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-blue-400 mb-4">
-              Class Times
-            </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-6 klavika-header">
               Book A Call
             </h1>
@@ -26,6 +24,9 @@ export default function StartNow() {
           </motion.div>
         </div>
       </section>
+
+      {/* Schedule */}
+      <ScheduleSection />
 
       {/* Booking Calendar */}
       <section className="py-16 md:py-24 bg-white">
