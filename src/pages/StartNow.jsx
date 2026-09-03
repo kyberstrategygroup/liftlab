@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import BookingCalendar from '@/components/booking/BookingCalendar';
 import ScheduleSection from '@/components/schedule/ScheduleSection';
+import OfferVideos from '@/components/schedule/OfferVideos';
 import { Clock } from 'lucide-react';
 
 export default function StartNow() {
@@ -33,6 +34,11 @@ export default function StartNow() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
+            <div className="mb-8 max-w-2xl mx-auto text-center">
+              <p className="text-sm font-bold uppercase tracking-[0.15em] text-blue-600">
+                Purpose: Understand your goals and determine if you qualify for a consultation or enrollment.
+              </p>
+            </div>
             <BookingCalendar />
 
             <div className="mt-10 text-center">
@@ -43,7 +49,7 @@ export default function StartNow() {
                 onClick={() => setTimeout(() => window.location.href = '/Enrolled', 100)}
                 className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-wider px-8 py-4 transition-colors"
               >
-                Skip the call, I'm ready to enroll NOW
+                Skip the call, enroll now & claim my free week
               </a>
             </div>
 
@@ -57,13 +63,16 @@ export default function StartNow() {
               </div>
                 <div className="text-sm text-zinc-600 space-y-1">
                   <p><strong className="text-black">Gym Hours:</strong> Monday to Sunday (Open 24 Hours)</p>
-                  <p><strong className="text-black">Training Session Hours:</strong> To be determined</p>
+                  <p><strong className="text-black">Training Session Hours:</strong> 7:00 am to 8:00 pm</p>
                 </div>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
+
+      {/* Offer Videos */}
+      <OfferVideos />
 
       {/* Schedule */}
       <ScheduleSection />

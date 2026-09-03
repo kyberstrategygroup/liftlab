@@ -198,7 +198,7 @@ export default function BookingCalendar() {
       <Card className="bg-white">
         <CardHeader>
           <CardTitle className="text-2xl font-black uppercase tracking-tight">
-            Book Your Consultation
+            Book Your Discovery Call
           </CardTitle>
           <div className="flex gap-2 mt-4">
             {[1, 2, 3].map((s) => (
