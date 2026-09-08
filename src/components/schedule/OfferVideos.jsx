@@ -17,6 +17,9 @@ const videos = [
   { label: 'Mental Health', url: 'https://youtube.com/shorts/vUe4lFKyclM', ratio: '9/16' },
 ];
 
+const landscape = videos.filter((v) => v.ratio === '16/9');
+const portrait = videos.filter((v) => v.ratio === '9/16');
+
 export default function OfferVideos() {
   return (
     <section className="py-16 md:py-24 bg-white">
@@ -36,15 +39,35 @@ export default function OfferVideos() {
           </h2>
         </motion.div>
 
-        <div className="columns-2 md:columns-3 lg:columns-4 gap-5 max-w-6xl mx-auto">
-          {videos.map((v, i) => (
+        {/* Landscape videos: full width, stacked */}
+        <div className="max-w-3xl mx-auto space-y-8 mb-12">
+          {landscape.map((v, i) => (
             <motion.div
-              key={i}
+              key={v.label}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <p className="font-black text-black uppercase tracking-tight text-base md:text-lg mb-3 klavika-header">
+                {v.label}
+              </p>
+              <div className="bg-black">
+                <VideoEmbed url={v.url} title={v.label} aspectRatio={v.ratio} />
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Portrait videos: 2 per row on mobile, scaling up on larger screens */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
+          {portrait.map((v, i) => (
+            <motion.div
+              key={v.label}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: (i % 4) * 0.05 }}
-              className="break-inside-avoid mb-5"
             >
               <p className="font-black text-black uppercase tracking-tight text-sm mb-2 klavika-header">
                 {v.label}
