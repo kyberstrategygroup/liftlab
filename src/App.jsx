@@ -4,6 +4,8 @@ import { queryClientInstance } from '@/lib/query-client'
 import NavigationTracker from '@/lib/NavigationTracker'
 import { pagesConfig } from './pages.config'
 import Enrolled from './pages/Enrolled';
+import PromoOffer from './pages/PromoOffer';
+import StartNow from './pages/StartNow';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
@@ -62,6 +64,16 @@ const AuthenticatedApp = () => {
       <Route path="/Enrolled" element={
         <LayoutWrapper currentPageName="Enrolled">
           <Enrolled />
+        </LayoutWrapper>
+      } />
+      <Route path="/StartNow/:slug" element={
+        <LayoutWrapper currentPageName="StartNow">
+          <StartNow />
+        </LayoutWrapper>
+      } />
+      <Route path="/PromoOffer" element={
+        <LayoutWrapper currentPageName="PromoOffer">
+          <PromoOffer />
         </LayoutWrapper>
       } />
       <Route path="*" element={<PageNotFound />} />

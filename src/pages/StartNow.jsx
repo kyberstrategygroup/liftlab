@@ -1,11 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useParams, Link } from 'react-router-dom';
 import BookingCalendar from '@/components/booking/BookingCalendar';
 import ScheduleSection from '@/components/schedule/ScheduleSection';
 import OfferVideos from '@/components/schedule/OfferVideos';
 import { Clock } from 'lucide-react';
 
 export default function StartNow() {
+  const { slug } = useParams();
+  const isPromo = slug === 'promo';
+
   return (
     <div>
       {/* Hero */}
@@ -42,15 +46,29 @@ export default function StartNow() {
             <BookingCalendar />
 
             <div className="mt-10 text-center">
-              <a
-                href="https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/69f3f973dde69d208886b060"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setTimeout(() => window.location.href = '/Enrolled', 100)}
-                className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-wider px-8 py-4 transition-colors"
-              >
-                Skip the call, enroll now & claim my free week
-              </a>
+              {isPromo ? (
+                <div className="inline-block">
+                  <p className="text-sm font-bold uppercase tracking-[0.15em] text-blue-600 mb-3">
+                    Special Offer: 5mo for 4
+                  </p>
+                  <Link
+                    to="/PromoOffer"
+                    className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-wider px-8 py-4 transition-colors"
+                  >
+                    Skip the call, enroll now
+                  </Link>
+                </div>
+              ) : (
+                <a
+                  href="https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/69f3f973dde69d208886b060"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setTimeout(() => window.location.href = '/Enrolled', 100)}
+                  className="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold uppercase tracking-wider px-8 py-4 transition-colors"
+                >
+                  Skip the call, enroll now & claim my free week
+                </a>
+              )}
             </div>
 
             <div className="mt-12 max-w-2xl mx-auto">
