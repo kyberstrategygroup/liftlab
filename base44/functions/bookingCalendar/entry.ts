@@ -7,6 +7,10 @@ const CAL_EAMON_BOOKING = 'stephenradecki85@gmail.com';
 
 // When no trainer is selected, check both calendars
 const ALL_CALS = [CAL_ASHLEY, CAL_EAMON];
+// Calendars queried for availability — Eamon's availability also reflects his booking calendar
+const AVAIL_CALS = [CAL_ASHLEY, CAL_EAMON, CAL_EAMON_BOOKING];
+// Max booking window: 5 days in advance
+const MAX_ADVANCE_DAYS = 5;
 
 const TRAINER_EMAILS = {
     'Stephen':   'stephen@liftlab.ca',
@@ -58,7 +62,7 @@ async function getAvailability(base44, { date }) {
         timeMin: timeMin.toISOString(),
         timeMax: timeMax.toISOString(),
         timeZone: TZ,
-        items: ALL_CALS.map(id => ({ id }))
+        items: AVAIL_CALS.map(id => ({ id }))
     };
 
     const fbRes = await fetch('https://www.googleapis.com/calendar/v3/freeBusy', {
@@ -80,6 +84,7 @@ async function getAvailability(base44, { date }) {
     // Build busy intervals per calendar
     const busyAshley = (fbData.calendars?.[CAL_ASHLEY]?.busy || []).map(b => ({ start: new Date(b.start), end: new Date(b.end) }));
     const busyEamon  = (fbData.calendars?.[CAL_EAMON]?.busy  || []).map(b => ({ start: new Date(b.start), end: new Date(b.end) }));
+    const busyEamonBooking = (fbData.calendars?.[CAL_EAMON_BOOKING]?.busy || []).map(b => ({ start: new Date(b.start), end: new Date(b.end) }));
 
     const isBusy = (busyList, slotStart, slotEnd) =>
         busyList.some(b => {
@@ -93,15 +98,17 @@ async function getAvailability(base44, { date }) {
     const slotStart = torontoToUTC(date, 6, 0);
     const slotEnd   = torontoToUTC(date, 22, 0);
     const now = new Date();
+    const maxBookingTime = new Date(now.getTime() + MAX_ADVANCE_DAYS * 24 * 60 * 60 * 1000);
 
     let cursor = new Date(slotStart);
     while (cursor < slotEnd) {
         const end = new Date(cursor.getTime() + 30 * 60 * 1000);
 
         if (cursor <= now) { cursor = end; continue; }
+        if (cursor > maxBookingTime) { break; }
 
         const ashleyFree = !isBusy(busyAshley, cursor, end);
-        const eamonFree  = !isBusy(busyEamon,  cursor, end);
+        const eamonFree  = !isBusy(busyEamon, cursor, end) && !isBusy(busyEamonBooking, cursor, end);
 
         if (ashleyFree || eamonFree) {
             slots.push(cursor.toISOString());
@@ -120,12 +127,19 @@ async function createBooking(base44, { firstName, lastName, clientEmail, clientP
     const startTime = new Date(appointmentDate);
     const endTime = new Date(startTime.getTime() + 30 * 60 * 1000);
 
+    // Enforce max 5 days in advance
+    const now = new Date();
+    const maxBookingTime = new Date(now.getTime() + MAX_ADVANCE_DAYS * 24 * 60 * 60 * 1000);
+    if (startTime > maxBookingTime) {
+        return Response.json({ error: 'TOO_FAR', message: 'Bookings can only be made up to 5 days in advance. Please choose a sooner date.' }, { status: 400 });
+    }
+
     // Double-check which calendars are free for this slot
     const checkBody = {
         timeMin: startTime.toISOString(),
         timeMax: endTime.toISOString(),
         timeZone: TZ,
-        items: ALL_CALS.map(id => ({ id }))
+        items: AVAIL_CALS.map(id => ({ id }))
     };
     const checkRes = await fetch('https://www.googleapis.com/calendar/v3/freeBusy', {
         method: 'POST',
@@ -137,7 +151,9 @@ async function createBooking(base44, { firstName, lastName, clientEmail, clientP
     if (checkRes.ok) {
         const checkData = await checkRes.json();
         const ashleyFree = (checkData.calendars?.[CAL_ASHLEY]?.busy || []).length === 0;
-        const eamonFree  = (checkData.calendars?.[CAL_EAMON]?.busy  || []).length === 0;
+        const eamonBusy  = (checkData.calendars?.[CAL_EAMON]?.busy || []).length > 0
+                        || (checkData.calendars?.[CAL_EAMON_BOOKING]?.busy || []).length > 0;
+        const eamonFree  = !eamonBusy;
 
         if (!ashleyFree && !eamonFree) {
             return Response.json({ error: 'SLOT_TAKEN', message: 'This time slot is no longer available. Please choose another time.' }, { status: 409 });

@@ -244,7 +244,7 @@ export default function BookingCalendar() {
                     const today = new Date();
                     today.setHours(0, 0, 0, 0);
                     const maxDate = new Date();
-                    maxDate.setDate(maxDate.getDate() + 60);
+                    maxDate.setDate(maxDate.getDate() + 5);
                     return date < today || date > maxDate;
                   }}
                   className="border rounded-md"
