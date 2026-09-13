@@ -290,6 +290,24 @@ The Lift Lab Team`,
         });
     }
 
+    // Notify Ashley when the booking lands on her calendar
+    if (targetCalendar === CAL_ASHLEY) {
+        await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${Deno.env.get('RESEND_API_KEY')}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                from: 'LiftLab Bookings <contact@liftlab.ca>',
+                to: 'ashleymacpt@gmail.com',
+                bcc: 'kyberstrategygroup@gmail.com',
+                subject: `New Consultation: ${clientName} – ${startTime.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: TZ })}`,
+                text: `Hi Ashley,\n\nA new consultation has been booked on your calendar:\n\nClient: ${clientName}\nEmail: ${clientEmail}\nPhone: ${clientPhone}\nDate: ${startTime.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: TZ })}\nTime: ${startTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: TZ })} EST\n${notes ? `\nNotes: ${notes}` : ''}\n\nGoogle Calendar: ${calendarEvent.htmlLink}`
+            })
+        });
+    }
+
     // Internal notification
     await fetch('https://api.resend.com/emails', {
         method: 'POST',
