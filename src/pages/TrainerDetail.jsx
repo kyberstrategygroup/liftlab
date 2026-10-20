@@ -5,7 +5,7 @@ import { createPageUrl } from '@/utils';
 import SectionHeading from '@/components/ui/SectionHeading';
 import VideoEmbed from '@/components/ui/VideoEmbed';
 import CTAButton from '@/components/ui/CTAButton';
-import { ArrowLeft, Instagram, Linkedin, Award } from 'lucide-react';
+import { ArrowLeft, Instagram, Linkedin, Award, User } from 'lucide-react';
 
 // Placeholder trainer data - in production, fetch from entity based on URL param
 const trainersData = {
@@ -66,6 +66,22 @@ const trainersData = {
     why_story_video_url: 'https://www.youtube.com/shorts/GRG_Ukt_Al0',
     mission_video_url: 'https://www.youtube.com/shorts/8EXXFPKu58c',
     instagram: 'h3o2training',
+  },
+  'coach-5': {
+    first_name: 'Ian Horne',
+    title: 'New Talent',
+    headshot_url: '',
+    bio: "Let's get back to basics; focus on fundamental movement patterns and cultivate change.\\n\\nWith physical fitness, less is more. Attention to the fundamentals allows for the most efficient path to create change. If the goal is strength, weight-loss, bigger muscles, aging gracefully or a combination of it all, having a program and coach rooted in the fundamentals is the safest, most effective and most efficient way to obtain your goals.\\n\\nLet's keep it simple but significant. Create a program specific to your needs, focused on the basics to achieve your goals and desired results.",
+    credentials: [
+      { name: 'Diploma, Fitness and Health Promotion', location: 'St. Lawrence College' },
+      { name: 'Certified Personal Trainer', location: 'Ontario Fitness Council' },
+      { name: 'Advanced Medical Care Assessment', location: 'ACP Paramedic' },
+      { name: 'Certified Elder Fitness Instructor', location: 'Ontario Fitness Council' },
+      { name: 'Combat Engineer', location: 'Canadian Armed Forces' }
+    ],
+    why_story_video_url: 'https://youtube.com/shorts/mOERbPssfsE',
+    mission_video_url: 'https://youtube.com/shorts/ck11Z5IhC_I',
+    instagram: '',
   }
 };
 
@@ -102,12 +118,18 @@ export default function TrainerDetail() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className={`relative overflow-hidden mb-2 flex justify-center ${trainerId === 'coach-1' || trainerId === 'coach-2' || trainerId === 'coach-3' || trainerId === 'coach-4' ? 'bg-zinc-950' : 'bg-zinc-100'}`}>
-                <img 
-                  src={trainer.headshot_url}
-                  alt={trainer.first_name}
-                  className={trainerId === 'coach-1' ? 'w-1/2' : 'w-3/4'}
-                />
+              <div className={`relative overflow-hidden mb-2 flex justify-center items-center ${trainerId === 'coach-1' || trainerId === 'coach-2' || trainerId === 'coach-3' || trainerId === 'coach-4' || trainerId === 'coach-5' ? 'bg-zinc-950' : 'bg-zinc-100'}`}>
+                {trainer.headshot_url ? (
+                  <img 
+                    src={trainer.headshot_url}
+                    alt={trainer.first_name}
+                    className={trainerId === 'coach-1' ? 'w-1/2' : 'w-3/4'}
+                  />
+                ) : (
+                  <div className="w-3/4 aspect-[3/4] flex items-center justify-center bg-zinc-200">
+                    <User className="w-24 h-24 text-zinc-400" />
+                  </div>
+                )}
               </div>
             </motion.div>
 

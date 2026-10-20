@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import SectionHeading from '@/components/ui/SectionHeading';
 import CTAButton from '@/components/ui/CTAButton';
-import { Instagram, Linkedin, ArrowRight } from 'lucide-react';
+import { Instagram, Linkedin, ArrowRight, User } from 'lucide-react';
 
 // Placeholder data - replace with actual trainer data from entity
 const trainers = [
@@ -38,6 +38,14 @@ const trainers = [
     title: 'Senior Coach',
     headshot_url: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/694b80b3d28da37df32ecb33/859995a8b_profileashH.jpg',
     instagram_url: 'https://www.instagram.com/h3o2training/',
+    linkedin: '#'
+  },
+  {
+    id: 'coach-5',
+    first_name: 'Ian',
+    title: 'New Talent',
+    headshot_url: '',
+    instagram: '',
     linkedin: '#'
   }
 ];
@@ -84,12 +92,18 @@ export default function Team() {
                   className="block"
                 >
                   {/* Photo */}
-                  <div className="relative overflow-hidden bg-zinc-100 mb-6 flex justify-center">
-                    <img 
-                      src={trainer.headshot_url}
-                      alt={trainer.first_name}
-                      className="max-w-full h-auto transition-transform duration-500 group-hover:scale-105"
-                    />
+                  <div className="relative overflow-hidden bg-zinc-100 mb-6 flex justify-center items-center">
+                    {trainer.headshot_url ? (
+                      <img 
+                        src={trainer.headshot_url}
+                        alt={trainer.first_name}
+                        className="max-w-full h-auto transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full aspect-[3/4] flex items-center justify-center bg-zinc-200">
+                        <User className="w-16 h-16 text-zinc-400" />
+                      </div>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <span className="text-white font-bold text-sm flex items-center gap-2">
