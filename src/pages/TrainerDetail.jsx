@@ -70,7 +70,7 @@ const trainersData = {
   'coach-5': {
     first_name: 'Ian Horne',
     title: 'New Talent',
-    headshot_url: '',
+    headshot_url: 'https://media.base44.com/images/public/694b80b3d28da37df32ecb33/bf01dd49c_IANWEBTRAININGPHOTO.png',
     bio: "Let's get back to basics; focus on fundamental movement patterns and cultivate change.\\n\\nWith physical fitness, less is more. Attention to the fundamentals allows for the most efficient path to create change. If the goal is strength, weight-loss, bigger muscles, aging gracefully or a combination of it all, having a program and coach rooted in the fundamentals is the safest, most effective and most efficient way to obtain your goals.\\n\\nLet's keep it simple but significant. Create a program specific to your needs, focused on the basics to achieve your goals and desired results.",
     credentials: [
       { name: 'Diploma, Fitness and Health Promotion', location: 'St. Lawrence College' },

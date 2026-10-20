@@ -44,7 +44,7 @@ const trainers = [
     id: 'coach-5',
     first_name: 'Ian',
     title: 'New Talent',
-    headshot_url: '',
+    headshot_url: 'https://media.base44.com/images/public/694b80b3d28da37df32ecb33/bf01dd49c_IANWEBTRAININGPHOTO.png',
     instagram: '',
     linkedin: '#'
   }
