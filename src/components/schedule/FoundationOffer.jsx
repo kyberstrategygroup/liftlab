@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 const features = [
   { label: 'Weekly Rate', essential: '$89.99', gold: '$119.99' },
   { label: 'Weekly Sessions', essential: '2', gold: 'Unlimited' },
-  { label: 'Progress Review', essential: 'Annual', gold: 'Every Macrocycle (4 mo)' },
+  { label: 'Progress Review', essential: '6 Months', gold: '3 Months' },
   { label: 'Bring-A-Friend Pass', essential: '1/year', gold: '1/month' },
   { label: 'Priority Booking', essential: 'Upgrade to Gold (1 week)', gold: 'Any time' },
   { label: 'Freeze', essential: '4 weeks', gold: 'N/A' }
