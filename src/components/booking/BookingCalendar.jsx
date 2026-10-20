@@ -18,6 +18,7 @@ export default function BookingCalendar() {
   const [loading, setLoading] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [slotError, setSlotError] = useState('');
+  const [formError, setFormError] = useState('');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -55,7 +56,7 @@ export default function BookingCalendar() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     if (submittedRef.current || submitting) return;
     submittedRef.current = true;
     setSubmitting(true);
@@ -75,9 +76,7 @@ export default function BookingCalendar() {
       if (data.error === 'SLOT_TAKEN') {
         setSlotError(data.message);
         setSelectedTime('');
-        setStep(2);
         submittedRef.current = false;
-        // Refresh slots
         const dateStr = selectedDate.toLocaleDateString('en-CA');
         loadAvailableSlots(dateStr);
         return;
@@ -125,6 +124,16 @@ export default function BookingCalendar() {
       minute: '2-digit',
       timeZone: 'America/Toronto'
     });
+
+  const handleDetailsContinue = (e) => {
+    e.preventDefault();
+    if (!formData.firstName || !formData.lastName || !formData.clientEmail || !formData.clientPhone) {
+      setFormError('Please fill in all required fields before choosing a date.');
+      return;
+    }
+    setFormError('');
+    setStep(2);
+  };
 
   // Confirmation screen
   if (step === 4 && confirmation) {
@@ -198,7 +207,7 @@ export default function BookingCalendar() {
       <Card className="bg-white">
         <CardHeader>
           <CardTitle className="text-2xl font-black uppercase tracking-tight">
-            Book Your Discovery Call
+            Leave Your Info & Book a Discovery Call
           </CardTitle>
           <div className="flex gap-2 mt-4">
             {[1, 2, 3].map((s) => (
@@ -209,7 +218,7 @@ export default function BookingCalendar() {
             ))}
           </div>
           <p className="text-xs text-zinc-500 mt-2 uppercase tracking-wider">
-            Step {step} of 3 — {step === 1 ? 'Choose Date' : step === 2 ? 'Choose Time' : 'Your Details'}
+            Step {step} of 3 — {step === 1 ? 'Your Details' : step === 2 ? 'Choose Date' : 'Choose Time'}
           </p>
         </CardHeader>
 
@@ -229,104 +238,22 @@ export default function BookingCalendar() {
             )}
           </AnimatePresence>
 
-          {/* Step 1: Date */}
+          {/* Step 1: Details */}
           {step === 1 && (
-            <div className="space-y-6">
-              <Label className="text-sm font-bold uppercase tracking-wider mb-4 block">
-                Select a Date
-              </Label>
-              <div className="flex justify-center">
-                <CalendarUI
-                  mode="single"
-                  selected={selectedDate}
-                  onSelect={setSelectedDate}
-                  disabled={(date) => {
-                    const today = new Date();
-                    today.setHours(0, 0, 0, 0);
-                    const maxDate = new Date();
-                    maxDate.setDate(maxDate.getDate() + 5);
-                    return date < today || date > maxDate;
-                  }}
-                  className="border rounded-md"
-                />
-              </div>
-              <Button
-                onClick={() => setStep(2)}
-                disabled={!selectedDate}
-                className="w-full bg-blue-600 hover:bg-blue-500 font-bold uppercase tracking-wider"
-              >
-                See Available Times
-              </Button>
-            </div>
-          )}
-
-          {/* Step 2: Time */}
-          {step === 2 && (
-            <div className="space-y-6">
-              <div>
-                <Label className="text-sm font-bold uppercase tracking-wider mb-1 block">
-                  Available Times
-                </Label>
-                <p className="text-xs text-zinc-500 mb-4">
-                  {selectedDate?.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })} · All times EST
-                </p>
-
-                {loading ? (
-                  <div className="flex items-center gap-3 py-8 text-zinc-500">
-                    <div className="w-5 h-5 border-2 border-zinc-300 border-t-blue-600 rounded-full animate-spin" />
-                    <span>Loading live availability...</span>
-                  </div>
-                ) : availableSlots.length === 0 ? (
-                  <div className="py-8 text-center text-zinc-500">
-                    <Clock className="w-8 h-8 mx-auto mb-2 text-zinc-300" />
-                    <p>No available slots for this date.</p>
-                    <p className="text-sm mt-1">Try selecting a different day.</p>
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
-                    {availableSlots.map((slot) => (
-                      <button
-                        key={slot}
-                        onClick={() => { setSelectedTime(slot); setSlotError(''); }}
-                        className={`px-2 py-2.5 border-2 font-bold text-sm transition-all ${
-                          selectedTime === slot
-                            ? 'border-blue-600 bg-blue-600 text-white'
-                            : 'border-zinc-200 hover:border-blue-600 hover:text-blue-600'
-                        }`}
-                      >
-                        {formatTime(slot)}
-                      </button>
-                    ))}
-                  </div>
+            <form onSubmit={handleDetailsContinue} className="space-y-5">
+              <AnimatePresence>
+                {formError && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="mb-2 flex items-start gap-3 p-4 bg-red-50 border border-red-200"
+                  >
+                    <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+                    <p className="text-sm text-red-700">{formError}</p>
+                  </motion.div>
                 )}
-              </div>
-
-              <div className="flex gap-3">
-                <Button
-                  onClick={() => setStep(1)}
-                  variant="outline"
-                  className="flex-1 font-bold uppercase tracking-wider"
-                >
-                  Back
-                </Button>
-                <Button
-                  onClick={() => setStep(3)}
-                  disabled={!selectedTime}
-                  className="flex-1 bg-blue-600 hover:bg-blue-500 font-bold uppercase tracking-wider"
-                >
-                  Continue
-                </Button>
-              </div>
-            </div>
-          )}
-
-          {/* Step 3: Details */}
-          {step === 3 && (
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="p-4 bg-blue-50 border border-blue-200 text-sm">
-                <p className="font-bold text-blue-900 uppercase tracking-wider text-xs mb-1">Selected Time</p>
-                <p className="text-blue-800">{formatFullDate(selectedTime)} EST</p>
-              </div>
+              </AnimatePresence>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
@@ -381,9 +308,104 @@ export default function BookingCalendar() {
                 />
               </div>
 
-              <div className="flex gap-3 pt-2">
+              <Button
+                type="submit"
+                className="w-full bg-blue-600 hover:bg-blue-500 font-bold uppercase tracking-wider"
+              >
+                Continue to Date
+              </Button>
+            </form>
+          )}
+
+          {/* Step 2: Date */}
+          {step === 2 && (
+            <div className="space-y-6">
+              <Label className="text-sm font-bold uppercase tracking-wider mb-4 block">
+                Select a Date
+              </Label>
+              <div className="flex justify-center">
+                <CalendarUI
+                  mode="single"
+                  selected={selectedDate}
+                  onSelect={setSelectedDate}
+                  disabled={(date) => {
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    const maxDate = new Date();
+                    maxDate.setDate(maxDate.getDate() + 5);
+                    return date < today || date > maxDate;
+                  }}
+                  className="border rounded-md"
+                />
+              </div>
+              <div className="flex gap-3">
                 <Button
-                  type="button"
+                  onClick={() => setStep(1)}
+                  variant="outline"
+                  className="flex-1 font-bold uppercase tracking-wider"
+                >
+                  Back
+                </Button>
+                <Button
+                  onClick={() => setStep(3)}
+                  disabled={!selectedDate}
+                  className="flex-1 bg-blue-600 hover:bg-blue-500 font-bold uppercase tracking-wider"
+                >
+                  See Available Times
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {/* Step 3: Time */}
+          {step === 3 && (
+            <div className="space-y-6">
+              <div>
+                <Label className="text-sm font-bold uppercase tracking-wider mb-1 block">
+                  Available Times
+                </Label>
+                <p className="text-xs text-zinc-500 mb-4">
+                  {selectedDate?.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })} · All times EST
+                </p>
+
+                {loading ? (
+                  <div className="flex items-center gap-3 py-8 text-zinc-500">
+                    <div className="w-5 h-5 border-2 border-zinc-300 border-t-blue-600 rounded-full animate-spin" />
+                    <span>Loading live availability...</span>
+                  </div>
+                ) : availableSlots.length === 0 ? (
+                  <div className="py-8 text-center text-zinc-500">
+                    <Clock className="w-8 h-8 mx-auto mb-2 text-zinc-300" />
+                    <p>No available slots for this date.</p>
+                    <p className="text-sm mt-1">Try selecting a different day.</p>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
+                    {availableSlots.map((slot) => (
+                      <button
+                        key={slot}
+                        type="button"
+                        onClick={() => { setSelectedTime(slot); setSlotError(''); }}
+                        className={`px-2 py-2.5 border-2 font-bold text-sm transition-all ${
+                          selectedTime === slot
+                            ? 'border-blue-600 bg-blue-600 text-white'
+                            : 'border-zinc-200 hover:border-blue-600 hover:text-blue-600'
+                        }`}
+                      >
+                        {formatTime(slot)}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="p-4 bg-blue-50 border border-blue-200 text-sm">
+                <p className="font-bold text-blue-900 uppercase tracking-wider text-xs mb-1">Selected Details</p>
+                <p className="text-blue-800">{formData.firstName} {formData.lastName} · {formData.clientEmail}</p>
+              </div>
+
+              <div className="flex gap-3">
+                <Button
                   onClick={() => setStep(2)}
                   variant="outline"
                   className="flex-1 font-bold uppercase tracking-wider"
@@ -391,8 +413,8 @@ export default function BookingCalendar() {
                   Back
                 </Button>
                 <Button
-                  type="submit"
-                  disabled={submitting}
+                  onClick={handleSubmit}
+                  disabled={!selectedTime || submitting}
                   className="flex-1 bg-blue-600 hover:bg-blue-500 font-bold uppercase tracking-wider"
                 >
                   {submitting ? (
@@ -403,7 +425,7 @@ export default function BookingCalendar() {
                   ) : 'Confirm Booking'}
                 </Button>
               </div>
-            </form>
+            </div>
           )}
         </CardContent>
       </Card>

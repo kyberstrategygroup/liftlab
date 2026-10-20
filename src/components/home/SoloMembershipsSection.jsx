@@ -23,19 +23,19 @@ export default function SoloMembershipsSection() {
         </motion.div>
 
         {/* Text-Based Training Options */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-zinc-900 border-2 border-zinc-800 p-8"
+            className="bg-zinc-900 border-2 border-blue-600 p-8"
           >
             <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-4">
-              Solo Memberships
+              Semi-Private Training
             </h3>
             <p className="text-zinc-300 leading-relaxed">
-              24/7 facility access designed for independent training. Train at your own pace, on your own schedule, in a professional strength and conditioning environment.
+              Small-group coaching (1-4 people) with customized programming and hands-on coaching. The most cost-effective way to train with expert oversight.
             </p>
           </motion.div>
 
@@ -44,21 +44,6 @@ export default function SoloMembershipsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="bg-zinc-900 border-2 border-blue-600 p-8"
-          >
-            <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-4">
-              Semi-Private Training
-            </h3>
-            <p className="text-zinc-300 leading-relaxed">
-              Small-group coaching (2–3 people) with customized programming and hands-on coaching. The most cost-effective way to train with expert oversight.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
             className="bg-zinc-900 border-2 border-zinc-800 p-8"
           >
             <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-4">
@@ -71,24 +56,10 @@ export default function SoloMembershipsSection() {
         </div>
 
         {/* Video Content */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+        <div className="max-w-2xl mx-auto mb-12">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="bg-zinc-900 overflow-hidden">
-              <VideoEmbed 
-                url="https://www.youtube.com/watch?v=QROSAf8ckRk"
-                title="Semi-Private Training"
-              />
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >

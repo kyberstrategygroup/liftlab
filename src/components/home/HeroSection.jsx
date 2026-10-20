@@ -41,16 +41,13 @@ export default function HeroSection({ onOpenChallenge }) {
             />
           </div>
 
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-white uppercase tracking-tight mb-4 md:mb-6 klavika-logo px-4">
-            Lift<span className="text-blue-500">Lab</span>
+          <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tight mb-4 md:mb-6 klavika-header px-4 leading-[0.95]">
+            <span className="text-blue-500 block">Personal Training</span>
+            <span className="text-white block">In Kingston</span>
           </h1>
-          
-          <p className="text-lg sm:text-xl md:text-2xl text-zinc-300 max-w-2xl mx-auto mb-3 md:mb-4 font-light px-4">
-            SEMI-PRIVATE PERSONAL TRAINING IN KINGSTON
-          </p>
-          
-          <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-xl mx-auto mb-8 md:mb-10 px-4">
-            Lift Lab offers semi-private personal training in Kingston that combines individualized coaching with the structure and team energy of a small group. Each workout is personalized using detailed movement assessments that allow you to train based on your fitness level, goals, and movement quality.
+
+          <p className="text-lg sm:text-xl md:text-2xl text-zinc-300 max-w-2xl mx-auto mb-8 md:mb-10 font-light px-4">
+            We help busy adults get stronger, move better, and stay active for life. Semi-Private+ combines individualized coaching with the team energy of a small group. It's the best of both worlds!
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

@@ -4,6 +4,8 @@ import { useParams, Link } from 'react-router-dom';
 import BookingCalendar from '@/components/booking/BookingCalendar';
 import ScheduleSection from '@/components/schedule/ScheduleSection';
 import OfferVideos from '@/components/schedule/OfferVideos';
+import FoundationOffer from '@/components/schedule/FoundationOffer';
+import SavingsTable from '@/components/schedule/SavingsTable';
 import { Clock } from 'lucide-react';
 
 export default function StartNow() {
@@ -13,25 +15,25 @@ export default function StartNow() {
   return (
     <div>
       {/* Hero */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-zinc-950">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-20 bg-zinc-950">
         <div className="container mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-6 klavika-header">
-              Book A Call
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tight mb-6 klavika-header leading-[1.05]">
+              Personal Training Designed For Real Life
             </h1>
-            <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-              Find a time that works for you.
+            <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto">
+              Join 500+ Kingston residents who've already changed their lives at Lift Lab.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Booking Calendar */}
-      <section className="py-16 md:py-24 bg-white">
+      {/* Booking section */}
+      <section className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -39,8 +41,11 @@ export default function StartNow() {
             viewport={{ once: true }}
           >
             <div className="mb-8 max-w-2xl mx-auto text-center">
+              <p className="text-2xl md:text-3xl font-black uppercase tracking-tight text-black klavika-header mb-3">
+                Claim Your 10 Day Training Launchpad for $30
+              </p>
               <p className="text-sm font-bold uppercase tracking-[0.15em] text-blue-600">
-                Purpose: Understand your goals and determine if you qualify for a consultation or enrollment.
+                Leave your info and book a discovery call
               </p>
             </div>
             <BookingCalendar />
@@ -78,10 +83,10 @@ export default function StartNow() {
                   <h3 className="font-bold text-black uppercase tracking-wider text-sm">
                     General Hours
                   </h3>
-              </div>
+                </div>
                 <div className="text-sm text-zinc-600 space-y-1">
                   <p><strong className="text-black">Gym Hours:</strong> Monday to Sunday (Open 24 Hours)</p>
-                  <p><strong className="text-black">Training Session Hours:</strong> 7:00 am to 8:00 pm</p>
+                  <p><strong className="text-black">Training Session Hours:</strong> 5:30 am to 8:00 pm</p>
                 </div>
               </div>
             </div>
@@ -89,11 +94,17 @@ export default function StartNow() {
         </div>
       </section>
 
-      {/* Offer Videos */}
+      {/* Offer Videos + themed testimonials */}
       <OfferVideos />
+
+      {/* Foundation offer */}
+      <FoundationOffer />
 
       {/* Schedule */}
       <ScheduleSection />
+
+      {/* Savings table */}
+      <SavingsTable />
     </div>
   );
 }

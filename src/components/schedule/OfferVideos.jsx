@@ -5,7 +5,6 @@ import VideoEmbed from '@/components/ui/VideoEmbed';
 const videos = [
   { label: 'The Offer', url: 'https://youtu.be/OLyexPJw_-U', ratio: '16/9' },
   { label: 'The Experience', url: 'https://youtu.be/BpCv0NS396M', ratio: '16/9' },
-  { label: '2 Week Money-Back Guarantee', url: 'https://youtube.com/shorts/t24heq0Oja0', ratio: '9/16' },
   { label: 'Regret', url: 'https://youtube.com/shorts/VdCKO4QUNq8', ratio: '9/16' },
   { label: 'Value', url: 'https://youtube.com/shorts/RM7rDuewk9c', ratio: '9/16' },
   { label: 'Results', url: 'https://youtube.com/shorts/q81ymnEYO14', ratio: '9/16' },
@@ -35,7 +34,7 @@ export default function OfferVideos() {
             Learn More
           </p>
           <h2 className="text-3xl md:text-4xl font-black text-black uppercase tracking-tight klavika-header">
-            Why LiftLab
+            Why Semi-Private+?
           </h2>
         </motion.div>
 

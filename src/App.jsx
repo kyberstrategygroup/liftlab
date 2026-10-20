@@ -6,6 +6,7 @@ import { pagesConfig } from './pages.config'
 import Enrolled from './pages/Enrolled';
 import PromoOffer from './pages/PromoOffer';
 import StartNow from './pages/StartNow';
+import InFacility from './pages/InFacility';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
@@ -74,6 +75,11 @@ const AuthenticatedApp = () => {
       <Route path="/PromoOffer" element={
         <LayoutWrapper currentPageName="PromoOffer">
           <PromoOffer />
+        </LayoutWrapper>
+      } />
+      <Route path="/InFacility" element={
+        <LayoutWrapper currentPageName="InFacility">
+          <InFacility />
         </LayoutWrapper>
       } />
       <Route path="*" element={<PageNotFound />} />
