@@ -70,14 +70,14 @@ const trainersData = {
   'coach-5': {
     first_name: 'Ian Horne',
     title: 'New Talent',
-    headshot_url: 'https://media.base44.com/images/public/694b80b3d28da37df32ecb33/bf01dd49c_IANWEBTRAININGPHOTO.png',
+    headshot_url: 'https://media.base44.com/images/public/694b80b3d28da37df32ecb33/e6d319a53_ianhorneweb.png',
     bio: "Let's get back to basics; focus on fundamental movement patterns and cultivate change.\\n\\nWith physical fitness, less is more. Attention to the fundamentals allows for the most efficient path to create change. If the goal is strength, weight-loss, bigger muscles, aging gracefully or a combination of it all, having a program and coach rooted in the fundamentals is the safest, most effective and most efficient way to obtain your goals.\\n\\nLet's keep it simple but significant. Create a program specific to your needs, focused on the basics to achieve your goals and desired results.",
     credentials: [
       { name: 'Diploma, Fitness and Health Promotion', location: 'St. Lawrence College' },
       { name: 'Certified Personal Trainer', location: 'Ontario Fitness Council' },
       { name: 'Advanced Medical Care Assessment', location: 'ACP Paramedic' },
       { name: 'Certified Elder Fitness Instructor', location: 'Ontario Fitness Council' },
-      { name: 'Combat Engineer', location: 'Canadian Armed Forces' }
+      { name: 'Combat Engineer', location: 'Canadian Armed Forces', detail: 'Kandahar, Afghanistan 2010' }
     ],
     why_story_video_url: 'https://youtube.com/shorts/mOERbPssfsE',
     mission_video_url: 'https://youtube.com/shorts/ck11Z5IhC_I',
@@ -173,6 +173,9 @@ export default function TrainerDetail() {
                         <>
                           <div>{credential.name}</div>
                           <div className="text-zinc-500">{credential.location}</div>
+                          {credential.detail && (
+                            <div className="text-zinc-500">{credential.detail}</div>
+                          )}
                         </>
                       )}
                     </li>
