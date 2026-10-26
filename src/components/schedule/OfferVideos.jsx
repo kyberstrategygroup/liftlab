@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import VideoEmbed from '@/components/ui/VideoEmbed';
 
 const videos = [
-  { label: 'The Offer', url: 'https://youtu.be/OLyexPJw_-U', ratio: '16/9' },
-  { label: 'The Experience', url: 'https://youtu.be/BpCv0NS396M', ratio: '16/9' },
+  { label: 'The Offer', url: 'https://youtu.be/67YTSuWcK1U', ratio: '16/9' },
+  { label: 'The Experience', url: 'https://youtu.be/5-LKC-bHorQ', ratio: '16/9' },
   { label: 'Regret', url: 'https://youtube.com/shorts/VdCKO4QUNq8', ratio: '9/16' },
   { label: 'Value', url: 'https://youtube.com/shorts/RM7rDuewk9c', ratio: '9/16' },
   { label: 'Results', url: 'https://youtube.com/shorts/q81ymnEYO14', ratio: '9/16' },
