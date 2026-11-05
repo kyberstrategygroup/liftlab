@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const schedules = [
   {
     label: 'Semi-Private+ (AM 1)',
-    src: 'https://base44.app/api/apps/694b80b3d28da37df32ecb33/files/mp/public/694b80b3d28da37df32ecb33/46a37cba1_sp-am1.png',
+    src: 'https://base44.app/api/apps/694b80b3d28da37df32ecb33/files/mp/public/694b80b3d28da37df32ecb33/2dc5f2dfd_sp-pm.png',
     alt: 'Semi-Private+ AM 1 weekly schedule'
   },
   {
@@ -14,7 +14,7 @@ const schedules = [
   },
   {
     label: 'Semi-Private+ (PM)',
-    src: 'https://base44.app/api/apps/694b80b3d28da37df32ecb33/files/mp/public/694b80b3d28da37df32ecb33/2dc5f2dfd_sp-pm.png',
+    src: 'https://base44.app/api/apps/694b80b3d28da37df32ecb33/files/mp/public/694b80b3d28da37df32ecb33/46a37cba1_sp-am1.png',
     alt: 'Semi-Private+ PM weekly schedule'
   }
 ];
