@@ -65,7 +65,7 @@ export default function StartNow() {
                 </div>
               ) : (
                 <a
-                  href="https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/69f3f973dde69d208886b060"
+                  href="https://kinectmp.ca/clients/YGK-Lift%20Lab-1/plan/6ac46cf285d12ead3f7dbb3e"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setTimeout(() => window.location.href = '/Enrolled', 100)}
