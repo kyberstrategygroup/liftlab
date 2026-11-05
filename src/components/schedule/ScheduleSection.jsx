@@ -3,13 +3,18 @@ import { motion } from 'framer-motion';
 
 const schedules = [
   {
-    label: 'Semi-Private+ (AM)',
-    src: 'https://media.base44.com/images/public/694b80b3d28da37df32ecb33/8e5ee7e0a_SPAM.png',
-    alt: 'Semi-Private+ AM weekly schedule'
+    label: 'Semi-Private+ (AM 1)',
+    src: 'https://base44.app/api/apps/694b80b3d28da37df32ecb33/files/mp/public/694b80b3d28da37df32ecb33/46a37cba1_sp-am1.png',
+    alt: 'Semi-Private+ AM 1 weekly schedule'
+  },
+  {
+    label: 'Semi-Private+ (AM 2)',
+    src: 'https://base44.app/api/apps/694b80b3d28da37df32ecb33/files/mp/public/694b80b3d28da37df32ecb33/9509f6aad_sp-am2.png',
+    alt: 'Semi-Private+ AM 2 weekly schedule'
   },
   {
     label: 'Semi-Private+ (PM)',
-    src: 'https://media.base44.com/images/public/694b80b3d28da37df32ecb33/23ceb801c_SPPM.png',
+    src: 'https://base44.app/api/apps/694b80b3d28da37df32ecb33/files/mp/public/694b80b3d28da37df32ecb33/2dc5f2dfd_sp-pm.png',
     alt: 'Semi-Private+ PM weekly schedule'
   }
 ];
@@ -33,7 +38,7 @@ export default function ScheduleSection() {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="space-y-8 max-w-4xl mx-auto">
           {schedules.map((s, i) => (
             <motion.div
               key={i}
