@@ -42,10 +42,10 @@ export default function StartNow() {
           >
             <div className="mb-8 max-w-2xl mx-auto text-center">
               <p className="text-2xl md:text-3xl font-black uppercase tracking-tight text-black klavika-header mb-3">
-                Claim Your 10-Day Strength Starter for $30
+                Start Your Fitness Journey Today
               </p>
               <p className="text-sm font-bold uppercase tracking-[0.15em] text-blue-600">
-                Leave your info and book a discovery call
+                We'll learn your goals and help choose the right path for you
               </p>
             </div>
             <BookingCalendar />
